@@ -1,12 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">FoodApp</string>
     <string name="welcome_screen_subtitle">Subtitle</string>
     <string name="login">Login</string>
+    <string name="signup">Signup</string>
     <string name="username">Username</string>
+    <string name="email">Email</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="signup">Signup</string>
-    <string name="already_signup">Already Signup?</string>
+    <string name="already_signup">Already Signued p?</string>
     <string name="signin">Sign In</string>
 </resources>

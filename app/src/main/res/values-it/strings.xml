@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="welcome_screen_subtitle">Sottotitolo</string>
+    <string name="login">Entra</string>
+    <string name="signup">Registrati</string>
+    <string name="username">Username</string>
+    <string name="email">Email</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Conferma la Password</string>
+    <string name="signup">Registrati</string>
+    <string name="already_signup">Già registrato?</string>
+    <string name="signin">Entra</string>
+</resources>

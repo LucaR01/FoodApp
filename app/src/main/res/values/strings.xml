@@ -9,4 +9,6 @@
     <string name="signup">Signup</string>
     <string name="already_signup">Already Signup?</string>
     <string name="signin">Sign In</string>
+    <string name="username_or_email">Username | email</string>
+    <string name="dont_have_an_account">Dont\' have an account?</string>
 </resources>

@@ -5,10 +5,10 @@
     <string name="signup">Registrati</string>
     <string name="username">Username</string>
     <string name="email">Email</string>
-    <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="confirm_password">Conferma la Password</string>
-    <string name="signup">Registrati</string>
     <string name="already_signup">Già registrato?</string>
     <string name="signin">Entra</string>
+    <string name="username_or_email">Username | email</string>
+    <string name="dont_have_an_account">Non hai un account?</string>
 </resources>

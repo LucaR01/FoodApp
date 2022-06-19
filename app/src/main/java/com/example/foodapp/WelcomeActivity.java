@@ -41,6 +41,7 @@ public class WelcomeActivity extends AppCompatActivity {
     public void onLogin(View view){
         loginButton.setOnClickListener(b -> { //TODO: b era view
             //TODO: login
+            startActivity(new Intent(WelcomeActivity.this, LoginActivity.class));
         });
     }
 

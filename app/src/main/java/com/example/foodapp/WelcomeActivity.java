@@ -34,6 +34,22 @@ public class WelcomeActivity extends AppCompatActivity {
         this.welcomeScreenImageView = findViewById(R.id.welcome_screen_imageView);
         this.signupTextView = findViewById(R.id.signup_textview);
 
+        //TODO: questo è lo stesso che c'è nel metodo onLogin
+        loginButton.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(WelcomeActivity.this, LoginActivity.class));
+            }
+        });
+
+        //TODO: stesso codice che c'è nel metodo onSignUp
+        signupTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(WelcomeActivity.this, SignupActivity.class));
+            }
+        });
+
         //this.welcomeScreenImageView.animate().translationY(-1500).setDuration(1000).setStartDelay(4000); //TODO: uncomment
         //TODO: l'animate anche per le textviews e il pulsante
     }

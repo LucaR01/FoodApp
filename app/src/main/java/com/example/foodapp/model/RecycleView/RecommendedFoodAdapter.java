@@ -37,7 +37,9 @@ public class RecommendedFoodAdapter extends RecyclerView.Adapter<RecommendedFood
 
     @Override
     public void onBindViewHolder(@NonNull RecommendedFoodViewHolder holder, int position) {
-
+        holder.getItemImage().setImageResource(recommendedFoodList.get(position).getRecommendedFood().getImageUrl());
+        holder.getItemName().setText(recommendedFoodList.get(position).getRecommendedFood().getName());
+        holder.getItemPrice().setText((int)recommendedFoodList.get(position).getRecommendedFood().getPrice());
     }
 
     @Override

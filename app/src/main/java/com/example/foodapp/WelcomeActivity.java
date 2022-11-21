@@ -30,7 +30,7 @@ public class WelcomeActivity extends AppCompatActivity {
         /*requestWindowFeature(Window.FEATURE_NO_TITLE); //TODO:
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);*/
 
-        this.loginButton = findViewById(R.id.login_button);
+        this.loginButton = findViewById(R.id.welcome_login_button);
         this.welcomeScreenImageView = findViewById(R.id.welcome_screen_imageView);
         this.signupTextView = findViewById(R.id.signup_textview);
 

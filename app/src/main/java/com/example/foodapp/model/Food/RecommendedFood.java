@@ -1,4 +1,4 @@
-package com.example.foodapp.model.RecycleView;
+package com.example.foodapp.model.Food;
 
 import com.example.foodapp.model.Food.Food;
 

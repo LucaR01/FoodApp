@@ -107,7 +107,7 @@
         app:srcCompat="@drawable/food_category3" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/your_recommended"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -120,10 +120,11 @@
         android:id="@+id/recommended_foods_recyclerView"
         android:layout_width="410dp"
         android:layout_height="200dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintTop_toBottomOf="@+id/your_recommended" />
 
     <TextView
         android:id="@+id/textView7"
@@ -134,7 +135,7 @@
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="12dp"
         android:text="Poké"
-        app:layout_constraintBottom_toTopOf="@+id/textView6"
+        app:layout_constraintBottom_toTopOf="@+id/your_recommended"
         app:layout_constraintEnd_toStartOf="@+id/imageView2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView4" />
@@ -148,7 +149,7 @@
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="10dp"
         android:text="Fruit"
-        app:layout_constraintBottom_toTopOf="@+id/textView6"
+        app:layout_constraintBottom_toTopOf="@+id/your_recommended"
         app:layout_constraintEnd_toStartOf="@+id/imageView3"
         app:layout_constraintStart_toEndOf="@+id/textView7"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
@@ -162,7 +163,7 @@
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="10dp"
         android:text="Vegetables"
-        app:layout_constraintBottom_toTopOf="@+id/textView6"
+        app:layout_constraintBottom_toTopOf="@+id/your_recommended"
         app:layout_constraintEnd_toStartOf="@+id/imageView"
         app:layout_constraintStart_toEndOf="@+id/textView8"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
@@ -176,13 +177,13 @@
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="10dp"
         android:text="Salad"
-        app:layout_constraintBottom_toTopOf="@+id/textView6"
+        app:layout_constraintBottom_toTopOf="@+id/your_recommended"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView3"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/your_favorites"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -192,15 +193,17 @@
         app:layout_constraintTop_toBottomOf="@+id/recommended_foods_recyclerView" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/favorite_foods_recyclerView"
         android:layout_width="408dp"
         android:layout_height="177dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+        app:layout_constraintTop_toBottomOf="@+id/your_favorites" />
 
     <TextView
-        android:id="@+id/textView13"
+        android:id="@+id/username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"

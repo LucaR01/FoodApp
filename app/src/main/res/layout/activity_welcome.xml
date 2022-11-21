@@ -11,17 +11,19 @@
 
     <!-- TODO: android:foreground="@drawable/ic_foreground" magari per il dark theme -->
     <!-- TODO: vedere se cambiare l'immagine di welcome screen -->
+
+    <!-- TODO: text color: white, textSize: 33sp o 48dp o 18pt -->
+    <!-- TODO: cambiare la font-family del testo. -->
+
     <ImageView
         android:id="@+id/welcome_screen_imageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
+        android:src="@drawable/ic_healthy_food_welcome_screen_background1"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp"
-        android:src="@drawable/ic_healthy_food_welcome_screen_background1"/>
+        tools:layout_editor_absoluteY="-33dp" />
 
-    <!-- TODO: text color: white, textSize: 33sp o 48dp o 18pt -->
-    <!-- TODO: cambiare la font-family del testo. -->
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
@@ -54,7 +56,7 @@
 
     <!-- TODO: usare <androidx.appcompat.widget.AppCompatButton ? -->
     <Button
-        android:id="@+id/login_button"
+        android:id="@+id/welcome_login_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/ic_button_background"
@@ -77,14 +79,16 @@
         android:id="@+id/signup_textview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginBottom="32dp"
         android:text="@string/signup"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_button" />
+        app:layout_constraintTop_toBottomOf="@+id/welcome_login_button"
+        app:layout_constraintVertical_bias="0.489"
+        tools:layout_editor_absoluteX="0dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -52,7 +52,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
-        android:id="@+id/username_editText"
+        android:id="@+id/login_username_editText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
@@ -68,7 +68,7 @@
         app:layout_constraintWidth_percent=".8" />
 
     <EditText
-        android:id="@+id/password_editText"
+        android:id="@+id/login_password_editText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -80,7 +80,7 @@
         android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/username_editText"
+        app:layout_constraintTop_toBottomOf="@+id/login_username_editText"
         app:layout_constraintWidth_percent=".8" />
 
     <!-- TODO: usare <androidx.appcompat.widget.AppCompatButton ? -->
@@ -97,13 +97,15 @@
         app:layout_constraintBottom_toBottomOf="@+id/signup_imageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password_editText"
+        app:layout_constraintTop_toBottomOf="@+id/login_password_editText"
         app:layout_constraintWidth_percent=".9" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/dont_have_an_account_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="64dp"
         android:text="@string/dont_have_an_account"
         android:textColor="@color/white"
         android:textSize="18sp"
@@ -114,18 +116,17 @@
         app:layout_constraintTop_toBottomOf="@+id/login_button" />
 
     <TextView
+        android:id="@+id/signup_link_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="42dp"
+        android:layout_marginEnd="64dp"
         android:text="@string/signup"
         android:textColor="@color/custom_red"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/dont_have_an_account_textView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.125"
-        app:layout_constraintStart_toEndOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/login_button"
-        app:layout_constraintVertical_bias="0.243" />
+        app:layout_constraintTop_toTopOf="@+id/dont_have_an_account_textView"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

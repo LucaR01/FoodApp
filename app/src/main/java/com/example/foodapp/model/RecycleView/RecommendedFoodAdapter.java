@@ -2,13 +2,13 @@ package com.example.foodapp.model.RecycleView;
 
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.foodapp.R;
+import com.example.foodapp.model.Food.RecommendedFood;
 
 import java.util.List;
 

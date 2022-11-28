@@ -11,16 +11,21 @@ import android.widget.TextView;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private final Button loginButton = findViewById(R.id.login_button);
-    private final TextView signupLinkTextView = findViewById(R.id.signup_link_textView);
+    private Button loginButton;
+    private TextView signupLinkTextView;
 
-    private final EditText usernameEditText = findViewById(R.id.login_username_editText);
-    private final EditText passwordEditText = findViewById(R.id.login_password_editText);
+    private EditText usernameEditText;
+    private EditText passwordEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        loginButton = findViewById(R.id.login_button);
+        signupLinkTextView = findViewById(R.id.signup_link_textView);
+        usernameEditText = findViewById(R.id.login_username_editText);
+        passwordEditText = findViewById(R.id.login_password_editText);
 
         this.loginButton.setOnClickListener(view -> {
             //TODO: fare un controllo che i campi siano corretti.

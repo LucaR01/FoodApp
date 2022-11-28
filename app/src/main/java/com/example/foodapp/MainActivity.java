@@ -31,14 +31,14 @@ public class MainActivity extends AppCompatActivity {
 
         // Qui aggiungo i cibi raccomandati.
         List<RecommendedFood> recommendedFoodList = new ArrayList<>();
-        recommendedFoodList.add(new RecommendedFood(new Food("Poke", Category.POKE, 5.00f, false, R.drawable.recommended_food_card_food)));
-        recommendedFoodList.add(new RecommendedFood(new Food("Salad", Category.SALAD, 8.00f, false, R.drawable.recommended_food_card_food))); //TODO: cambiare drawable.
+        recommendedFoodList.add(new RecommendedFood(new Food("Poke", Category.POKE, "$5.00", false, R.drawable.recommended_food_card_food)));
+        recommendedFoodList.add(new RecommendedFood(new Food("Salad", Category.SALAD, "$8.00", false, R.drawable.recommended_food_card_food))); //TODO: cambiare drawable.
 
         setRecommendedFoodsRecyclerView(recommendedFoodList);
 
         List<FavoriteFood> favoriteFoodList = new ArrayList<>();
-        favoriteFoodList.add(new FavoriteFood("", Category.NUTS, 4.5f, R.drawable.recommended_food_card_food)); //TODO: update drawable
-        favoriteFoodList.add(new FavoriteFood("Cereals", Category.CEREALS, 3.0f, R.drawable.recommended_food_card_food)); //TODO: update drawable
+        favoriteFoodList.add(new FavoriteFood("", Category.NUTS, "$4.5", R.drawable.recommended_food_card_food)); //TODO: update drawable
+        favoriteFoodList.add(new FavoriteFood("Cereals", Category.CEREALS, "$3.0", R.drawable.recommended_food_card_food)); //TODO: update drawable
 
         //setFavoriteFoodsRecyclerView(favoriteFoodList); //TODO: uncomment
     }

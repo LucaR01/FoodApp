@@ -7,11 +7,11 @@ public class Food {
     private final String name;
     private final Category category; //TODO: Category enum or class?
 
-    private float price; //TODO: forse usare una stringa
+    private String price; //TODO: forse usare una stringa oppure float o int
     private boolean isFavorite;
     private int imageUrl;
 
-    public Food(final String name, final Category category, final float price, final boolean isFavorite, final int imageUrl) {
+    public Food(final String name, final Category category, final String price, final boolean isFavorite, final int imageUrl) {
         this.name = name;
         this.category = category;
         this.price = price;
@@ -27,7 +27,7 @@ public class Food {
         return this.category;
     }
 
-    public final float getPrice() {
+    public final String getPrice() {
         return this.price;
     }
 

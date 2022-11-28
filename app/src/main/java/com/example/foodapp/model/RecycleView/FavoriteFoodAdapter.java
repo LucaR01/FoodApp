@@ -32,7 +32,7 @@ public class FavoriteFoodAdapter extends RecyclerView.Adapter<RecommendedFoodVie
     public void onBindViewHolder(@NonNull RecommendedFoodViewHolder holder, int position) {
         holder.getItemImage().setImageResource(favoriteFoodList.get(position).getImageUrl());
         holder.getItemName().setText(favoriteFoodList.get(position).getName());
-        holder.getItemPrice().setText((int)favoriteFoodList.get(position).getPrice());
+        holder.getItemPrice().setText(favoriteFoodList.get(position).getPrice());
     }
 
     @Override

@@ -39,7 +39,7 @@ public class RecommendedFoodAdapter extends RecyclerView.Adapter<RecommendedFood
     public void onBindViewHolder(@NonNull RecommendedFoodViewHolder holder, int position) {
         holder.getItemImage().setImageResource(recommendedFoodList.get(position).getRecommendedFood().getImageUrl());
         holder.getItemName().setText(recommendedFoodList.get(position).getRecommendedFood().getName());
-        holder.getItemPrice().setText((int)recommendedFoodList.get(position).getRecommendedFood().getPrice());
+        holder.getItemPrice().setText(recommendedFoodList.get(position).getRecommendedFood().getPrice()); //TODO: c'è un problema con questo.
     }
 
     @Override

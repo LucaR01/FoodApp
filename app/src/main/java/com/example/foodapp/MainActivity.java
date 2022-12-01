@@ -5,16 +5,22 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.foodapp.model.Category.Category;
+import com.example.foodapp.model.Databases.UserDatabase.UserDatabase;
 import com.example.foodapp.model.Food.FavoriteFood;
 import com.example.foodapp.model.Food.Food;
 import com.example.foodapp.model.Food.RecommendedFood;
 import com.example.foodapp.model.RecycleView.FavoriteFoodAdapter;
 import com.example.foodapp.model.RecycleView.RecommendedFoodAdapter;
+import com.example.foodapp.model.Users.Client.Client;
+import com.example.foodapp.model.Users.Restaurant.Restaurant;
+import com.example.foodapp.model.Users.User;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -41,6 +47,30 @@ public class MainActivity extends AppCompatActivity {
         favoriteFoodList.add(new FavoriteFood("Cereals", Category.CEREALS, "$3.0", R.drawable.recommended_food_card_food)); //TODO: update drawable
 
         //setFavoriteFoodsRecyclerView(favoriteFoodList); //TODO: uncomment
+
+        // Database
+        UserDatabase db = UserDatabase.getDatabaseInstance(getApplicationContext());
+        /*if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) { //TODO: uncomment or remove?
+            User bob = new User("bob", "email@com", "1234", Optional.of(""), Optional.of("")); //Optional.empty()
+            User veganRestaurant = new User("restaurant", "vegan@com", "a56789b", Optional.of(""), Optional.of(""));
+
+            db.userDAO().insertList(bob, veganRestaurant);
+
+            List<User> userList = db.userDAO().getUsers();
+            for(User user : userList) {
+                Log.d("users", user.getUsername() + " " + user.getEmail() + " " + user.getPassword());
+            }
+        }*/
+
+        User bob = new User("bob", "email@example.com", "1234"); //Optional.empty(); new User
+        User veganRestaurant = new User("restaurant", "vegan@example.com", "a56789b"); // new Restaurant
+
+        db.userDAO().insertList(bob, veganRestaurant);
+
+        List<User> userList = db.userDAO().getUsers(); //TODO: remove
+        for(User user : userList) {
+            Log.d("users", user.getUsername() + " " + user.getEmail() + " " + user.getPassword());
+        }
     }
 
     private void setRecommendedFoodsRecyclerView(final List<RecommendedFood> recommendedFoodList) {

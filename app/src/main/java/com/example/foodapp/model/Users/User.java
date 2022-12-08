@@ -1,14 +1,12 @@
 package com.example.foodapp.model.Users;
 
-import android.os.Build;
-
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import java.util.Optional;
 
-@Entity
+@Entity(tableName = "user")
 public class User {
 
     private final static String EMPTY_STRING = "";

@@ -19,12 +19,13 @@ public abstract class UserDatabase extends RoomDatabase {
     public abstract UserDAO userDAO();
 
     private static UserDatabase INSTANCE;
+    private static final String databaseName = "user";
 
     //@RequiresApi(api = Build.VERSION_CODES.N)
     public static UserDatabase getDatabaseInstance(Context context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             if(Objects.isNull(UserDatabase.INSTANCE)) {
-                UserDatabase.INSTANCE = Room.databaseBuilder(context.getApplicationContext(), UserDatabase.class, "user")
+                UserDatabase.INSTANCE = Room.databaseBuilder(context.getApplicationContext(), UserDatabase.class, UserDatabase.databaseName)
                         .allowMainThreadQueries() //TODO: remove .allowMainThreadQueries()?
                         .build();
             }

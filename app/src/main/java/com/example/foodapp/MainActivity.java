@@ -62,13 +62,14 @@ public class MainActivity extends AppCompatActivity {
             }
         }*/
 
-        User bob = new User("bob", "email@example.com", "1234"); //Optional.empty(); new User
-        User veganRestaurant = new User("restaurant", "vegan@example.com", "a56789b"); // new Restaurant
+        //TODO: remove
+        User bob = new Client("bob", "email@example.com", "1234"); //Optional.empty(); new User
+        User veganRestaurant = new Restaurant("restaurant", "vegan@example.com", "a56789b"); // new Restaurant
 
         db.userDAO().insertList(bob, veganRestaurant);
 
         List<User> userList = db.userDAO().getUsers(); //TODO: remove
-        for(User user : userList) {
+        for(final User user : userList) {
             Log.d("users", user.getUsername() + " " + user.getEmail() + " " + user.getPassword());
         }
     }

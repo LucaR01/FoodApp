@@ -4,10 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.example.foodapp.model.Databases.UserDatabase.UserDatabase;
+import com.example.foodapp.model.Users.User;
+
+import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -28,8 +34,23 @@ public class LoginActivity extends AppCompatActivity {
         passwordEditText = findViewById(R.id.login_password_editText);
 
         this.loginButton.setOnClickListener(view -> {
-            //TODO: fare un controllo che i campi siano corretti.
-            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            //TODO: notificare l'utente.
+            if(usernameEditText.getText().toString().equals("") || passwordEditText.getText().toString().equals("")) {
+                Log.d("[USERS]", "Empty fields!");
+            }
+
+            UserDatabase db = UserDatabase.getDatabaseInstance(getApplicationContext());
+            List<User> dbUserList = db.userDAO().getUsers();
+
+            for(final User user : dbUserList) {
+                if(user.getEmail().contains(usernameEditText.getText()) || user.getUsername().contains(usernameEditText.getText())
+                        && user.getPassword().contains(passwordEditText.getText())) {
+                    Log.d("[USERS]", "username | email: " + usernameEditText.getText().toString() + " password: " + passwordEditText.getText().toString());
+                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                }
+            }
+
+            startActivity(new Intent(LoginActivity.this, MainActivity.class)); //TODO: remove
         });
 
         this.signupLinkTextView.setOnClickListener(view -> {

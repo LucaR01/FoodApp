@@ -1,11 +1,16 @@
 package com.example.foodapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 
 import com.example.foodapp.model.Category.Category;
 import com.example.foodapp.model.Databases.UserDatabase.UserDatabase;
@@ -17,11 +22,14 @@ import com.example.foodapp.model.RecycleView.RecommendedFoodAdapter;
 import com.example.foodapp.model.Users.Client.Client;
 import com.example.foodapp.model.Users.Restaurant.Restaurant;
 import com.example.foodapp.model.Users.User;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+//TODO: extends Fragment?
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recommendedFoodsRecyclerView;
@@ -29,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
 
     private RecyclerView favoriteFoodsRecyclerView;
     private FavoriteFoodAdapter favoriteFoodAdapter;
+
+    private BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +82,22 @@ public class MainActivity extends AppCompatActivity {
         for(final User user : userList) {
             Log.d("users", user.getUsername() + " " + user.getEmail() + " " + user.getPassword());
         }
+
+        // Bottom Navigation Bar
+        bottomNavigationView = findViewById(R.id.bottom_navigation_bar);
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            switch(item.getItemId()) {
+                //TODO: aggiungere l'ultimo item.
+                case R.id.home:
+                    //replaceFragment(new HomeFragment()); //TODO: uncomment when I will create the fragment.
+                    break;
+                case R.id.settings:
+                    //replaceFragment(new SettingsFragment()); //TODO: uncomment when I will create the fragment.
+                    break;
+            }
+
+            return true;
+        });
     }
 
     private void setRecommendedFoodsRecyclerView(final List<RecommendedFood> recommendedFoodList) {
@@ -88,5 +114,12 @@ public class MainActivity extends AppCompatActivity {
         this.favoriteFoodsRecyclerView.setLayoutManager(layoutManager);
         this.favoriteFoodAdapter = new FavoriteFoodAdapter(this, favoriteFoodList);
         this.favoriteFoodsRecyclerView.setAdapter(recommendedFoodAdapter);
+    }
+
+    private void replaceFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        //fragmentTransaction.replace(R.id.frame_layout, fragment); //TODO: uncomment and fix.
+        fragmentTransaction.commit();
     }
 }

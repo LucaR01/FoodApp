@@ -11,4 +11,6 @@
     <string name="signin">Entra</string>
     <string name="username_or_email">Username | email</string>
     <string name="dont_have_an_account">Non hai un account?</string>
+    <string name="open">apri</string>
+    <string name="close">chiudi</string>
 </resources>

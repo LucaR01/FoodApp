@@ -1,7 +1,11 @@
 package com.example.foodapp;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -11,6 +15,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.foodapp.model.Category.Category;
 import com.example.foodapp.model.Databases.UserDatabase.UserDatabase;
@@ -24,6 +30,7 @@ import com.example.foodapp.model.Users.Restaurant.Restaurant;
 import com.example.foodapp.model.Users.User;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +38,11 @@ import java.util.Optional;
 
 //TODO: extends Fragment?
 public class MainActivity extends AppCompatActivity {
+
+    private DrawerLayout drawerLayout;
+    private NavigationView navigationView;
+    private ActionBarDrawerToggle drawerToggle;
+    private ImageView navDrawerMenuImageView;
 
     private RecyclerView recommendedFoodsRecyclerView;
     private RecommendedFoodAdapter recommendedFoodAdapter;
@@ -41,9 +53,62 @@ public class MainActivity extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
 
     @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(drawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //DRAWER LAYOUT
+        drawerLayout = (DrawerLayout) findViewById(R.id.main_activity_constraint_layout);
+
+        //NAVIGATION DRAWER
+        navigationView = findViewById(R.id.navigation_drawer);
+        //TODO: uncomment
+        drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
+        drawerLayout.addDrawerListener(drawerToggle);
+        drawerToggle.syncState();
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true); //TODO: uncomment maybe.
+
+        //TODO: fix
+        navDrawerMenuImageView = findViewById(R.id.nav_menu_imageView);
+        navDrawerMenuImageView.setOnClickListener(listener -> {
+            //drawerLayout.addDrawerListener(drawerToggle);
+        });
+
+        navigationView.setNavigationItemSelectedListener(item -> {
+            switch(item.getItemId()) {
+                case R.id.nav_drawer_home:
+                    Toast.makeText(MainActivity.this, "Home selected", Toast.LENGTH_LONG).show();
+                    //TODO: spostare nella pagina selezionata.
+                    break;
+                case R.id.nav_drawer_foods:
+                    Toast.makeText(MainActivity.this, "Foods Page selected", Toast.LENGTH_LONG).show();
+                    //TODO: spostare nella pagina selezionata.
+                    break;
+                case R.id.settings:
+                    Toast.makeText(MainActivity.this, "Settings selected", Toast.LENGTH_LONG).show();
+                    //TODO: spostare nella pagina selezionata.
+                    break;
+                case R.id.nav_drawer_privacy:
+                    Toast.makeText(MainActivity.this, "Privacy selected", Toast.LENGTH_LONG).show();
+                    //TODO: spostare nella pagina selezionata.
+                    break;
+                case R.id.nav_drawer_terms_and_conditions:
+                    Toast.makeText(MainActivity.this, "Terms&Conditions selected", Toast.LENGTH_LONG).show();
+                    //TODO: spostare nella pagina selezionata.
+                    break;
+            }
+
+            return false;
+        });
+
 
         // Qui aggiungo i cibi raccomandati.
         List<RecommendedFood> recommendedFoodList = new ArrayList<>();
@@ -98,6 +163,15 @@ public class MainActivity extends AppCompatActivity {
 
             return true;
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
     }
 
     private void setRecommendedFoodsRecyclerView(final List<RecommendedFood> recommendedFoodList) {

@@ -1,6 +1,7 @@
 package com.example.foodapp;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -12,9 +13,11 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -43,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
     private NavigationView navigationView;
     private ActionBarDrawerToggle drawerToggle;
     private ImageView navDrawerMenuImageView;
+    private ConstraintLayout constraintLayout;
 
     private RecyclerView recommendedFoodsRecyclerView;
     private RecommendedFoodAdapter recommendedFoodAdapter;
@@ -60,13 +64,15 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    //@RequiresApi(api = Build.VERSION_CODES.N) //TODO: remove
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         //DRAWER LAYOUT
-        drawerLayout = (DrawerLayout) findViewById(R.id.main_activity_constraint_layout);
+        drawerLayout = findViewById(R.id.main_activity_drawer_layout);
+        constraintLayout = findViewById(R.id.main_activity_constraint_layout);
 
         //NAVIGATION DRAWER
         navigationView = findViewById(R.id.navigation_drawer);
@@ -108,6 +114,20 @@ public class MainActivity extends AppCompatActivity {
 
             return false;
         });
+
+        //TODO: fix
+        /*drawerLayout.setOnClickListener(view -> {
+            if(drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                drawerLayout.closeDrawer(GravityCompat.START);
+            }
+        });
+
+        constraintLayout.setOnClickListener(view -> {
+            if(drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                drawerLayout.closeDrawer(GravityCompat.START);
+            }
+            //drawerLayout.closeDrawer(GravityCompat.START);
+        });*/
 
 
         // Qui aggiungo i cibi raccomandati.

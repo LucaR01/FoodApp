@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.foodapp" >
 
+    <!-- TODO: Per risolvere il problema "Room cannot verify the data integrity. -->
+    <!-- TODO: volendo mettere allowBackup="false", così non mantiene il backup -->
+    <!-- TODO: dei dati, per la debug mode. da rimettere "true" per la release. -->
+    <!-- TODO: oppure semplicemente fare "wipe data" del device emulatore. -->
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"

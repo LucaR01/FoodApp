@@ -15,6 +15,7 @@ import com.example.foodapp.model.Users.User;
 
 import java.util.List;
 
+//TODO: extends Fragment
 public class LoginActivity extends AppCompatActivity {
 
     private Button loginButton;
@@ -35,7 +36,8 @@ public class LoginActivity extends AppCompatActivity {
 
         this.loginButton.setOnClickListener(view -> {
             //TODO: notificare l'utente.
-            if(usernameEditText.getText().toString().equals("") || passwordEditText.getText().toString().equals("")) {
+            //TODO: uncomment when checked and fixed.
+            /*if(usernameEditText.getText().toString().equals("") || passwordEditText.getText().toString().equals("")) {
                 Log.d("[USERS]", "Empty fields!");
             }
 
@@ -48,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
                     Log.d("[USERS]", "username | email: " + usernameEditText.getText().toString() + " password: " + passwordEditText.getText().toString());
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
                 }
-            }
+            }*/
 
             startActivity(new Intent(LoginActivity.this, MainActivity.class)); //TODO: remove
         });

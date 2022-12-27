@@ -8,11 +8,6 @@
     android:background="#E7EBE7"
     tools:context=".MainActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/main_activity_constraint_layout">
-
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigation_drawer"
         android:layout_width="wrap_content"
@@ -21,6 +16,20 @@
         app:headerLayout="@layout/navigation_drawer_header"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/navigation_drawer" />
+
+    <!-- TODO: prima stavo utilizzando la normale ScrollView -->
+    <!-- TODO: magari mettere la scroll view sul constraint layout -->
+    <!-- TODO: e mettere la bottom navigation bar fuori da questa. -->
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/main_activity_constraint_layout">
 
 
     <ImageView
@@ -108,18 +117,18 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/food_category2" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView3"
-        app:layout_constraintTop_toTopOf="@+id/imageView3"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/food_category3" />
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView3"
+            app:layout_constraintTop_toTopOf="@+id/imageView3"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/food_category3" />
 
     <TextView
         android:id="@+id/your_recommended"
@@ -227,6 +236,8 @@
         app:layout_constraintStart_toEndOf="@+id/textView4"
         app:layout_constraintTop_toTopOf="parent" />
 
+        <!-- TODO: spostare bottom navigation fuori dalla scroll view? -->
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation_bar"
         android:layout_width="match_parent"
@@ -241,5 +252,6 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.drawerlayout.widget.DrawerLayout>

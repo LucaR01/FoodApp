@@ -85,17 +85,26 @@ public class MainActivity extends AppCompatActivity {
         //TODO: fix
         navDrawerMenuImageView = findViewById(R.id.nav_menu_imageView);
         navDrawerMenuImageView.setOnClickListener(listener -> {
-            //drawerLayout.addDrawerListener(drawerToggle);
+            drawerLayout.addDrawerListener(drawerToggle);
+            drawerToggle.syncState(); //TODO: remove?
+
+            if(drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                //drawerLayout.closeDrawer(GravityCompat.START, false);
+            } else {
+                drawerLayout.openDrawer(GravityCompat.START, false);
+            }
         });
 
         navigationView.setNavigationItemSelectedListener(item -> {
             switch(item.getItemId()) {
                 case R.id.nav_drawer_home:
                     Toast.makeText(MainActivity.this, "Home selected", Toast.LENGTH_LONG).show();
+                    drawerLayout.closeDrawer(GravityCompat.START, false); //TODO: remove
                     //TODO: spostare nella pagina selezionata.
                     break;
                 case R.id.nav_drawer_foods:
                     Toast.makeText(MainActivity.this, "Foods Page selected", Toast.LENGTH_LONG).show();
+                    drawerLayout.closeDrawers(); //TODO: remove
                     //TODO: spostare nella pagina selezionata.
                     break;
                 case R.id.settings:
@@ -115,16 +124,17 @@ public class MainActivity extends AppCompatActivity {
             return false;
         });
 
-        //TODO: fix
+        //TODO: fix/remove
         /*drawerLayout.setOnClickListener(view -> {
             if(drawerLayout.isDrawerOpen(GravityCompat.START)) {
-                drawerLayout.closeDrawer(GravityCompat.START);
+                //drawerLayout.closeDrawer(GravityCompat.START, false); //TODO: uncomment
+                drawerLayout.closeDrawers();
             }
         });
 
         constraintLayout.setOnClickListener(view -> {
             if(drawerLayout.isDrawerOpen(GravityCompat.START)) {
-                drawerLayout.closeDrawer(GravityCompat.START);
+                drawerLayout.closeDrawer(GravityCompat.START, false);
             }
             //drawerLayout.closeDrawer(GravityCompat.START);
         });*/
@@ -138,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
         setRecommendedFoodsRecyclerView(recommendedFoodList);
 
         List<FavoriteFood> favoriteFoodList = new ArrayList<>();
-        favoriteFoodList.add(new FavoriteFood("", Category.NUTS, "$4.5", R.drawable.recommended_food_card_food)); //TODO: update drawable
+        favoriteFoodList.add(new FavoriteFood("Nuts", Category.NUTS, "$4.5", R.drawable.recommended_food_card_food)); //TODO: update drawable
         favoriteFoodList.add(new FavoriteFood("Cereals", Category.CEREALS, "$3.0", R.drawable.recommended_food_card_food)); //TODO: update drawable
 
         //setFavoriteFoodsRecyclerView(favoriteFoodList); //TODO: uncomment

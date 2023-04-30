@@ -49,4 +49,7 @@ dependencies {
 
     implementation 'androidx.drawerlayout:drawerlayout:1.1.1'
     implementation 'androidx.preference:preference:1.2.0' // in realtà non è necessario.
+
+    implementation 'androidx.navigation:navigation-fragment:2.5.3' // questi due navigation-fragment e navigation-ui servono per la navigation.
+    implementation 'androidx.navigation:navigation-ui:2.5.3'
 }

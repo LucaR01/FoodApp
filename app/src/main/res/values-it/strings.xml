@@ -3,14 +3,22 @@
     <string name="welcome_screen_subtitle">Sottotitolo</string>
     <string name="login">Entra</string>
     <string name="signup">Registrati</string>
-    <string name="username">Username</string>
-    <string name="email">Email</string>
-    <string name="password">Password</string>
-    <string name="confirm_password">Conferma la Password</string>
+    <string name="username">Nome utente</string>
+    <string name="email">Indirizzo di posta elettronica</string>
+    <string name="password">Parola d\'accesso</string>
+    <string name="confirm_password">Conferma la parola d\'accesso</string>
     <string name="already_signup">Già registrato?</string>
     <string name="signin">Entra</string>
-    <string name="username_or_email">Username | email</string>
+    <string name="username_or_email">Nome utente | email</string>
     <string name="dont_have_an_account">Non hai un account?</string>
     <string name="open">apri</string>
     <string name="close">chiudi</string>
+    <string name="home">Casa</string>
+    <string name="foods">Cibi</string>
+    <string name="profile">Profilo</string>
+    <string name="about">Riguardo</string>
+    <string name="settings">Impostazioni</string>
+    <string name="privacy">Riservatezza</string>
+    <string name="terms_and_conditions"><![CDATA[Termini & Condizioni]]></string>
+    <string name="hello_blank_fragment">Ciao frammento vuoto</string>
 </resources>

@@ -13,6 +13,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,6 +22,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.foodapp.Activities.SettingsActivity;
+import com.example.foodapp.Fragments.SettingsFragment;
 import com.example.foodapp.model.Category.Category;
 import com.example.foodapp.model.Databases.UserDatabase.UserDatabase;
 import com.example.foodapp.model.Food.FavoriteFood;
@@ -38,6 +41,8 @@ import com.google.android.material.navigation.NavigationView;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
+//TODO: fragment for bottom navigation bar e forse anche per il navigation view.
 
 //TODO: extends Fragment?
 public class MainActivity extends AppCompatActivity {
@@ -109,6 +114,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.settings:
                     Toast.makeText(MainActivity.this, "Settings selected", Toast.LENGTH_LONG).show();
+                    startActivity(new Intent(MainActivity.this, SettingsActivity.class));
                     //TODO: spostare nella pagina selezionata.
                     break;
                 case R.id.nav_drawer_privacy:
@@ -151,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
         favoriteFoodList.add(new FavoriteFood("Nuts", Category.NUTS, "$4.5", R.drawable.recommended_food_card_food)); //TODO: update drawable
         favoriteFoodList.add(new FavoriteFood("Cereals", Category.CEREALS, "$3.0", R.drawable.recommended_food_card_food)); //TODO: update drawable
 
-        //setFavoriteFoodsRecyclerView(favoriteFoodList); //TODO: uncomment
+        setFavoriteFoodsRecyclerView(favoriteFoodList); //TODO: uncomment
 
         // Database
         UserDatabase db = UserDatabase.getDatabaseInstance(getApplicationContext());
@@ -188,6 +194,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.settings:
                     //replaceFragment(new SettingsFragment()); //TODO: uncomment when I will create the fragment.
+                    startActivity(new Intent(MainActivity.this, SettingsActivity.class));
                     break;
             }
 
@@ -213,11 +220,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setFavoriteFoodsRecyclerView(final List<FavoriteFood> favoriteFoodList) {
-        this.favoriteFoodsRecyclerView = findViewById(R.id.recommended_foods_recyclerView);
+        this.favoriteFoodsRecyclerView = findViewById(R.id.favorite_foods_recyclerView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
         this.favoriteFoodsRecyclerView.setLayoutManager(layoutManager);
         this.favoriteFoodAdapter = new FavoriteFoodAdapter(this, favoriteFoodList);
-        this.favoriteFoodsRecyclerView.setAdapter(recommendedFoodAdapter);
+        this.favoriteFoodsRecyclerView.setAdapter(favoriteFoodAdapter);
     }
 
     private void replaceFragment(Fragment fragment) {

@@ -21,7 +21,11 @@ import com.example.foodapp.model.Users.User;
 import java.util.ArrayList;
 import java.util.List;
 
+//TODO: extends Fragment
 public class SignupActivity extends AppCompatActivity {
+
+    private static final String EMPTY_STRING = ""; //TODO: move/remove
+    private static final String CLIENT = "Client"; //TODO: move/remove
 
     private TextView loginLinkTextView;
     private Button signupButton;
@@ -78,6 +82,7 @@ public class SignupActivity extends AppCompatActivity {
                             Restaurant restaurant = new Restaurant(usernameEditText.getText().toString(), emailEditText.getText().toString(), passwordEditText.getText().toString());
                             db.userDAO().insertList(restaurant);
                         }
+                        startActivity(new Intent(SignupActivity.this, MainActivity.class));
                     }
                 }
             }

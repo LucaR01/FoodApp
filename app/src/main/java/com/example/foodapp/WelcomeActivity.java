@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+//TODO: extends Fragment
 public class WelcomeActivity extends AppCompatActivity {
 
     //TODO: final

@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.foodapp.Activities.SettingsActivity;
 import com.example.foodapp.model.Databases.UserDatabase.UserDatabase;
 import com.example.foodapp.model.Users.User;
 
@@ -52,6 +53,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }*/
 
+            //startActivity(new Intent(LoginActivity.this, SettingsActivity.class)); //TODO: remove; è qui solo per testing.
             startActivity(new Intent(LoginActivity.this, MainActivity.class)); //TODO: remove
         });
 

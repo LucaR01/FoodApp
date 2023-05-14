@@ -1,6 +1,6 @@
 package com.example.foodapp.model.Category;
 
-public enum Category { //TODO: Aggiungere delle categorie salutari
+public enum Category { //TODO: Aggiungere delle categorie
     POKE,
     FRUIT,
     VEGETABLES,
@@ -16,7 +16,7 @@ public enum Category { //TODO: Aggiungere delle categorie salutari
     YOGURT,
     CEREALS,
     PROTEIN;
-    public enum BEVERAGES { //TODO: Aggiungere altre bevande salutari
+    public enum BEVERAGES { //TODO: Aggiungere altre bevande
         TEA,
         COFFEE,
 

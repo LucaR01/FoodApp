@@ -1,6 +1,7 @@
 package com.example.foodapp;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,12 +14,16 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.AttributeSet;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -201,6 +206,24 @@ public class MainActivity extends AppCompatActivity {
             return true;
         });
     }
+
+    /*public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) { //TODO: remove
+        View view = inflater.inflate(R.layout.fragment_foods, container, false);
+
+        // Qui aggiungo i cibi raccomandati.
+        List<RecommendedFood> recommendedFoodList = new ArrayList<>();
+        recommendedFoodList.add(new RecommendedFood(new Food("Poke", Category.POKE, "$5.00", false, R.drawable.recommended_food_card_food)));
+        recommendedFoodList.add(new RecommendedFood(new Food("Salad", Category.SALAD, "$8.00", false, R.drawable.recommended_food_card_food))); //TODO: cambiare drawable.
+
+        setRecommendedFoodsRecyclerView(recommendedFoodList);
+
+        List<FavoriteFood> favoriteFoodList = new ArrayList<>();
+        favoriteFoodList.add(new FavoriteFood("Nuts", Category.NUTS, "$4.5", R.drawable.recommended_food_card_food)); //TODO: update drawable
+        favoriteFoodList.add(new FavoriteFood("Cereals", Category.CEREALS, "$3.0", R.drawable.recommended_food_card_food)); //TODO: update drawable
+
+        setFavoriteFoodsRecyclerView(favoriteFoodList); //TODO: uncomment
+        return view;
+    }*/
 
     @Override
     public void onBackPressed() {

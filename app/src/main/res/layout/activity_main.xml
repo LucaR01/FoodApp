@@ -29,10 +29,14 @@
     <!-- TODO: magari mettere la scroll view sul constraint layout -->
     <!-- TODO: e mettere la bottom navigation bar fuori da questa. -->
 
-    <androidx.core.widget.NestedScrollView
+    <!-- <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:fillViewport="true"> -->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"> -->
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -263,6 +267,8 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.core.widget.NestedScrollView>
+    </ScrollView>
+
+    <!-- </androidx.core.widget.NestedScrollView> -->
 
 </androidx.drawerlayout.widget.DrawerLayout>

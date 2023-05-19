@@ -1,12 +1,15 @@
 package com.example.foodapp.model.RecycleView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.foodapp.Activities.FoodDetailsActivity;
 import com.example.foodapp.R;
 import com.example.foodapp.model.Food.RecommendedFood;
 
@@ -40,6 +43,15 @@ public class RecommendedFoodAdapter extends RecyclerView.Adapter<RecommendedFood
         holder.getItemImage().setImageResource(recommendedFoodList.get(position).getRecommendedFood().getImageUrl());
         holder.getItemName().setText(recommendedFoodList.get(position).getRecommendedFood().getName());
         holder.getItemPrice().setText(recommendedFoodList.get(position).getRecommendedFood().getPrice()); //TODO: c'è un problema con questo.
+
+        holder.itemView.setOnClickListener(view -> {
+            Intent intent = new Intent(context, FoodDetailsActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); //TODO: | FLAG_ACTIVITY_CLEAR_TASK?
+            intent.putExtra("foodDetailNameTextView", recommendedFoodList.get(holder.getAdapterPosition()).getRecommendedFood().getName()); //TODO: item_name
+            intent.putExtra("foodDetailPriceTextView", recommendedFoodList.get(holder.getAdapterPosition()).getRecommendedFood().getPrice()); //TODO: item_price
+            intent.putExtra("foodDetailImageView", recommendedFoodList.get(holder.getAdapterPosition()).getRecommendedFood().getImageUrl()); //TODO: item_image
+            context.startActivity(intent);
+        });
+
     }
 
     @Override

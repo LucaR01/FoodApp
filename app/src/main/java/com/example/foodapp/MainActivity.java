@@ -27,6 +27,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.foodapp.Activities.CartActivity;
 import com.example.foodapp.Activities.SettingsActivity;
 import com.example.foodapp.Fragments.SettingsFragment;
 import com.example.foodapp.model.Category.Category;
@@ -65,6 +66,8 @@ public class MainActivity extends AppCompatActivity {
     private FavoriteFoodAdapter favoriteFoodAdapter;
 
     private BottomNavigationView bottomNavigationView;
+
+    private ImageView shoppingCart;
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -133,6 +136,11 @@ public class MainActivity extends AppCompatActivity {
             }
 
             return false;
+        });
+
+        shoppingCart = findViewById(R.id.shopping_cart);
+        shoppingCart.setOnClickListener(view -> {
+            startActivity(new Intent(MainActivity.this, CartActivity.class));
         });
 
         //TODO: fix/remove

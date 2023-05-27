@@ -1,24 +1,49 @@
 package com.example.foodapp.model.Category;
 
 public enum Category { //TODO: Aggiungere delle categorie
-    POKE,
-    FRUIT,
-    VEGETABLES,
-    SALAD,
-    NUTS,
-    SEEDS,
-    EGGS,
-    LEGUMES,
-    DAIRY,
-    FATS,
-    OILS,
-    TUBERS,
-    YOGURT,
-    CEREALS,
-    PROTEIN;
-    public enum BEVERAGES { //TODO: Aggiungere altre bevande
-        TEA,
-        COFFEE,
+    POKE("Poké"),
+    FRUIT("Fruit"),
+    VEGETABLES("Vegetables"),
+    SALAD("Salad"),
+    NUTS("Nuts"),
+    SEEDS("Seeds"),
+    EGGS("Eggs"),
+    LEGUMES("Legumes"),
+    DAIRY("Dairy"),
+    FATS("Fats"),
+    OILS("Oils"),
+    TUBERS("Tubers"),
+    YOGURT("Yogurt"),
+    CEREALS("Cereal"),
+    PROTEIN("Protein");
+
+    public enum Bevarages { //TODO: Aggiungere altre bevande
+        TEA("Tea"),
+        COFFEE("Coffee");
+
+        private final String beverageName;
+
+        Bevarages(final String beverageName) {
+            this.beverageName = beverageName;
+        }
+
+        @Override
+        public String toString() {
+            return this.beverageName;
+        }
 
     }
+
+    private final String categoryName;
+
+    Category(final String categoryName) {
+        this.categoryName = categoryName;
+    }
+
+    @Override
+    public String toString() {
+        return this.categoryName;
+    }
+
+
 }

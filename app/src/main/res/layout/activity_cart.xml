@@ -33,6 +33,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/cartRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
@@ -54,7 +55,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/totalPriceTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
@@ -68,7 +69,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/checkoutButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -77,7 +78,7 @@
             android:background="@drawable/rectangle_background"
             android:backgroundTint="#1FA414"
             android:fontFamily="@font/itim"
-            android:text="Button"
+            android:text="Vai al pagamento"
             android:textSize="18sp"
             android:textStyle="normal|bold" />
 

@@ -8,7 +8,7 @@ public class FavoriteFood extends Food{
         super(name, category, price, true, imageUrl);
     }
 
-    FavoriteFood getFavoriteFood() {
+    FavoriteFood getFavoriteFood() { //TODO: remove?
         return this;
     }
 }

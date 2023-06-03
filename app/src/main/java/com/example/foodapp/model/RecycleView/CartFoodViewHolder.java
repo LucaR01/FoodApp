@@ -13,7 +13,7 @@ public class CartFoodViewHolder extends RecyclerView.ViewHolder {
 
     private ImageView itemImage;
     private TextView itemName;
-    private TextView itemCQuantity;
+    private TextView itemQuantity;
     private TextView itemCurrency;
     private TextView itemPrice;
 
@@ -22,7 +22,7 @@ public class CartFoodViewHolder extends RecyclerView.ViewHolder {
 
         this.itemImage = itemView.findViewById(R.id.cardItemImageView);
         this.itemName = itemView.findViewById(R.id.cardItemFoodNameTextView);
-        this.itemCQuantity = itemView.findViewById(R.id.cardItemQuantityTextView);
+        this.itemQuantity = itemView.findViewById(R.id.cardItemQuantityTextView);
         this.itemCurrency = itemView.findViewById(R.id.cardItemCurrencyTextView);
         this.itemPrice = itemView.findViewById(R.id.cardItemPriceTextView);
     }
@@ -36,7 +36,7 @@ public class CartFoodViewHolder extends RecyclerView.ViewHolder {
     }
 
     public TextView getItemQuantity() {
-        return this.itemCQuantity;
+        return this.itemQuantity;
     }
 
     public TextView getItemCurrency() {
@@ -56,7 +56,7 @@ public class CartFoodViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void setItemQuantity(final TextView itemCQuantity) {
-        this.itemCQuantity = itemCQuantity;
+        this.itemQuantity = itemCQuantity;
     }
 
     public void setItemCurrency(final TextView itemCurrency) {

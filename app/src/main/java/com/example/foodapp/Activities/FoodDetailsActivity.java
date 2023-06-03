@@ -9,6 +9,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.foodapp.R;
+import com.example.foodapp.model.Category.Category;
+import com.example.foodapp.model.Food.CartFood;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class FoodDetailsActivity extends AppCompatActivity {
@@ -33,23 +35,9 @@ public class FoodDetailsActivity extends AppCompatActivity {
         //getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_food_details);
 
-        counterTextView = findViewById(R.id.foodDetailCounterTextView);
-        foodName = findViewById(R.id.foodDetailNameTextView);
-        foodPrice = findViewById(R.id.foodDetailPriceTextView);
-        foodIngredients = findViewById(R.id.foodDetailIngredientsTextView);
+        initView();
 
-        addFloatingActionButton = findViewById(R.id.foodDetailAddFAB);
-        removeFloatingActionButton = findViewById(R.id.foodDetailRemoveFAB);
-
-        addToCartButton = findViewById(R.id.foodDetailAddToCartButton);
-
-        backArrowImageView = findViewById(R.id.foodDetailBackImageView);
-        foodImageView = findViewById(R.id.foodDetailImageView);
-
-
-        backArrowImageView.setOnClickListener(view -> {
-            onBackPressed();
-        });
+        setOnBackPressedArrow();
 
         foodName.setText(getIntent().getStringExtra("foodDetailNameTextView")); //TODO: item_name?
         foodPrice.setText(getIntent().getStringExtra("foodDetailPriceTextView")); //TODO: item_price?
@@ -68,10 +56,35 @@ public class FoodDetailsActivity extends AppCompatActivity {
             counterTextView.setText(counter > 0 ? String.valueOf(--counter) : String.valueOf(counter));
         });
 
+        addToCart();
+    }
+
+    private void setOnBackPressedArrow() {
+        this.backArrowImageView.setOnClickListener(view -> {
+            onBackPressed();
+        });
+    }
+
+    private void addToCart() {
         addToCartButton.setOnClickListener(view -> {
             System.out.println("Counter: " + counter); //TODO: remove; use logger
-            //TODO: implement functionality
+            //TODO: add to database
         });
+    }
+
+    private void initView() {
+        counterTextView = findViewById(R.id.foodDetailCounterTextView);
+        foodName = findViewById(R.id.foodDetailNameTextView);
+        foodPrice = findViewById(R.id.foodDetailPriceTextView);
+        foodIngredients = findViewById(R.id.foodDetailIngredientsTextView);
+
+        addFloatingActionButton = findViewById(R.id.foodDetailAddFAB);
+        removeFloatingActionButton = findViewById(R.id.foodDetailRemoveFAB);
+
+        addToCartButton = findViewById(R.id.foodDetailAddToCartButton);
+
+        backArrowImageView = findViewById(R.id.foodDetailBackImageView);
+        foodImageView = findViewById(R.id.foodDetailImageView);
     }
 
 

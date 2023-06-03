@@ -5,7 +5,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.foodapp.R;
@@ -17,6 +19,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CartActivity extends AppCompatActivity {
+
+    private ImageView onBackPressedArrow;
 
     private RecyclerView cartRecyclerView;
     private TextView totalPrice;
@@ -33,12 +37,29 @@ public class CartActivity extends AppCompatActivity {
 
         initView();
 
+        setOnBackPressedArrow();
+
+        initCartList();
+
+        setCartRecyclerView(this.cartFoodList);
+
+        setTotalPrice();
+
+        completeOrder();
+
+    }
+
+    private void setOnBackPressedArrow() {
+        this.onBackPressedArrow.setOnClickListener(view -> {
+            onBackPressed();
+        });
     }
 
     private void initView() {
-        cartRecyclerView = findViewById(R.id.cartRecyclerView);
-        totalPrice = findViewById(R.id.totalPriceTextView);
-        checkoutButton = findViewById(R.id.checkoutButton);
+        this.onBackPressedArrow = findViewById(R.id.cartOnBackPressedImageView);
+        this.cartRecyclerView = findViewById(R.id.cartRecyclerView);
+        this.totalPrice = findViewById(R.id.totalPriceTextView);
+        this.checkoutButton = findViewById(R.id.checkoutButton);
     }
 
     private void setCartRecyclerView(final List<CartFood> cartFoodList) {
@@ -49,8 +70,42 @@ public class CartActivity extends AppCompatActivity {
         this.cartRecyclerView.setAdapter(cartFoodAdapter);
     }
 
+    //TODO: rendere pubblica e far passare un CartFood o una lista di CartFood.
     private void initCartList() {
-        cartFoodList = new ArrayList<>();
-        cartFoodList.add(new CartFood("Chicken Bowl", Category.SALAD, 3, "$", "8.5", false, R.drawable.southfin_bowls_chicken)); //TODO: remove
+        this.cartFoodList = new ArrayList<>();
+        this.cartFoodList.add(new CartFood("Chicken Bowl", Category.SALAD, 3, "$", "8.5", false, R.drawable.southfin_bowls_chicken)); //TODO: remove
+        this.cartFoodList.add(new CartFood("Chicken Bowl", Category.SALAD, 7, "$", "5.99", false, R.drawable.southfin_bowls_chicken)); //TODO: remove
+    }
+
+    public void addToCartList(final CartFood cartFood) {
+        this.cartFoodList.add(cartFood);
+    }
+
+    private String getTotalPrice() {
+        float sum = 0.0f;
+
+        for(var c : this.cartFoodList) {
+            sum += (Float.parseFloat(c.getPrice()) * c.getQuantity());
+        }
+
+        return String.valueOf(sum);
+    }
+
+    private void setTotalPrice() {
+        final String totalPriceString = "$ " + getTotalPrice(); //TODO: add possibility to have multiple currencies.
+        totalPrice.setText(totalPriceString);
+    }
+
+    //TODO: rename in buyOrder?
+    private void completeOrder() {
+        //TODO: o alla schermata del pagamento oppure semplicemente azzero il carrello.
+
+        this.checkoutButton.setOnClickListener(view -> {
+            this.cartFoodList.clear();
+            this.cartRecyclerView.setAdapter(cartFoodAdapter);
+
+            final String totalPriceString = "$ " + "0.00";
+            this.totalPrice.setText(totalPriceString);
+        });
     }
 }

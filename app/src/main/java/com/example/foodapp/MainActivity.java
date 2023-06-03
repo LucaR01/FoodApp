@@ -161,14 +161,14 @@ public class MainActivity extends AppCompatActivity {
 
         // Qui aggiungo i cibi raccomandati.
         List<RecommendedFood> recommendedFoodList = new ArrayList<>();
-        recommendedFoodList.add(new RecommendedFood(new Food("Poke", Category.POKE, "$5.00", false, R.drawable.recommended_food_card_food)));
-        recommendedFoodList.add(new RecommendedFood(new Food("Salad", Category.SALAD, "$8.00", false, R.drawable.recommended_food_card_food))); //TODO: cambiare drawable.
+        recommendedFoodList.add(new RecommendedFood(new Food("Poke", Category.POKE, 2, "$","$5.00", false, R.drawable.recommended_food_card_food)));
+        recommendedFoodList.add(new RecommendedFood(new Food("Salad", Category.SALAD, 3, "$","$8.00", false, R.drawable.recommended_food_card_food))); //TODO: cambiare drawable.
 
         setRecommendedFoodsRecyclerView(recommendedFoodList);
 
         List<FavoriteFood> favoriteFoodList = new ArrayList<>();
-        favoriteFoodList.add(new FavoriteFood("Nuts", Category.NUTS, "$4.5", R.drawable.recommended_food_card_food)); //TODO: update drawable
-        favoriteFoodList.add(new FavoriteFood("Cereals", Category.CEREALS, "$3.0", R.drawable.recommended_food_card_food)); //TODO: update drawable
+        favoriteFoodList.add(new FavoriteFood("Nuts", Category.NUTS, 3, "$", "$4.5", R.drawable.recommended_food_card_food)); //TODO: update drawable
+        favoriteFoodList.add(new FavoriteFood("Cereals", Category.CEREALS, 2, "$", "$3.0", R.drawable.recommended_food_card_food)); //TODO: update drawable
 
         setFavoriteFoodsRecyclerView(favoriteFoodList); //TODO: uncomment
 
@@ -263,5 +263,9 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         //fragmentTransaction.replace(R.id.frame_layout, fragment); //TODO: uncomment and fix.
         fragmentTransaction.commit();
+    }
+
+    private void initDatabase() {
+        //TODO:
     }
 }

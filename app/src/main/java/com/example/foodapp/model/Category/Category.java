@@ -15,7 +15,9 @@ public enum Category { //TODO: Aggiungere delle categorie
     TUBERS("Tubers"),
     YOGURT("Yogurt"),
     CEREALS("Cereal"),
-    PROTEIN("Protein");
+    PROTEIN("Protein"),
+    NONE("None"),
+    UNSPECIFIED("Unspecified");
 
     public enum Bevarages { //TODO: Aggiungere altre bevande
         TEA("Tea"),

@@ -42,13 +42,15 @@ public class RecommendedFoodAdapter extends RecyclerView.Adapter<RecommendedFood
     public void onBindViewHolder(@NonNull RecommendedFoodViewHolder holder, int position) {
         holder.getItemImage().setImageResource(recommendedFoodList.get(position).getRecommendedFood().getImageUrl());
         holder.getItemName().setText(recommendedFoodList.get(position).getRecommendedFood().getName());
-        holder.getItemPrice().setText(recommendedFoodList.get(position).getRecommendedFood().getPrice()); //TODO: c'è un problema con questo.
+        holder.getItemCurrency().setText(recommendedFoodList.get(position).getRecommendedFood().getCurrency());
+        holder.getItemPrice().setText(recommendedFoodList.get(position).getRecommendedFood().getPrice());
 
         holder.itemView.setOnClickListener(view -> {
             Intent intent = new Intent(context, FoodDetailsActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); //TODO: | FLAG_ACTIVITY_CLEAR_TASK?
-            intent.putExtra("foodDetailNameTextView", recommendedFoodList.get(holder.getAdapterPosition()).getRecommendedFood().getName()); //TODO: item_name
-            intent.putExtra("foodDetailPriceTextView", recommendedFoodList.get(holder.getAdapterPosition()).getRecommendedFood().getPrice()); //TODO: item_price
-            intent.putExtra("foodDetailImageView", recommendedFoodList.get(holder.getAdapterPosition()).getRecommendedFood().getImageUrl()); //TODO: item_image
+            intent.putExtra("foodDetailNameTextView", this.recommendedFoodList.get(holder.getAdapterPosition()).getRecommendedFood().getName()); //TODO: item_name
+            intent.putExtra("foodDetailCurrencyTextView", this.recommendedFoodList.get(holder.getAdapterPosition()).getRecommendedFood().getCurrency());
+            intent.putExtra("foodDetailPriceTextView", this.recommendedFoodList.get(holder.getAdapterPosition()).getRecommendedFood().getPrice()); //TODO: item_price
+            intent.putExtra("foodDetailImageView", this.recommendedFoodList.get(holder.getAdapterPosition()).getRecommendedFood().getImageUrl()); //TODO: item_image
             context.startActivity(intent);
         });
 

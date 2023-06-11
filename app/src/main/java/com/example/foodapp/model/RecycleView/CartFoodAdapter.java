@@ -8,14 +8,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.foodapp.R;
 import com.example.foodapp.model.Food.CartFood;
+import com.example.foodapp.model.Food.Food;
 
 import java.util.List;
 
 public class CartFoodAdapter extends RecyclerView.Adapter<CartFoodViewHolder> {
 
-    private List<CartFood> cartFoodList; //TODO: ArrayList?
+    private List<Food> cartFoodList; //TODO: ArrayList?
 
-    public CartFoodAdapter(final List<CartFood> cartFoodList) {
+    public CartFoodAdapter(final List<Food> cartFoodList) {
         this.cartFoodList = cartFoodList;
     }
 
@@ -27,7 +28,7 @@ public class CartFoodAdapter extends RecyclerView.Adapter<CartFoodViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull CartFoodViewHolder holder, int position) {
-        holder.getItemImage().setImageResource(cartFoodList.get(position).getImageUrl());
+        //holder.getItemImage().setImageResource(cartFoodList.get(position).getImageUrl());
         holder.getItemName().setText(cartFoodList.get(position).getName());
         holder.getItemQuantity().setText(String.valueOf(cartFoodList.get(position).getQuantity()));
         holder.getItemCurrency().setText(cartFoodList.get(position).getCurrency());

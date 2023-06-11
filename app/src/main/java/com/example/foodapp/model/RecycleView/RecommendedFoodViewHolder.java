@@ -12,6 +12,7 @@ import com.example.foodapp.R;
 public class RecommendedFoodViewHolder extends RecyclerView.ViewHolder {
 
     private ImageView itemImage;
+    private TextView itemCurrency;
     private TextView itemPrice;
     private TextView itemName;
 
@@ -22,20 +23,25 @@ public class RecommendedFoodViewHolder extends RecyclerView.ViewHolder {
         super(itemView);
 
         this.itemImage = itemView.findViewById(R.id.item_image);
+        this.itemCurrency = itemView.findViewById(R.id.item_currency);
         this.itemPrice = itemView.findViewById(R.id.item_price);
         this.itemName = itemView.findViewById(R.id.item_name);
     }
 
     public ImageView getItemImage() {
-        return itemImage;
+        return this.itemImage;
+    }
+
+    public TextView getItemCurrency() {
+        return this.itemCurrency;
     }
 
     public TextView getItemPrice() {
-        return itemPrice;
+        return this.itemPrice;
     }
 
     public TextView getItemName() {
-        return itemName;
+        return this.itemName;
     }
 
     public void setItemImage(int resId) { //TODO: remove

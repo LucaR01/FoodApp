@@ -14,6 +14,8 @@ import java.util.Objects;
 @Database(entities = {Food.class}, version = 1)
 public abstract class FoodDatabase extends RoomDatabase {
 
+    public abstract FoodDAO foodDAO();
+
     private static FoodDatabase INSTANCE;
     private static final String DATABASE_NAME = "food";
 

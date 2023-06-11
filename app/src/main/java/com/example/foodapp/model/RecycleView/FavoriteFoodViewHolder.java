@@ -22,7 +22,7 @@ public class FavoriteFoodViewHolder extends RecyclerView.ViewHolder {
         super(itemView);
 
         this.itemImage = itemView.findViewById(R.id.item_image);
-        this.itemPrice = itemView.findViewById(R.id.item_price);
+        this.itemPrice = itemView.findViewById(R.id.item_currency);
         this.itemName = itemView.findViewById(R.id.item_name);
     }
 

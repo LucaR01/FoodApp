@@ -62,16 +62,28 @@
         app:layout_constraintTop_toBottomOf="@+id/foodDetailImageView" />
 
     <TextView
-        android:id="@+id/foodDetailPriceTextView"
+        android:id="@+id/foodDetailCurrencyTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:text="{$Price}"
+        android:text="{Currency}"
         android:textColor="#1FA414"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/foodDetailNameTextView" />
+
+    <TextView
+        android:id="@+id/foodDetailPriceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="{Price}"
+        android:textColor="#1FA414"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/foodDetailCurrencyTextView"
         app:layout_constraintTop_toBottomOf="@+id/foodDetailNameTextView" />
 
     <TextView
@@ -84,7 +96,7 @@
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/foodDetailPriceTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/foodDetailCurrencyTextView" />
 
     <Button
         android:id="@+id/foodDetailAddToCartButton"

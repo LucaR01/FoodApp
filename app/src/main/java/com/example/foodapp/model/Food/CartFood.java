@@ -2,6 +2,8 @@ package com.example.foodapp.model.Food;
 
 import com.example.foodapp.model.Category.Category;
 
+//TODO: remove?
+
 //TODO: rename in CartItem?
 public class CartFood extends Food {
 

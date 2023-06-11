@@ -37,13 +37,22 @@
         app:layout_constraintTop_toBottomOf="@+id/item_image" />
 
     <TextView
-        android:id="@+id/item_price"
+        android:id="@+id/item_currency"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="18dp"
         android:layout_marginTop="9dp"
-        android:text="$5.00"
+        android:text="{Currency}"
         app:layout_constraintStart_toStartOf="@+id/imageView8"
+        app:layout_constraintTop_toBottomOf="@+id/item_name" />
+
+    <TextView
+        android:id="@+id/item_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9dp"
+        android:text="$5.00"
+        app:layout_constraintStart_toEndOf="@+id/item_currency"
         app:layout_constraintTop_toBottomOf="@+id/item_name" />
 
     <ImageView
@@ -53,7 +62,7 @@
         android:layout_marginStart="76dp"
         android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView8"
-        app:layout_constraintStart_toEndOf="@+id/item_price"
+        app:layout_constraintStart_toEndOf="@+id/item_currency"
         app:srcCompat="@drawable/ic_shopping_basket" />
 
     <ImageView

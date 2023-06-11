@@ -28,7 +28,7 @@ public class CartFoodViewHolder extends RecyclerView.ViewHolder {
     }
 
     public ImageView getItemImage() {
-        return this.itemImage;
+        return itemImage;
     }
 
     public TextView getItemName() {

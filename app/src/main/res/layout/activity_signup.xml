@@ -6,6 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".SignupActivity">
 
+    <!--<ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"> TODO: uncomment/remove -->
+
     <!-- TODO: android:foreground="@drawable/ic_foreground", magari nel dark theme. -->
     <!-- TODO: cambiare lo sfondo oppure cancellare la imageview. -->
 
@@ -151,13 +155,13 @@
         android:id="@+id/signin_link_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="76dp"
+        android:layout_marginStart="8dp"
         android:text="@string/signin"
         android:textColor="@color/custom_red"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/already_have_an_account_textView"
-        app:layout_constraintEnd_toEndOf="@+id/signup_imageView"
+        app:layout_constraintStart_toEndOf="@+id/already_have_an_account_textView"
         app:layout_constraintTop_toTopOf="@+id/already_have_an_account_textView"
         app:layout_constraintVertical_bias="0.0" />
 
@@ -189,5 +193,6 @@
             android:text="Restaurant" />
     </RadioGroup>
 
+    <!--</ScrollView>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

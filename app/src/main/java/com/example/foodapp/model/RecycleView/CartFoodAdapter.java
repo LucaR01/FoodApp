@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.foodapp.R;
+import com.example.foodapp.model.Databases.FoodDatabase.FoodDatabase;
 import com.example.foodapp.model.Food.CartFood;
 import com.example.foodapp.model.Food.Food;
 
@@ -33,6 +34,10 @@ public class CartFoodAdapter extends RecyclerView.Adapter<CartFoodViewHolder> {
         holder.getItemQuantity().setText(String.valueOf(cartFoodList.get(position).getQuantity()));
         holder.getItemCurrency().setText(cartFoodList.get(position).getCurrency());
         holder.getItemPrice().setText(cartFoodList.get(position).getPrice());
+
+        holder.itemView.findViewById(R.id.deleteImageView).setOnClickListener(view -> {
+            FoodDatabase.getDatabaseInstance(holder.itemView.getContext()).foodDAO().deleteFood(cartFoodList.get(position).foodId);
+        });
     }
 
     @Override

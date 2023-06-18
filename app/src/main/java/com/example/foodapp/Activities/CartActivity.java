@@ -48,6 +48,8 @@ public class CartActivity extends AppCompatActivity {
 
         completeOrder();
 
+        //cartFoodAdapter.notifyDataSetChanged(); //TODO: remove
+
     }
 
     private void setOnBackPressedArrow() {

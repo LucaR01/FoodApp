@@ -5,8 +5,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     android:background="#E7EBE7"
     tools:context=".MainActivity">
+
+    <!-- tools:openDrawer="start" per vedere il navigationdrawer -->
 
     <!-- TODO: utilizzare dei fixed size come android:layout_marginTop="16dp" e android:layout_height="dp" -->
     <!-- TODO: rendono il layout meno responsive. -->
@@ -98,7 +101,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/pokeImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -110,40 +113,40 @@
         app:layout_constraintWidth_percent="0.25"/>
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/fruitImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
-        app:layout_constraintStart_toEndOf="@+id/imageView4"
-        app:layout_constraintTop_toTopOf="@+id/imageView4"
+        app:layout_constraintBottom_toBottomOf="@+id/pokeImageView"
+        app:layout_constraintStart_toEndOf="@+id/pokeImageView"
+        app:layout_constraintTop_toTopOf="@+id/pokeImageView"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/food_category1"
         app:layout_constraintHeight_percent="0.25"
         app:layout_constraintWidth_percent="0.25"/>
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/vegetablesImageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+            app:layout_constraintBottom_toBottomOf="@+id/fruitImageView"
             app:layout_constraintHeight_percent="0.25"
-            app:layout_constraintStart_toEndOf="@+id/imageView2"
-            app:layout_constraintTop_toTopOf="@+id/imageView2"
+            app:layout_constraintStart_toEndOf="@+id/fruitImageView"
+            app:layout_constraintTop_toTopOf="@+id/fruitImageView"
             app:layout_constraintVertical_bias="0.0"
             app:layout_constraintWidth_percent="0.25"
             app:srcCompat="@drawable/food_category2" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/saladImageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+            app:layout_constraintBottom_toBottomOf="@+id/vegetablesImageView"
             app:layout_constraintHeight_percent="0.25"
-            app:layout_constraintStart_toEndOf="@+id/imageView3"
-            app:layout_constraintTop_toTopOf="@+id/imageView3"
+            app:layout_constraintStart_toEndOf="@+id/vegetablesImageView"
+            app:layout_constraintTop_toTopOf="@+id/vegetablesImageView"
             app:layout_constraintVertical_bias="0.0"
             app:layout_constraintWidth_percent="0.25"
             app:srcCompat="@drawable/food_category3" />
@@ -156,7 +159,7 @@
         android:layout_marginTop="32dp"
         android:text="I tuoi raccomandati"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+        app:layout_constraintTop_toBottomOf="@+id/pokeImageView" />
 
         <!-- TODO: android:layout_width: 0; prima era 410dp. -->
     <androidx.recyclerview.widget.RecyclerView
@@ -179,9 +182,9 @@
         android:layout_marginBottom="12dp"
         android:text="Poké"
         app:layout_constraintBottom_toTopOf="@+id/your_recommended"
-        app:layout_constraintEnd_toStartOf="@+id/imageView2"
+        app:layout_constraintEnd_toStartOf="@+id/fruitImageView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+        app:layout_constraintTop_toBottomOf="@+id/pokeImageView" />
 
         <TextView
             android:id="@+id/textView8"
@@ -193,9 +196,9 @@
             android:layout_marginBottom="10dp"
             android:text="Fruit"
             app:layout_constraintBottom_toTopOf="@+id/your_recommended"
-            app:layout_constraintEnd_toStartOf="@+id/imageView3"
+            app:layout_constraintEnd_toStartOf="@+id/vegetablesImageView"
             app:layout_constraintStart_toEndOf="@+id/textView7"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+            app:layout_constraintTop_toBottomOf="@+id/fruitImageView" />
 
         <TextView
             android:id="@+id/textView9"
@@ -207,9 +210,9 @@
             android:layout_marginBottom="10dp"
             android:text="Vegetables"
             app:layout_constraintBottom_toTopOf="@+id/your_recommended"
-            app:layout_constraintEnd_toStartOf="@+id/imageView"
+            app:layout_constraintEnd_toStartOf="@+id/saladImageView"
             app:layout_constraintStart_toEndOf="@+id/textView8"
-            app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+            app:layout_constraintTop_toBottomOf="@+id/vegetablesImageView" />
 
         <TextView
             android:id="@+id/textView10"
@@ -220,8 +223,8 @@
             android:layout_marginBottom="10dp"
             android:text="Salad"
             app:layout_constraintBottom_toTopOf="@+id/your_recommended"
-            app:layout_constraintStart_toEndOf="@+id/imageView3"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+            app:layout_constraintStart_toEndOf="@+id/vegetablesImageView"
+            app:layout_constraintTop_toBottomOf="@+id/saladImageView" />
 
     <TextView
         android:id="@+id/your_favorites"

@@ -26,7 +26,7 @@ public class FavoriteFoodAdapter extends RecyclerView.Adapter<FavoriteFoodViewHo
     @NonNull
     @Override
     public FavoriteFoodViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new FavoriteFoodViewHolder(LayoutInflater.from(context).inflate(R.layout.recommended_food_item, parent, false)); //TODO: update
+        return new FavoriteFoodViewHolder(LayoutInflater.from(context).inflate(R.layout.food_item, parent, false)); //TODO: update
     }
 
     @Override

@@ -30,11 +30,21 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        loginButton = findViewById(R.id.login_button);
-        signupLinkTextView = findViewById(R.id.signup_link_textView);
-        usernameEditText = findViewById(R.id.login_username_editText);
-        passwordEditText = findViewById(R.id.login_password_editText);
+        initView();
 
+        login();
+
+        onSignUpLinkClickListener();
+    }
+
+    private void initView() {
+        this.loginButton = findViewById(R.id.login_button);
+        this.signupLinkTextView = findViewById(R.id.signup_link_textView);
+        this.usernameEditText = findViewById(R.id.login_username_editText);
+        this.passwordEditText = findViewById(R.id.login_password_editText);
+    }
+
+    private void login() {
         this.loginButton.setOnClickListener(view -> {
             //TODO: notificare l'utente.
             //TODO: uncomment when checked and fixed.
@@ -56,7 +66,9 @@ public class LoginActivity extends AppCompatActivity {
             //startActivity(new Intent(LoginActivity.this, SettingsActivity.class)); //TODO: remove; è qui solo per testing.
             startActivity(new Intent(LoginActivity.this, MainActivity.class)); //TODO: remove
         });
+    }
 
+    private void onSignUpLinkClickListener() {
         this.signupLinkTextView.setOnClickListener(view -> {
             startActivity(new Intent(LoginActivity.this, SignupActivity.class));
         });

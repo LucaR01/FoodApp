@@ -46,19 +46,30 @@ public class SignupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        //TODO: potrei far comparire gli elemnti con una translation.
-        loginLinkTextView = findViewById(R.id.signin_link_textView);
-        signupButton = findViewById(R.id.signup_button);
-        usernameEditText = findViewById(R.id.signup_username_editText);
-        emailEditText = findViewById(R.id.signup_email_editText);
-        passwordEditText = findViewById(R.id.signup_password_editText);
-        confirmPasswordEditText = findViewById(R.id.signup_confirm_password_editText);
+        initView();
 
-        radioGroup = findViewById(R.id.signup_radioButton);
+        signup();
+
+        onLoginLinkClickListener();
+
+    }
+
+    private void initView() {
+        //TODO: potrei far comparire gli elemnti con una translation.
+        this.loginLinkTextView = findViewById(R.id.signin_link_textView);
+        this.signupButton = findViewById(R.id.signup_button);
+        this.usernameEditText = findViewById(R.id.signup_username_editText);
+        this.emailEditText = findViewById(R.id.signup_email_editText);
+        this.passwordEditText = findViewById(R.id.signup_password_editText);
+        this.confirmPasswordEditText = findViewById(R.id.signup_confirm_password_editText);
+
+        this.radioGroup = findViewById(R.id.signup_radioButton);
         /*this.clientRadioButton = findViewById(R.id.client_radioButton);
         this.restaurantRadioButton = findViewById(R.id.restaurant_radioButton);*/
+    }
 
-        signupButton.setOnClickListener(view -> {
+    private void signup() {
+        this.signupButton.setOnClickListener(view -> {
             if(!(usernameEditText.getText().toString().equals("") && emailEditText.getText().toString().equals("")
                     && passwordEditText.getText().toString().equals("") && confirmPasswordEditText.getText().toString().equals(""))) {
                 if(confirmPasswordEditText.getText().equals(passwordEditText.getText())) {
@@ -87,7 +98,9 @@ public class SignupActivity extends AppCompatActivity {
                 }
             }
         });
+    }
 
+    private void onLoginLinkClickListener() {
         this.loginLinkTextView.setOnClickListener(view -> {
             startActivity(new Intent(SignupActivity.this, LoginActivity.class));
         });

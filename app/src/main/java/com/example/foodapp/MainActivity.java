@@ -25,10 +25,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.foodapp.Activities.CartActivity;
 import com.example.foodapp.Activities.SettingsActivity;
+import com.example.foodapp.Fragments.FoodsFragment;
+import com.example.foodapp.Fragments.HomeFragment;
 import com.example.foodapp.Fragments.SettingsFragment;
 import com.example.foodapp.model.Category.Category;
 import com.example.foodapp.model.Databases.UserDatabase.UserDatabase;
@@ -51,7 +54,7 @@ import java.util.Optional;
 //TODO: fragment for bottom navigation bar e forse anche per il navigation view.
 
 //TODO: extends Fragment?
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
@@ -67,7 +70,13 @@ public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView bottomNavigationView;
 
+    private TextView username;
     private ImageView shoppingCart;
+
+    private ImageView pokeImageView;
+    private ImageView fruitImageView;
+    private ImageView vegetablesImageView;
+    private ImageView saladImageView;
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -83,12 +92,69 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        initView();
+
+        onCategoryClickedListener();
+
+        setupNavigationDrawer();
+
+        onCartClickedListener();
+
+        initRecommendedAndFavoriteFoods();
+
+        initDatabase();
+
+        initBottomNavigationBar();
+    }
+
+    private void initView() {
         //DRAWER LAYOUT
-        drawerLayout = findViewById(R.id.main_activity_drawer_layout);
-        constraintLayout = findViewById(R.id.main_activity_constraint_layout);
+        this.drawerLayout = findViewById(R.id.main_activity_drawer_layout);
+        this.constraintLayout = findViewById(R.id.main_activity_constraint_layout);
 
         //NAVIGATION DRAWER
-        navigationView = findViewById(R.id.navigation_drawer);
+        this.navigationView = findViewById(R.id.navigation_drawer);
+        this.navDrawerMenuImageView = findViewById(R.id.nav_menu_imageView);
+
+        this.shoppingCart = findViewById(R.id.shopping_cart);
+
+        this.pokeImageView = findViewById(R.id.pokeImageView);
+        this.fruitImageView = findViewById(R.id.fruitImageView);
+        this.vegetablesImageView = findViewById(R.id.vegetablesImageView);
+        this.saladImageView = findViewById(R.id.saladImageView);
+    }
+
+    private void onCategoryClickedListener() {
+        //TODO: Aprire Activity/Fragment
+
+        this.pokeImageView.setOnClickListener(view -> {
+
+        });
+
+        this.fruitImageView.setOnClickListener(view -> {
+
+        });
+
+        this.vegetablesImageView.setOnClickListener(view -> {
+
+        });
+
+        this.saladImageView.setOnClickListener(view -> {
+
+        });
+    }
+
+    private void onCartClickedListener() {
+        this.shoppingCart.setOnClickListener(view -> {
+            startActivity(new Intent(MainActivity.this, CartActivity.class));
+        });
+    }
+
+    //TODO: rename in initNavigationDrawer()
+    private void setupNavigationDrawer() {
+
+        navigationView.setNavigationItemSelectedListener(this);
+
         //TODO: uncomment
         drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
         drawerLayout.addDrawerListener(drawerToggle);
@@ -96,7 +162,6 @@ public class MainActivity extends AppCompatActivity {
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true); //TODO: uncomment maybe.
 
         //TODO: fix
-        navDrawerMenuImageView = findViewById(R.id.nav_menu_imageView);
         navDrawerMenuImageView.setOnClickListener(listener -> {
             drawerLayout.addDrawerListener(drawerToggle);
             drawerToggle.syncState(); //TODO: remove?
@@ -138,11 +203,6 @@ public class MainActivity extends AppCompatActivity {
             return false;
         });
 
-        shoppingCart = findViewById(R.id.shopping_cart);
-        shoppingCart.setOnClickListener(view -> {
-            startActivity(new Intent(MainActivity.this, CartActivity.class));
-        });
-
         //TODO: fix/remove
         /*drawerLayout.setOnClickListener(view -> {
             if(drawerLayout.isDrawerOpen(GravityCompat.START)) {
@@ -157,81 +217,7 @@ public class MainActivity extends AppCompatActivity {
             }
             //drawerLayout.closeDrawer(GravityCompat.START);
         });*/
-
-
-        // Qui aggiungo i cibi raccomandati.
-        List<RecommendedFood> recommendedFoodList = new ArrayList<>();
-        recommendedFoodList.add(new RecommendedFood(new Food("Poke", Category.POKE, 2, "$","5.00", false, R.drawable.recommended_food_card_food)));
-        recommendedFoodList.add(new RecommendedFood(new Food("Salad", Category.SALAD, 3, "$","8.00", false, R.drawable.recommended_food_card_food))); //TODO: cambiare drawable.
-
-        setRecommendedFoodsRecyclerView(recommendedFoodList);
-
-        List<FavoriteFood> favoriteFoodList = new ArrayList<>();
-        favoriteFoodList.add(new FavoriteFood("Nuts", Category.NUTS, 3, "$", "4.5", R.drawable.recommended_food_card_food)); //TODO: update drawable
-        favoriteFoodList.add(new FavoriteFood("Cereals", Category.CEREALS, 2, "$", "3.0", R.drawable.recommended_food_card_food)); //TODO: update drawable
-
-        setFavoriteFoodsRecyclerView(favoriteFoodList); //TODO: uncomment
-
-        // Database
-        UserDatabase db = UserDatabase.getDatabaseInstance(getApplicationContext());
-        /*if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) { //TODO: uncomment or remove?
-            User bob = new User("bob", "email@com", "1234", Optional.of(""), Optional.of("")); //Optional.empty()
-            User veganRestaurant = new User("restaurant", "vegan@com", "a56789b", Optional.of(""), Optional.of(""));
-
-            db.userDAO().insertList(bob, veganRestaurant);
-
-            List<User> userList = db.userDAO().getUsers();
-            for(User user : userList) {
-                Log.d("users", user.getUsername() + " " + user.getEmail() + " " + user.getPassword());
-            }
-        }*/
-
-        //TODO: remove
-        User bob = new Client("bob", "email@example.com", "1234"); //Optional.empty(); new User
-        User veganRestaurant = new Restaurant("restaurant", "vegan@example.com", "a56789b"); // new Restaurant
-
-        db.userDAO().insertList(bob, veganRestaurant);
-
-        List<User> userList = db.userDAO().getUsers(); //TODO: remove
-        for(final User user : userList) {
-            Log.d("users", user.getUsername() + " " + user.getEmail() + " " + user.getPassword());
-        }
-
-        // Bottom Navigation Bar
-        bottomNavigationView = findViewById(R.id.bottom_navigation_bar);
-        bottomNavigationView.setOnItemSelectedListener(item -> {
-            switch(item.getItemId()) {
-                //TODO: aggiungere l'ultimo item.
-                case R.id.home:
-                    //replaceFragment(new HomeFragment()); //TODO: uncomment when I will create the fragment.
-                    break;
-                case R.id.settings:
-                    //replaceFragment(new SettingsFragment()); //TODO: uncomment when I will create the fragment.
-                    startActivity(new Intent(MainActivity.this, SettingsActivity.class));
-                    break;
-            }
-
-            return true;
-        });
     }
-
-    /*public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) { //TODO: remove
-        View view = inflater.inflate(R.layout.fragment_foods, container, false);
-
-        // Qui aggiungo i cibi raccomandati.
-        List<RecommendedFood> recommendedFoodList = new ArrayList<>();
-        recommendedFoodList.add(new RecommendedFood(new Food("Poke", Category.POKE, "$5.00", false, R.drawable.recommended_food_card_food)));
-        recommendedFoodList.add(new RecommendedFood(new Food("Salad", Category.SALAD, "$8.00", false, R.drawable.recommended_food_card_food))); //TODO: cambiare drawable.
-
-        setRecommendedFoodsRecyclerView(recommendedFoodList);
-
-        List<FavoriteFood> favoriteFoodList = new ArrayList<>();
-        favoriteFoodList.add(new FavoriteFood("Nuts", Category.NUTS, "$4.5", R.drawable.recommended_food_card_food)); //TODO: update drawable
-        favoriteFoodList.add(new FavoriteFood("Cereals", Category.CEREALS, "$3.0", R.drawable.recommended_food_card_food)); //TODO: update drawable
-
-        setFavoriteFoodsRecyclerView(favoriteFoodList); //TODO: uncomment
-        return view;
-    }*/
 
     @Override
     public void onBackPressed() {
@@ -266,6 +252,81 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initDatabase() {
-        //TODO:
+        UserDatabase db = UserDatabase.getDatabaseInstance(getApplicationContext());
+        /*if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) { //TODO: uncomment or remove?
+            User bob = new User("bob", "email@com", "1234", Optional.of(""), Optional.of("")); //Optional.empty()
+            User veganRestaurant = new User("restaurant", "vegan@com", "a56789b", Optional.of(""), Optional.of(""));
+
+            db.userDAO().insertList(bob, veganRestaurant);
+
+            List<User> userList = db.userDAO().getUsers();
+            for(User user : userList) {
+                Log.d("users", user.getUsername() + " " + user.getEmail() + " " + user.getPassword());
+            }
+        }*/
+
+        //TODO: remove
+        User bob = new Client("bob", "email@example.com", "1234"); //Optional.empty(); new User
+        User veganRestaurant = new Restaurant("restaurant", "vegan@example.com", "a56789b"); // new Restaurant
+
+        db.userDAO().insertList(bob, veganRestaurant);
+
+        List<User> userList = db.userDAO().getUsers(); //TODO: remove
+        for(final User user : userList) {
+            Log.d("users", user.getUsername() + " " + user.getEmail() + " " + user.getPassword());
+        }
+    }
+
+    private void initRecommendedAndFavoriteFoods() {
+        List<RecommendedFood> recommendedFoodList = new ArrayList<>();
+        recommendedFoodList.add(new RecommendedFood(new Food("Poke", Category.POKE, 2, "$","5.00", false, R.drawable.recommended_food_card_food)));
+        recommendedFoodList.add(new RecommendedFood(new Food("Salad", Category.SALAD, 3, "$","8.00", false, R.drawable.recommended_food_card_food))); //TODO: cambiare drawable.
+
+        setRecommendedFoodsRecyclerView(recommendedFoodList);
+
+        List<FavoriteFood> favoriteFoodList = new ArrayList<>();
+        favoriteFoodList.add(new FavoriteFood("Nuts", Category.NUTS, 3, "$", "4.5", R.drawable.recommended_food_card_food)); //TODO: update drawable
+        favoriteFoodList.add(new FavoriteFood("Cereals", Category.CEREALS, 2, "$", "3.0", R.drawable.recommended_food_card_food)); //TODO: update drawable
+
+        setFavoriteFoodsRecyclerView(favoriteFoodList); //TODO: uncomment
+    }
+
+    private void initBottomNavigationBar() {
+        // Bottom Navigation Bar
+        bottomNavigationView = findViewById(R.id.bottom_navigation_bar);
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            switch(item.getItemId()) {
+                //TODO: aggiungere l'ultimo item.
+                case R.id.home:
+                    //replaceFragment(new HomeFragment()); //TODO: uncomment when I will create the fragment.
+                    break;
+                case R.id.settings:
+                    //replaceFragment(new SettingsFragment()); //TODO: uncomment when I will create the fragment.
+                    startActivity(new Intent(MainActivity.this, SettingsActivity.class));
+                    break;
+            }
+
+            return true;
+        });
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch(item.getItemId()) {
+            case R.id.nav_drawer_home:
+                getSupportFragmentManager().beginTransaction().replace(R.id.homeFragment, new HomeFragment()).commit();
+                break;
+
+            case R.id.nav_drawer_foods:
+                getSupportFragmentManager().beginTransaction().replace(R.id.foodsFragment, new FoodsFragment()).commit();
+                break;
+
+            case R.id.settingsFragment:
+                getSupportFragmentManager().beginTransaction().replace(R.id.settingsFragment, new SettingsFragment()).commit();
+                break;
+        }
+
+        drawerLayout.closeDrawer(GravityCompat.START);
+        return true;
     }
 }

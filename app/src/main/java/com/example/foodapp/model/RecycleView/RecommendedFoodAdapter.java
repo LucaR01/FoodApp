@@ -35,7 +35,7 @@ public class RecommendedFoodAdapter extends RecyclerView.Adapter<RecommendedFood
     @NonNull
     @Override
     public RecommendedFoodViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new RecommendedFoodViewHolder(LayoutInflater.from(context).inflate(R.layout.recommended_food_item, parent, false));
+        return new RecommendedFoodViewHolder(LayoutInflater.from(context).inflate(R.layout.food_item, parent, false));
     }
 
     @Override

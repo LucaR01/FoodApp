@@ -39,11 +39,11 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"> -->
+        android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/main_activity_constraint_layout">
 
 
@@ -240,8 +240,8 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/favorite_foods_recyclerView"
-            android:layout_width="408dp"
-            android:layout_height="160dp"
+            android:layout_width="424dp"
+            android:layout_height="260dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"

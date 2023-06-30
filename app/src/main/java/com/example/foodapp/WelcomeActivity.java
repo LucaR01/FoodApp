@@ -8,12 +8,20 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.foodapp.model.Databases.UserDatabase.UserDatabase;
+import com.example.foodapp.model.Users.Client.Client;
+import com.example.foodapp.model.Users.Restaurant.Restaurant;
+import com.example.foodapp.model.Users.User;
+
+import java.util.List;
 
 //TODO: extends Fragment
 public class WelcomeActivity extends AppCompatActivity {
@@ -32,6 +40,8 @@ public class WelcomeActivity extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);*/
 
         initView();
+
+        initDatabase(); //TODO: remove
 
         onLogin();
 
@@ -52,5 +62,21 @@ public class WelcomeActivity extends AppCompatActivity {
 
     private void onSignUp(){
         this.signupTextView.setOnClickListener(view -> startActivity(new Intent(WelcomeActivity.this, SignupActivity.class)));
+    }
+
+    //TODO: remove
+    private void initDatabase() {
+        UserDatabase db = UserDatabase.getDatabaseInstance(getApplicationContext());
+
+        //TODO: remove
+        User bob = new Client("bob", "email@example.com", "1234"); //Optional.empty(); new User
+        User veganRestaurant = new Restaurant("restaurant", "vegan@example.com", "a56789b"); // new Restaurant
+
+        db.userDAO().insertList(bob, veganRestaurant);
+
+        List<User> userList = db.userDAO().getUsers(); //TODO: remove
+        for(final User user : userList) {
+            Log.d("users", user.getUsername() + " " + user.getEmail() + " " + user.getPassword());
+        }
     }
 }

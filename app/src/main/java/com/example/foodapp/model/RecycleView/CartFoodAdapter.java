@@ -29,7 +29,7 @@ public class CartFoodAdapter extends RecyclerView.Adapter<CartFoodViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull CartFoodViewHolder holder, int position) {
-        //holder.getItemImage().setImageResource(cartFoodList.get(position).getImageUrl());
+        //holder.getItemImage().setImageResource(cartFoodList.get(position).getImageUrl()); //FIXME? or just remove?
         holder.getItemName().setText(cartFoodList.get(position).getName());
         holder.getItemQuantity().setText(String.valueOf(cartFoodList.get(position).getQuantity()));
         holder.getItemCurrency().setText(cartFoodList.get(position).getCurrency());

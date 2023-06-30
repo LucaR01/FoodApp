@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         initRecommendedAndFavoriteFoods();
 
-        initDatabase();
+        initDatabase(); //TODO: remove
 
         initBottomNavigationBar();
     }
@@ -115,6 +115,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //NAVIGATION DRAWER
         this.navigationView = findViewById(R.id.navigation_drawer);
         this.navDrawerMenuImageView = findViewById(R.id.nav_menu_imageView);
+
+        //this.username.setText(getIntent().getStringExtra("username")); //FIXME //TODO: uncomment
 
         this.shoppingCart = findViewById(R.id.shopping_cart);
 
@@ -251,6 +253,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fragmentTransaction.commit();
     }
 
+    //TODO: remove
     private void initDatabase() {
         UserDatabase db = UserDatabase.getDatabaseInstance(getApplicationContext());
         /*if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) { //TODO: uncomment or remove?
@@ -275,6 +278,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         for(final User user : userList) {
             Log.d("users", user.getUsername() + " " + user.getEmail() + " " + user.getPassword());
         }
+
+        db.userDAO().deleteAll();
     }
 
     private void initRecommendedAndFavoriteFoods() {
@@ -293,8 +298,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private void initBottomNavigationBar() {
         // Bottom Navigation Bar
-        bottomNavigationView = findViewById(R.id.bottom_navigation_bar);
-        bottomNavigationView.setOnItemSelectedListener(item -> {
+        this.bottomNavigationView = findViewById(R.id.bottom_navigation_bar);
+        this.bottomNavigationView.setOnItemSelectedListener(item -> {
             switch(item.getItemId()) {
                 //TODO: aggiungere l'ultimo item.
                 case R.id.home:
@@ -326,7 +331,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
         }
 
-        drawerLayout.closeDrawer(GravityCompat.START);
+        this.drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
 }

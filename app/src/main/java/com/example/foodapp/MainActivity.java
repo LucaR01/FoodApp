@@ -29,6 +29,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.foodapp.Activities.CartActivity;
+import com.example.foodapp.Activities.CategoryActivity;
 import com.example.foodapp.Activities.SettingsActivity;
 import com.example.foodapp.Fragments.FoodsFragment;
 import com.example.foodapp.Fragments.HomeFragment;
@@ -127,22 +128,32 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void onCategoryClickedListener() {
-        //TODO: Aprire Activity/Fragment
 
         this.pokeImageView.setOnClickListener(view -> {
-
+            Intent intent = new Intent(getApplicationContext(), CategoryActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.putExtra("category", Category.POKE.toString()); //TODO: prima era poké
+            getApplicationContext().startActivity(intent);
         });
 
         this.fruitImageView.setOnClickListener(view -> {
-
+            Intent intent = new Intent(getApplicationContext(), CategoryActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.putExtra("category", Category.FRUIT.toString()); //TODO: prima era fruit
+            //startActivity(intent); //TODO: remove/uncomment
+            getApplicationContext().startActivity(intent);
         });
 
         this.vegetablesImageView.setOnClickListener(view -> {
-
+            Intent intent = new Intent(getApplicationContext(), CategoryActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.putExtra("category", Category.VEGETABLES.toString()); //TODO: prima era vegetables
+            //startActivity(intent); //TODO: remove/uncomment
+            getApplicationContext().startActivity(intent);
         });
 
         this.saladImageView.setOnClickListener(view -> {
-
+            Intent intent = new Intent(getApplicationContext(), CategoryActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.putExtra("category", Category.SALAD.toString()); //TODO: prima era salad
+            //startActivity(intent); //TODO: remove/uncomment
+            getApplicationContext().startActivity(intent);
         });
     }
 
@@ -230,6 +241,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
+    /*private <T> void setRecyclerView(final List<T> list, final RecyclerView recyclerView) { //TODO: remove/uncomment
+        LinearLayoutManager layoutManager(this, )
+    }*/
+
     private void setRecommendedFoodsRecyclerView(final List<RecommendedFood> recommendedFoodList) {
         this.recommendedFoodsRecyclerView = findViewById(R.id.recommended_foods_recyclerView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
@@ -244,6 +259,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         this.favoriteFoodsRecyclerView.setLayoutManager(layoutManager);
         this.favoriteFoodAdapter = new FavoriteFoodAdapter(this, favoriteFoodList);
         this.favoriteFoodsRecyclerView.setAdapter(favoriteFoodAdapter);
+    }
+
+    private void setCategoryFoodsRecyclerView(final List<Food> categoryFoodsList) {
+
     }
 
     private void replaceFragment(Fragment fragment) {

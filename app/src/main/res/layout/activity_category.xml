@@ -34,12 +34,22 @@
 
         <LinearLayout
             android:id="@+id/linearLayout2"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+            <!-- TODO: volendo rimuovere la freccia da qui e metterla sopra -->
+
+            <ImageView
+                android:id="@+id/categoryGoBackArrowImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:layout_marginTop="5dp"
+                app:srcCompat="@drawable/ic_baseline_arrow_back_ios_new_24" />
 
             <TextView
                 android:id="@+id/categoryTextView"

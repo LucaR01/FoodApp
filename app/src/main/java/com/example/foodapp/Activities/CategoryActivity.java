@@ -43,7 +43,7 @@ public class CategoryActivity extends AppCompatActivity {
         this.backArrowImageView = findViewById(R.id.categoryGoBackArrowImageView);
         this.categoryImageView = findViewById(R.id.categoryImageView);
         this.categoryName = findViewById(R.id.categoryTextView);
-        this.categoryRecyclerView = findViewById(R.id.categoryRecyclerView);
+        //this.categoryRecyclerView = findViewById(R.id.categoryRecyclerView); //TODO: remove? lo faccio sotto.
     }
 
     private void setOnBackPressedArrow() {
@@ -53,26 +53,27 @@ public class CategoryActivity extends AppCompatActivity {
     }
 
     private void initList() {
-        /*final String category = getIntent().getStringExtra("poké"); //TODO: remove
-        final String category2 = getIntent().getStringExtra("fruit");
-        final String category3 = getIntent().getStringExtra("vegetables");
-        final String category4 = getIntent().getStringExtra("salad");*/
-
         List<Food> categoryFoodsList = new ArrayList<>();
         final String category = getIntent().getStringExtra("category");
+        this.categoryName.setText(category);
 
-        //TODO: aggiornare le immagini e aggiungere altri cibi
+        //TODO: volendo aggiungere altri cibi
         switch(category) {
-            case "poké":
+            case "Poké":
+                this.categoryImageView.setImageResource(R.drawable.poke_background1);
                 categoryFoodsList.add(new Food("Chicken Poké", Category.POKE, 1, "$", "5.60", false, R.drawable.southfin_bowls_chicken));
+                categoryFoodsList.add(new Food("Chicken Poké 2", Category.POKE, 1, "$", "7.50", false, R.drawable.southfin_bowls_chicken));
                 break;
-            case "fruit":
+            case "Fruit":
+                this.categoryImageView.setImageResource(R.drawable.fruit_background1);
                 categoryFoodsList.add(new Food("Strawberries", Category.FRUIT, 1, "$", "3.50", false, R.drawable.southfin_bowls_chicken));
                 break;
-            case "vegetables":
+            case "Vegetables":
+                this.categoryImageView.setImageResource(R.drawable.vegetables_background1);
                 categoryFoodsList.add(new Food("Zucchini", Category.VEGETABLES, 1, "$", "3.60", false, R.drawable.southfin_bowls_chicken));
                 break;
-            case "salad":
+            case "Salad":
+                this.categoryImageView.setImageResource(R.drawable.salad_background1);
                 categoryFoodsList.add(new Food("Salad", Category.SALAD, 1, "$", "4.50", false, R.drawable.southfin_bowls_chicken));
                 break;
         }
@@ -80,12 +81,12 @@ public class CategoryActivity extends AppCompatActivity {
         setCategoryRecyclerView(categoryFoodsList);
     }
 
-    private void setCategoryRecyclerView(List<Food> categoryFoodsList) {
-        categoryFoodsList = findViewById(R.id.categoryRecyclerView);
+    private void setCategoryRecyclerView(final List<Food> categoryFoodsList) {
+        this.categoryRecyclerView = findViewById(R.id.categoryRecyclerView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
         this.categoryRecyclerView.setLayoutManager(layoutManager);
         this.categoryAdapter = new CategoryAdapter(this, categoryFoodsList);
-        this.categoryRecyclerView.setAdapter(categoryAdapter);
+        this.categoryRecyclerView.setAdapter(this.categoryAdapter);
     }
 
 

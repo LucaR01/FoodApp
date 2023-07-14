@@ -34,7 +34,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryViewHolder> {
     public void onBindViewHolder(@NonNull CategoryViewHolder holder, int position) {
         holder.getItemImage().setImageResource(this.categoryFoodsList.get(position).getImageUrl());
         holder.getItemName().setText(this.categoryFoodsList.get(position).getName());
-        holder.getItemQuantity().setText(this.categoryFoodsList.get(position).getQuantity());
+        holder.getItemQuantity().setText(String.valueOf(this.categoryFoodsList.get(position).getQuantity()));
         holder.getItemCurrency().setText(this.categoryFoodsList.get(position).getCurrency());
         holder.getItemPrice().setText(this.categoryFoodsList.get(position).getPrice());
 

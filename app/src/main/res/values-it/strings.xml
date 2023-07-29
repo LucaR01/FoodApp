@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="welcome_screen_subtitle">Sottotitolo</string>
+    <string name="welcome_screen_subtitle">Unisciti</string>
     <string name="login">Entra</string>
     <string name="signup">Registrati</string>
     <string name="username">Nome utente</string>

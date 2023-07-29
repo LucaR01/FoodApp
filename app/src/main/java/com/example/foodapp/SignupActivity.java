@@ -20,8 +20,8 @@ import com.example.foodapp.model.Users.User;
 
 import java.util.ArrayList;
 import java.util.List;
-
 //TODO: extends Fragment
+
 public class SignupActivity extends AppCompatActivity {
 
     private static final String EMPTY_STRING = ""; //TODO: move/remove
@@ -36,8 +36,8 @@ public class SignupActivity extends AppCompatActivity {
     private EditText confirmPasswordEditText;
 
     private RadioGroup radioGroup;
-    //private RadioButton clientRadioButton;
-    //private RadioButton restaurantRadioButton;
+    //private RadioButton clientRadioButton; //TODO: remove
+    //private RadioButton restaurantRadioButton; //TODO: remove
 
     private RadioButton selectedRadioButton;
 
@@ -70,28 +70,30 @@ public class SignupActivity extends AppCompatActivity {
 
     private void signup() {
         this.signupButton.setOnClickListener(view -> {
-            if(!(usernameEditText.getText().toString().equals("") && emailEditText.getText().toString().equals("")
-                    && passwordEditText.getText().toString().equals("") && confirmPasswordEditText.getText().toString().equals(""))) {
-                if(confirmPasswordEditText.getText().equals(passwordEditText.getText())) {
+            if(!(this.usernameEditText.getText().toString().equals("") && this.emailEditText.getText().toString().equals("")
+                    && this.passwordEditText.getText().toString().equals("") && this.confirmPasswordEditText.getText().toString().equals(""))) {
+                if(this.confirmPasswordEditText.getText().equals(this.passwordEditText.getText())) {
 
                     /*if(!emailEditText.getText().toString().contains("@")) { //TODO: uncomment and test.
                         return;
                     }*/
 
                     int selectedId = radioGroup.getCheckedRadioButtonId();
-                    selectedRadioButton = findViewById(selectedId);
+                    this.selectedRadioButton = findViewById(selectedId);
 
                     if(selectedId != 1) {
                         Log.d("[RADIOS]", "selected index: " + selectedId + " radioSelected: " + selectedRadioButton.getId());
                         Log.d("[RADIOS]", "selectedRadioButton.getText(): " + selectedRadioButton.getText().toString());
                         final UserDatabase db = UserDatabase.getDatabaseInstance(getApplicationContext());
 
-                        if(selectedRadioButton.getText().equals("Client")) {
-                            Client client = new Client(usernameEditText.getText().toString(), emailEditText.getText().toString(), passwordEditText.getText().toString());
-                            db.userDAO().insertList(client);
+                        if(this.selectedRadioButton.getText().equals("Client")) {
+                            Client client = new Client(this.usernameEditText.getText().toString(), this.emailEditText.getText().toString(), this.passwordEditText.getText().toString());
+                            //db.userDAO().insertList(client); //TODO: uncomment/remove?
+                            db.userDAO().insertUser(client);
                         } else {
-                            Restaurant restaurant = new Restaurant(usernameEditText.getText().toString(), emailEditText.getText().toString(), passwordEditText.getText().toString());
-                            db.userDAO().insertList(restaurant);
+                            Restaurant restaurant = new Restaurant(this.usernameEditText.getText().toString(), this.emailEditText.getText().toString(), this.passwordEditText.getText().toString());
+                            //db.userDAO().insertList(restaurant); //TODO: uncomment/remove?
+                            db.userDAO().insertUser(restaurant);
                         }
                         startActivity(new Intent(SignupActivity.this, MainActivity.class));
                     }

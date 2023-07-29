@@ -27,6 +27,7 @@
             android:summary="Terms &amp; Conditions"/>
         <Preference
             android:title="Version"
-            android:summary="1.0.0"/>
+            android:summary="1.0.0"
+            android:selectable="false"/>
     </PreferenceCategory>
 </androidx.preference.PreferenceScreen>

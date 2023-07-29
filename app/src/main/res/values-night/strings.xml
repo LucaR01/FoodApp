@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name" translatable="false">FoodApp</string>
-    <string name="welcome_screen_subtitle">Subtitle</string>
+    <string name="welcome_screen_subtitle">Join Us</string>
     <string name="login">Login</string>
     <string name="signup">Signup</string>
     <string name="username">Username</string>

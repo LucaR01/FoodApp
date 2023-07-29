@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="welcome_screen_subtitle">Subtitle</string>
+    <string name="welcome_screen_subtitle">Join Us</string>
     <string name="login">Login</string>
     <string name="signup">Signup</string>
     <string name="username">Username</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="confirm_password">Confirm Password</string>
-    <string name="already_signup">Already Signued p?</string>
+    <string name="already_signup">Already Signed p?</string>
     <string name="signin">Sign In</string>
     <string name="username_or_email">Username | email</string>
     <string name="dont_have_an_account">Don\'t have an account?</string>

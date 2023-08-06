@@ -19,6 +19,10 @@
     <!-- TODO: app:layout_constraintHeight_percent="0.25" -->
     <!-- TODO:  app:layout_constraintWidth_percent="0.25" -->
 
+    <!-- TODO: android:fitsSystemWindows="true"?
+         TODO: android:isScrollContainer="true"?
+     -->
+
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigation_drawer"
         android:layout_width="wrap_content"

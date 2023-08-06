@@ -117,7 +117,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         this.navigationView = findViewById(R.id.navigation_drawer);
         this.navDrawerMenuImageView = findViewById(R.id.nav_menu_imageView);
 
-        //this.username.setText(getIntent().getStringExtra("username")); //FIXME //TODO: uncomment
+        this.username = findViewById(R.id.username);
+        this.username.setText(getIntent().getStringExtra("username"));
 
         this.shoppingCart = findViewById(R.id.shopping_cart);
 
@@ -166,7 +167,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     //TODO: rename in initNavigationDrawer()
     private void setupNavigationDrawer() {
 
-        navigationView.setNavigationItemSelectedListener(this);
+        this.navigationView.setNavigationItemSelectedListener(this);
 
         //TODO: uncomment
         drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
@@ -186,7 +187,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
-        navigationView.setNavigationItemSelectedListener(item -> {
+        this.navigationView.setNavigationItemSelectedListener(item -> {
             switch(item.getItemId()) {
                 case R.id.nav_drawer_home:
                     Toast.makeText(MainActivity.this, "Home selected", Toast.LENGTH_LONG).show();
@@ -303,14 +304,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private void initRecommendedAndFavoriteFoods() {
         List<RecommendedFood> recommendedFoodList = new ArrayList<>();
-        recommendedFoodList.add(new RecommendedFood(new Food("Poke", Category.POKE, 2, "$","5.00", false, R.drawable.recommended_food_card_food)));
-        recommendedFoodList.add(new RecommendedFood(new Food("Salad", Category.SALAD, 3, "$","8.00", false, R.drawable.recommended_food_card_food))); //TODO: cambiare drawable.
+        recommendedFoodList.add(new RecommendedFood(new Food("Poke", Category.POKE, 2, "$","5.00", false, R.drawable.southfin_bowls_chicken)));
+        recommendedFoodList.add(new RecommendedFood(new Food("Salad", Category.SALAD, 3, "$","8.00", false, R.drawable.salad_background))); //TODO: cambiare drawable.
+        recommendedFoodList.add(new RecommendedFood(new Food("Spinach", Category.VEGETABLES, 1, "$","3.50", false, R.drawable.vegetables_background)));
 
         setRecommendedFoodsRecyclerView(recommendedFoodList);
 
         List<FavoriteFood> favoriteFoodList = new ArrayList<>();
-        favoriteFoodList.add(new FavoriteFood("Nuts", Category.NUTS, 3, "$", "4.5", R.drawable.recommended_food_card_food)); //TODO: update drawable
-        favoriteFoodList.add(new FavoriteFood("Cereals", Category.CEREALS, 2, "$", "3.0", R.drawable.recommended_food_card_food)); //TODO: update drawable
+        favoriteFoodList.add(new FavoriteFood("Nuts", Category.NUTS, 3, "$", "4.5", R.drawable.fruit_background)); //TODO: update drawable
+        favoriteFoodList.add(new FavoriteFood("Cereals", Category.CEREALS, 2, "$", "3.0", R.drawable.poke_background)); //TODO: update drawable
 
         setFavoriteFoodsRecyclerView(favoriteFoodList); //TODO: uncomment
     }

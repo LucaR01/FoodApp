@@ -27,6 +27,7 @@ import java.util.List;
 public class WelcomeActivity extends AppCompatActivity {
 
     //TODO: final
+    private Button joinUsButton;
     private Button loginButton;
     private ImageView welcomeScreenImageView;
     private TextView signupTextView;
@@ -43,6 +44,8 @@ public class WelcomeActivity extends AppCompatActivity {
 
         initDatabase(); //TODO: remove
 
+        //onJoinUs(); //TODO: uncomment only if i use layout.activity_welcome2
+
         onLogin();
 
         onSignUp();
@@ -51,6 +54,7 @@ public class WelcomeActivity extends AppCompatActivity {
     }
 
     private void initView() {
+        //this.joinUsButton = findViewById(R.id.joinUsButton); //TODO: uncomment only if i use layout.activity_welcome2
         this.loginButton = findViewById(R.id.welcome_login_button);
         this.welcomeScreenImageView = findViewById(R.id.welcome_screen_imageView);
         this.signupTextView = findViewById(R.id.signup_textview);
@@ -62,6 +66,10 @@ public class WelcomeActivity extends AppCompatActivity {
 
     private void onSignUp(){
         this.signupTextView.setOnClickListener(view -> startActivity(new Intent(WelcomeActivity.this, SignupActivity.class)));
+    }
+
+    private void onJoinUs() {
+        this.joinUsButton.setOnClickListener(view -> startActivity(new Intent(WelcomeActivity.this, LoginActivity.class)));
     }
 
     //TODO: remove

@@ -18,6 +18,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -177,7 +178,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         //TODO: fix
         navDrawerMenuImageView.setOnClickListener(listener -> {
-            drawerLayout.addDrawerListener(drawerToggle);
+            //drawerLayout.addDrawerListener(drawerToggle);
             drawerToggle.syncState(); //TODO: remove?
 
             if(drawerLayout.isDrawerOpen(GravityCompat.START)) {
@@ -191,12 +192,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             switch(item.getItemId()) {
                 case R.id.nav_drawer_home:
                     Toast.makeText(MainActivity.this, "Home selected", Toast.LENGTH_LONG).show();
-                    drawerLayout.closeDrawer(GravityCompat.START, false); //TODO: remove
+                    System.out.println("Home!"); //TODO: remove
+                    //drawerLayout.closeDrawer(GravityCompat.START, false); //TODO: remove
                     //TODO: spostare nella pagina selezionata.
                     break;
                 case R.id.nav_drawer_foods:
                     Toast.makeText(MainActivity.this, "Foods Page selected", Toast.LENGTH_LONG).show();
-                    drawerLayout.closeDrawers(); //TODO: remove
+                    System.out.println("Foods!"); //TODO: remove
+                    //drawerLayout.closeDrawers(); //TODO: remove
                     //TODO: spostare nella pagina selezionata.
                     break;
                 case R.id.settings:
@@ -214,7 +217,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     break;
             }
 
-            return false;
+            this.drawerLayout.closeDrawer(GravityCompat.START);
+            return true;
         });
 
         //TODO: fix/remove
@@ -318,20 +322,27 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void initBottomNavigationBar() {
-        // Bottom Navigation Bar
         this.bottomNavigationView = findViewById(R.id.bottom_navigation_bar);
+        this.bottomNavigationView.setSelectedItemId(R.id.home);
+
         this.bottomNavigationView.setOnItemSelectedListener(item -> {
             switch(item.getItemId()) {
-                //TODO: aggiungere l'ultimo item.
                 case R.id.home:
                     //replaceFragment(new HomeFragment()); //TODO: uncomment when I will create the fragment.
+                    /*if(!getApplicationContext().getClass().getName().contentEquals("MainActivity")) {
+                        System.out.println("getClass Name: " + getApplicationContext().getClass().getName()); //TODO: remove // android.app.Application
+                        startActivity(new Intent(MainActivity.this, MainActivity.class));
+                    }*/
+                    startActivity(new Intent(MainActivity.this, MainActivity.class));
                     break;
                 case R.id.settings:
                     //replaceFragment(new SettingsFragment()); //TODO: uncomment when I will create the fragment.
                     startActivity(new Intent(MainActivity.this, SettingsActivity.class));
                     break;
+                case R.id.foods:
+                    //startActivity(new Intent(MainActivity.this, .class)); //TODO: uncomment
+                    break;
             }
-
             return true;
         });
     }
@@ -354,5 +365,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         this.drawerLayout.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onPostCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
+        super.onPostCreate(savedInstanceState, persistentState);
+        this.drawerToggle.syncState();
     }
 }

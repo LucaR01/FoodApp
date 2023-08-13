@@ -35,7 +35,8 @@ public class SettingsFragment extends PreferenceFragmentCompat {
                 getContext().setTheme(R.style.Theme_FoodApp);
             }
 
-            return false;
+            //getActivity().recreate(); //TODO: uncomment when ready.
+            return true;
 
         }); //TODO: uncomment when ready.
 
@@ -45,20 +46,6 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         Preference termsAndConditionsPreference = findPreference("terms_preference");
         //termsAndConditionsPreference.setOnPreferenceClickListener(preference -> startActivity(new Intent(getContext(), TermsAndConditions.class))); //TODO: uncomment when ready.
     }
-
-    //TODO: remove? Questo non lo faceva funzionare!
-    /*@Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_settings, container, false);
-    }*/
-
-    //TODO: remove?
-    /*@Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-    }*/
 
     //TODO: update/remove?
     private void loadSettings() {

@@ -48,11 +48,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void login() {
         this.loginButton.setOnClickListener(view -> {
-            //TODO: notificare l'utente.
-            //TODO: uncomment when checked and fixed.
-
-            //TODO: entra anche se sono vuoti i campi.
-            if(this.usernameEditText.getText().toString().equals("") || this.passwordEditText.getText().toString().equals("")) { //TODO: usare la funzione?
+            if(this.usernameEditText.getText().toString().contentEquals("") || this.passwordEditText.getText().toString().contentEquals("")) { //TODO: usare la funzione?
                 Log.d("[USERS]", "Empty fields!");
                 AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
                 builder.setTitle("Failure");
@@ -65,67 +61,44 @@ public class LoginActivity extends AppCompatActivity {
 
                 AlertDialog alertDialog = builder.create();
                 alertDialog.show();
+            } else {
+                //TODO: usare funzione?
+                UserDatabase db = UserDatabase.getDatabaseInstance(getApplicationContext());
+                List<User> dbUserList = db.userDAO().getUsers();
+
+                for(final User user : dbUserList) { //TODO: remove
+                    System.out.println("user email: " + user.getEmail() + " user username: " + user.getUsername() + " user password: " + user.getPassword() );
+                }
+
+                for(final User user : dbUserList) {
+                    if(user.getEmail().contentEquals(this.usernameEditText.getText()) || user.getUsername().contentEquals(this.usernameEditText.getText())) {
+                        if(user.getPassword().contentEquals(passwordEditText.getText())) {
+                            Log.d("[USERS]", "username | email: " + usernameEditText.getText().toString() + " password: " + passwordEditText.getText().toString());
+                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                            intent.putExtra("username", user.getUsername());
+                            startActivity(intent);
+                            return; // prima c'era un break; Col return evitiamo che anche se l'utente viene trovato, non mostra l'alert.
+                        }
+                    }
+                }
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+                builder.setTitle("Failure");
+                builder.setMessage("Username or password incorrect!");
+                builder.setCancelable(true);
+
+                builder.setPositiveButton(
+                        "Ok",
+                        (dialog, id) -> dialog.dismiss());
+
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
             }
-
-            //TODO: usare funzione?
-            UserDatabase db = UserDatabase.getDatabaseInstance(getApplicationContext());
-            List<User> dbUserList = db.userDAO().getUsers();
-
-            for(final User user : dbUserList) { //TODO: remove
-                System.out.println("user email: " + user.getEmail() + " user username: " + user.getUsername() + " user password: " + user.getPassword() );
-            }
-
-            for(final User user : dbUserList) {
-                //FIXME
-                if((user.getEmail().contains(usernameEditText.getText()) || user.getUsername().contains(usernameEditText.getText()))
-                        && user.getPassword().contains(passwordEditText.getText())) {
-                    Log.d("[USERS]", "username | email: " + usernameEditText.getText().toString() + " password: " + passwordEditText.getText().toString());
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    intent.putExtra("username", user.getUsername());
-                    startActivity(intent);
-                } /*else { //FIXME
-                    AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-                    builder.setTitle("Failure");
-                    builder.setMessage("Username or password incorrect!");
-                    builder.setCancelable(true);
-
-                    builder.setPositiveButton(
-                            "Ok",
-                            (dialog, id) -> dialog.dismiss());
-
-                    AlertDialog alertDialog = builder.create();
-                    alertDialog.show();
-                }*/
-
-                //TODO: remove
-                /*if(!((user.getEmail().contains(usernameEditText.getText()) || user.getUsername().contains(usernameEditText.getText()))
-                        && user.getPassword().contains(passwordEditText.getText()))) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-                    builder.setTitle("Failure");
-                    builder.setMessage("Username or password incorrect!");
-                    builder.setCancelable(true);
-
-                    builder.setPositiveButton(
-                            "Ok",
-                            (dialog, id) -> dialog.dismiss());
-
-                    AlertDialog alertDialog = builder.create();
-                    alertDialog.show();
-                } else {
-                    Log.d("[USERS]", "username | email: " + usernameEditText.getText().toString() + " password: " + passwordEditText.getText().toString());
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    intent.putExtra("username", user.getUsername());
-                    startActivity(intent);
-                }*/
-            }
-
-            //startActivity(new Intent(LoginActivity.this, SettingsActivity.class)); //TODO: remove; è qui solo per testing.
-            //startActivity(new Intent(LoginActivity.this, MainActivity.class)); //TODO: remove
         });
     }
 
     private void checkEmptyFields() {
-        if(this.usernameEditText.getText().toString().equals("") || this.passwordEditText.getText().toString().equals("")) {
+        if(this.usernameEditText.getText().toString().contentEquals("") || this.passwordEditText.getText().toString().contentEquals("")) {
             Log.d("[USERS]", "Empty fields!");
             AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
             builder.setTitle("Failure");
@@ -146,14 +119,28 @@ public class LoginActivity extends AppCompatActivity {
         List<User> dbUserList = db.userDAO().getUsers();
 
         for(final User user : dbUserList) {
-            if((user.getEmail().contains(usernameEditText.getText()) || user.getUsername().contains(usernameEditText.getText()))
-                    && user.getPassword().contains(passwordEditText.getText())) {
-                Log.d("[USERS]", "username | email: " + usernameEditText.getText().toString() + " password: " + passwordEditText.getText().toString());
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                intent.putExtra("username", user.getUsername());
-                startActivity(intent);
+            if(user.getEmail().contentEquals(this.usernameEditText.getText()) || user.getUsername().contentEquals(this.usernameEditText.getText())) {
+                if(user.getPassword().contentEquals(passwordEditText.getText())) {
+                    Log.d("[USERS]", "username | email: " + usernameEditText.getText().toString() + " password: " + passwordEditText.getText().toString());
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    intent.putExtra("username", user.getUsername());
+                    startActivity(intent);
+                    return; // prima c'era un break; Col return evitiamo che anche se l'utente viene trovato, non mostra l'alert.
+                }
             }
         }
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+        builder.setTitle("Failure");
+        builder.setMessage("Username or password incorrect!");
+        builder.setCancelable(true);
+
+        builder.setPositiveButton(
+                "Ok",
+                (dialog, id) -> dialog.dismiss());
+
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 
     private void onSignUpLinkClickListener() {

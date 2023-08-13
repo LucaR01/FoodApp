@@ -23,6 +23,13 @@
          TODO: android:isScrollContainer="true"?
      -->
 
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:scrollbars="vertical"
+        android:fillViewport="true">
+
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigation_drawer"
         android:layout_width="wrap_content"
@@ -31,6 +38,8 @@
         app:headerLayout="@layout/navigation_drawer_header"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/navigation_drawer" />
+
+    </ScrollView>
 
     <!-- TODO: prima stavo utilizzando la normale ScrollView -->
     <!-- TODO: magari mettere la scroll view sul constraint layout -->
@@ -269,6 +278,7 @@
             android:id="@+id/bottom_navigation_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"

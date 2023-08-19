@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FoodApp">
         <activity
+            android:name=".Activities.TermsAndConditionsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.PrivacyPolicyActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activities.CategoryActivity"
             android:exported="false" />
         <activity

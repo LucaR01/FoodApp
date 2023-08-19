@@ -31,7 +31,9 @@ import android.widget.Toast;
 
 import com.example.foodapp.Activities.CartActivity;
 import com.example.foodapp.Activities.CategoryActivity;
+import com.example.foodapp.Activities.PrivacyPolicyActivity;
 import com.example.foodapp.Activities.SettingsActivity;
+import com.example.foodapp.Activities.TermsAndConditionsActivity;
 import com.example.foodapp.Fragments.FoodsFragment;
 import com.example.foodapp.Fragments.HomeFragment;
 import com.example.foodapp.Fragments.SettingsFragment;
@@ -57,6 +59,8 @@ import java.util.Optional;
 
 //TODO: extends Fragment?
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+    //private Binding activityMainBinding;
 
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
@@ -188,7 +192,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
-        this.navigationView.setNavigationItemSelectedListener(item -> {
+        //TODO: remove, c'è la funzione sotto.
+        /*this.navigationView.setNavigationItemSelectedListener(item -> {
             switch(item.getItemId()) {
                 case R.id.nav_drawer_home:
                     Toast.makeText(MainActivity.this, "Home selected", Toast.LENGTH_LONG).show();
@@ -219,7 +224,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             this.drawerLayout.closeDrawer(GravityCompat.START);
             return true;
-        });
+        });*/
 
         //TODO: fix/remove
         /*drawerLayout.setOnClickListener(view -> {
@@ -239,8 +244,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onBackPressed() {
-        if(drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START);
+        if(this.drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            this.drawerLayout.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
         }
@@ -323,23 +328,28 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private void initBottomNavigationBar() {
         this.bottomNavigationView = findViewById(R.id.bottom_navigation_bar);
-        this.bottomNavigationView.setSelectedItemId(R.id.home);
+        this.bottomNavigationView.setSelectedItemId(R.id.bottom_home);
 
         this.bottomNavigationView.setOnItemSelectedListener(item -> {
             switch(item.getItemId()) {
-                case R.id.home:
+                case R.id.bottom_home:
                     //replaceFragment(new HomeFragment()); //TODO: uncomment when I will create the fragment.
                     /*if(!getApplicationContext().getClass().getName().contentEquals("MainActivity")) {
                         System.out.println("getClass Name: " + getApplicationContext().getClass().getName()); //TODO: remove // android.app.Application
                         startActivity(new Intent(MainActivity.this, MainActivity.class));
                     }*/
-                    startActivity(new Intent(MainActivity.this, MainActivity.class));
-                    break;
-                case R.id.settings:
+                    //startActivity(new Intent(MainActivity.this, MainActivity.class)); //TODO: uncomment?
+                    return true;
+                    //TODO: return true?
+                    //break;
+                case R.id.bottom_settings:
                     //replaceFragment(new SettingsFragment()); //TODO: uncomment when I will create the fragment.
                     startActivity(new Intent(MainActivity.this, SettingsActivity.class));
+                    //overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); //TODO: remove
+                    //finish();
+                    //return true;
                     break;
-                case R.id.foods:
+                case R.id.bottom_foods:
                     //startActivity(new Intent(MainActivity.this, .class)); //TODO: uncomment
                     break;
             }
@@ -358,8 +368,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace(R.id.foodsFragment, new FoodsFragment()).commit();
                 break;
 
-            case R.id.settingsFragment:
+            case R.id.nav_drawer_settings:
                 getSupportFragmentManager().beginTransaction().replace(R.id.settingsFragment, new SettingsFragment()).commit();
+                break;
+            case R.id.nav_drawer_privacy:
+                //getSupportFragmentManager().beginTransaction().replace(R.id.settingsFragment, new PrivacyPolicyFragment()).commit(); //TODO: uncomment when ready.
+                startActivity(new Intent(MainActivity.this, PrivacyPolicyActivity.class));
+                break;
+            case R.id.nav_drawer_terms_and_conditions:
+                //getSupportFragmentManager().beginTransaction().replace(R.id.settingsFragment, new TermsAndConditionsFragment()).commit(); //TODO: uncomment when ready.
+                startActivity(new Intent(MainActivity.this, TermsAndConditionsActivity.class));
                 break;
         }
 

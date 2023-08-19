@@ -2,13 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- TODO: aggiungere id e icona e volendo rinominare l'elemento "Foods". -->
-    <item android:id="@+id/foods"
+    <item android:id="@+id/bottom_foods"
         android:title="@string/foods"
         android:icon="@drawable/ic_baseline_food_bank_24"/>
-    <item android:id="@+id/home"
+    <item android:id="@+id/bottom_home"
         android:title="@string/home"
         android:icon="@drawable/ic_baseline_home_24"/>
-    <item android:id="@+id/settings"
+    <item android:id="@+id/bottom_settings"
         android:title="@string/settings"
         android:icon="@drawable/ic_baseline_settings_24"/>
 </menu>

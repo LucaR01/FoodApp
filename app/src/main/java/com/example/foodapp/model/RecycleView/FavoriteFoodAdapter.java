@@ -31,16 +31,18 @@ public class FavoriteFoodAdapter extends RecyclerView.Adapter<FavoriteFoodViewHo
 
     @Override
     public void onBindViewHolder(@NonNull FavoriteFoodViewHolder holder, int position) {
-        holder.getItemImage().setImageResource(favoriteFoodList.get(position).getImageUrl());
-        holder.getItemName().setText(favoriteFoodList.get(position).getName());
-        holder.getItemPrice().setText(favoriteFoodList.get(position).getPrice());
+        holder.getItemImage().setImageResource(this.favoriteFoodList.get(position).getImageUrl());
+        holder.getItemCurrency().setText(this.favoriteFoodList.get(position).getCurrency());
+        holder.getItemName().setText(this.favoriteFoodList.get(position).getName());
+        holder.getItemPrice().setText(this.favoriteFoodList.get(position).getPrice());
 
         holder.itemView.setOnClickListener(view -> {
-            Intent intent = new Intent(context, FoodDetailsActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); //TODO: | FLAG_ACTIVITY_CLEAR_TASK?
-            intent.putExtra("foodDetailNameTextView", favoriteFoodList.get(holder.getAdapterPosition()).getName()); //TODO: item_name?
-            intent.putExtra("foodDetailPriceTextView", favoriteFoodList.get(holder.getAdapterPosition()).getPrice()); //TODO: item_price?
-            intent.putExtra("foodDetailImageView", favoriteFoodList.get(holder.getAdapterPosition()).getImageUrl()); //TODO: item_image?
-            context.startActivity(intent);
+            Intent intent = new Intent(this.context, FoodDetailsActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); //TODO: | FLAG_ACTIVITY_CLEAR_TASK?
+            intent.putExtra("foodDetailNameTextView", this.favoriteFoodList.get(holder.getAdapterPosition()).getName()); //TODO: item_name?
+            intent.putExtra("foodDetailCurrencyTextView", this.favoriteFoodList.get(holder.getAdapterPosition()).getCurrency());
+            intent.putExtra("foodDetailPriceTextView", this.favoriteFoodList.get(holder.getAdapterPosition()).getPrice()); //TODO: item_price?
+            intent.putExtra("foodDetailImageView", this.favoriteFoodList.get(holder.getAdapterPosition()).getImageUrl()); //TODO: item_image?
+            this.context.startActivity(intent);
         });
     }
 

@@ -29,14 +29,14 @@ public class CartFoodAdapter extends RecyclerView.Adapter<CartFoodViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull CartFoodViewHolder holder, int position) {
-        //holder.getItemImage().setImageResource(cartFoodList.get(position).getImageUrl()); //FIXME? or just remove?
-        holder.getItemName().setText(cartFoodList.get(position).getName());
-        holder.getItemQuantity().setText(String.valueOf(cartFoodList.get(position).getQuantity()));
-        holder.getItemCurrency().setText(cartFoodList.get(position).getCurrency());
-        holder.getItemPrice().setText(cartFoodList.get(position).getPrice());
+        //holder.getItemImage().setImageResource(this.cartFoodList.get(position).getImageUrl()); //FIXME? or just remove? (per passare
+        holder.getItemName().setText(this.cartFoodList.get(position).getName());
+        holder.getItemQuantity().setText(String.valueOf(this.cartFoodList.get(position).getQuantity()));
+        holder.getItemCurrency().setText(this.cartFoodList.get(position).getCurrency());
+        holder.getItemPrice().setText(this.cartFoodList.get(position).getPrice());
 
         holder.itemView.findViewById(R.id.deleteImageView).setOnClickListener(view -> {
-            FoodDatabase.getDatabaseInstance(holder.itemView.getContext()).foodDAO().deleteFood(cartFoodList.get(position).foodId);
+            FoodDatabase.getDatabaseInstance(holder.itemView.getContext()).foodDAO().deleteFood(this.cartFoodList.get(position).foodId);
         });
     }
 

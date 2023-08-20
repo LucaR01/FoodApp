@@ -31,6 +31,7 @@ import android.widget.Toast;
 
 import com.example.foodapp.Activities.CartActivity;
 import com.example.foodapp.Activities.CategoryActivity;
+import com.example.foodapp.Activities.FoodsActivity;
 import com.example.foodapp.Activities.PrivacyPolicyActivity;
 import com.example.foodapp.Activities.SettingsActivity;
 import com.example.foodapp.Activities.TermsAndConditionsActivity;
@@ -350,7 +351,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     //return true;
                     break;
                 case R.id.bottom_foods:
-                    //startActivity(new Intent(MainActivity.this, .class)); //TODO: uncomment
+                    startActivity(new Intent(MainActivity.this, FoodsActivity.class));
                     break;
             }
             return true;
@@ -365,7 +366,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
 
             case R.id.nav_drawer_foods:
-                getSupportFragmentManager().beginTransaction().replace(R.id.foodsFragment, new FoodsFragment()).commit();
+                //getSupportFragmentManager().beginTransaction().replace(R.id.foodsFragment, new FoodsFragment()).commit(); //TODO: uncomment || remove
+                startActivity(new Intent(MainActivity.this, FoodsActivity.class));
                 break;
 
             case R.id.nav_drawer_settings:

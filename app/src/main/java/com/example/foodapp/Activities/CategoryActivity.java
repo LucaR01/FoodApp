@@ -89,5 +89,4 @@ public class CategoryActivity extends AppCompatActivity {
         this.categoryRecyclerView.setAdapter(this.categoryAdapter);
     }
 
-
 }

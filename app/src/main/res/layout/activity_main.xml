@@ -5,9 +5,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
     android:background="#E7EBE7"
     tools:context=".MainActivity">
+
+    <!-- prima era android:fitsSystemWindows="true" -->
 
     <!-- tools:openDrawer="start" per vedere il navigationdrawer -->
 
@@ -51,7 +52,11 @@
         android:layout_gravity="start"
         app:headerLayout="@layout/navigation_drawer_header"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/navigation_drawer" />
+        app:menu="@menu/navigation_drawer" >
+
+        <include layout="@layout/navigation_drawer_header" />
+
+        </com.google.android.material.navigation.NavigationView>
 
     </ScrollView>
 

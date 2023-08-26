@@ -34,18 +34,18 @@ public class FoodsAdapter extends RecyclerView.Adapter<FoodsViewHolder> {
     public void onBindViewHolder(@NonNull FoodsViewHolder holder, int position) {
         holder.getItemImage().setImageResource(this.foodsList.get(position).getImageUrl());
         holder.getItemName().setText(this.foodsList.get(position).getName());
-        holder.getItemCurrency().setText(this.foodsList.get(position).getCategory().toString());
+        holder.getItemCategory().setText(this.foodsList.get(position).getCategory().toString());
         holder.getItemQuantity().setText(String.valueOf(this.foodsList.get(position).getQuantity()));
         holder.getItemCurrency().setText(this.foodsList.get(position).getCurrency());
         holder.getItemPrice().setText(this.foodsList.get(position).getPrice());
 
         holder.itemView.setOnClickListener(view -> {
-            Intent intent = new Intent(context, FoodDetailsActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); //TODO: | FLAG_ACTIVITY_CLEAR_TASK?
+            Intent intent = new Intent(this.context, FoodDetailsActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); //TODO: | FLAG_ACTIVITY_CLEAR_TASK?
             intent.putExtra("foodDetailNameTextView", this.foodsList.get(holder.getAdapterPosition()).getName());
             intent.putExtra("foodDetailCurrencyTextView", this.foodsList.get(holder.getAdapterPosition()).getCurrency());
             intent.putExtra("foodDetailPriceTextView", this.foodsList.get(holder.getAdapterPosition()).getPrice());
             intent.putExtra("foodDetailImageView", this.foodsList.get(holder.getAdapterPosition()).getImageUrl());
-            context.startActivity(intent);
+            this.context.startActivity(intent);
         });
     }
 

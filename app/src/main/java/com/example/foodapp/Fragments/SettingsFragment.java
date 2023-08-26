@@ -1,5 +1,6 @@
 package com.example.foodapp.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,6 +14,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.foodapp.Activities.PrivacyPolicyActivity;
+import com.example.foodapp.Activities.TermsAndConditionsActivity;
 import com.example.foodapp.R;
 
 public class SettingsFragment extends PreferenceFragmentCompat {
@@ -22,29 +25,30 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         setPreferencesFromResource(R.xml.preferences, rootKey);
 
         Preference themePreference = findPreference("theme_preference");
-        themePreference.setOnPreferenceClickListener(preference -> {
+        themePreference.setOnPreferenceChangeListener(((preference, newValue) -> {
+            boolean isDarkThemeEnabled = (boolean) newValue;
 
-            System.out.println("theme"); //TODO: remove
-
-            if (preference.isEnabled()) {
-                System.out.println("enabled"); //TODO: remove
-                //getContext().setTheme(R.style.Theme_FoodAppNight); //TODO: remove
-                getContext().setTheme(R.style.Theme_FoodApp);
-            } else { //FIXME non va nell'else
-                System.out.println("disabled"); //TODO: remove
+            if (isDarkThemeEnabled) {
+                getContext().setTheme(R.style.Theme_FoodApp_Dark);
+            } else {
                 getContext().setTheme(R.style.Theme_FoodApp);
             }
 
-            //getActivity().recreate(); //TODO: uncomment when ready.
+            getActivity().recreate(); // Recreate the activity to apply the new theme
             return true;
-
-        }); //TODO: uncomment when ready.
+        }));
 
         Preference privacyPolicyPreference = findPreference("privacy_preference");
-        //privacyPolicyPreference.setOnPreferenceClickListener(preference -> startActivity(new Intent(getContext(), PrivacyPolicy.class))); //TODO: uncomment when ready.
+        privacyPolicyPreference.setOnPreferenceClickListener(preference -> {
+            startActivity(new Intent(getContext(), PrivacyPolicyActivity.class));
+            return true;
+        });
 
         Preference termsAndConditionsPreference = findPreference("terms_preference");
-        //termsAndConditionsPreference.setOnPreferenceClickListener(preference -> startActivity(new Intent(getContext(), TermsAndConditions.class))); //TODO: uncomment when ready.
+        termsAndConditionsPreference.setOnPreferenceClickListener(preference -> {
+            startActivity(new Intent(getContext(), TermsAndConditionsActivity.class));
+            return true;
+        });
     }
 
     //TODO: update/remove?

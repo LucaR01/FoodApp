@@ -52,7 +52,7 @@ public class FoodsActivity extends AppCompatActivity {
         List<Food> foodList = new ArrayList<>(Arrays.asList(
                 new Food("Chicken Poké", Category.POKE, 1, "$", "5.60", false, R.drawable.southfin_bowls_chicken),
                 new Food("Chicken Poké 2", Category.POKE, 1, "$", "7.50", false, R.drawable.southfin_bowls_chicken),
-                new Food("Strawberries", Category.FRUIT, 1, "$", "3.50", false, R.drawable.southfin_bowls_chicken)
+                new Food("Strawberries", Category.FRUIT, 1, "$", "3.50", false, R.drawable.fruit_background)
         ));
 
 

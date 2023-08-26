@@ -1,5 +1,6 @@
 package com.example.foodapp.model.RecycleView;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -37,6 +38,8 @@ public class CartFoodAdapter extends RecyclerView.Adapter<CartFoodViewHolder> {
 
         holder.itemView.findViewById(R.id.deleteImageView).setOnClickListener(view -> {
             FoodDatabase.getDatabaseInstance(holder.itemView.getContext()).foodDAO().deleteFood(this.cartFoodList.get(position).foodId);
+            this.cartFoodList.remove(position);
+            notifyItemRemoved(position);
         });
     }
 

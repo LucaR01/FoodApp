@@ -40,18 +40,38 @@ public class RecommendedFoodAdapter extends RecyclerView.Adapter<RecommendedFood
 
     @Override
     public void onBindViewHolder(@NonNull RecommendedFoodViewHolder holder, int position) {
-        holder.getItemImage().setImageResource(recommendedFoodList.get(position).getRecommendedFood().getImageUrl());
-        holder.getItemName().setText(recommendedFoodList.get(position).getRecommendedFood().getName());
-        holder.getItemCurrency().setText(recommendedFoodList.get(position).getRecommendedFood().getCurrency());
-        holder.getItemPrice().setText(recommendedFoodList.get(position).getRecommendedFood().getPrice());
+        holder.getItemImage().setImageResource(this.recommendedFoodList.get(position).getRecommendedFood().getImageUrl());
+        holder.getItemName().setText(this.recommendedFoodList.get(position).getRecommendedFood().getName());
+        holder.getItemCurrency().setText(this.recommendedFoodList.get(position).getRecommendedFood().getCurrency());
+        holder.getItemPrice().setText(this.recommendedFoodList.get(position).getRecommendedFood().getPrice());
+
+        // Questo casomai fosse stato già favorito in precedenza.
+        if (this.recommendedFoodList.get(position).getRecommendedFood().isFavorite()) {
+            holder.getItemFavorite().setImageResource(R.drawable.red_heart2);
+        } else {
+            holder.getItemFavorite().setImageResource(R.drawable.heart);
+        }
+
+        holder.getItemFavorite().setOnClickListener(view -> {
+            if (holder.getItemFavorite().getTag() == null || holder.getItemFavorite().getTag().equals("initial_image")) {
+                holder.getItemFavorite().setImageResource(R.drawable.red_heart2);
+                holder.getItemFavorite().setTag("new_image");
+                this.recommendedFoodList.get(position).getRecommendedFood().setFavorite(true);
+            } else {
+                holder.getItemFavorite().setImageResource(R.drawable.heart);
+                holder.getItemFavorite().setTag("initial_image");
+                this.recommendedFoodList.get(position).getRecommendedFood().setFavorite(false);
+            }
+        });
 
         holder.itemView.setOnClickListener(view -> {
-            Intent intent = new Intent(context, FoodDetailsActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); //TODO: | FLAG_ACTIVITY_CLEAR_TASK?
+            Intent intent = new Intent(this.context, FoodDetailsActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); //TODO: | FLAG_ACTIVITY_CLEAR_TASK?
             intent.putExtra("foodDetailNameTextView", this.recommendedFoodList.get(holder.getAdapterPosition()).getRecommendedFood().getName()); //TODO: item_name
             intent.putExtra("foodDetailCurrencyTextView", this.recommendedFoodList.get(holder.getAdapterPosition()).getRecommendedFood().getCurrency());
+            //intent.putExtra("foodDetailFavorite", this.recommendedFoodList.get(holder.getAdapterPosition()).getRecommendedFood().isFavorite()); //TODO: uncomment
             intent.putExtra("foodDetailPriceTextView", this.recommendedFoodList.get(holder.getAdapterPosition()).getRecommendedFood().getPrice()); //TODO: item_price
             intent.putExtra("foodDetailImageView", this.recommendedFoodList.get(holder.getAdapterPosition()).getRecommendedFood().getImageUrl()); //TODO: item_image
-            context.startActivity(intent);
+            this.context.startActivity(intent);
         });
 
     }

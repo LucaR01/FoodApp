@@ -46,7 +46,7 @@
         app:layout_constraintBottom_toTopOf="@+id/foodDetailImageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/hearth" />
+        app:srcCompat="@drawable/heart" />
 
     <TextView
         android:id="@+id/foodDetailNameTextView"

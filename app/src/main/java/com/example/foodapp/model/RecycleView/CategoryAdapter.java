@@ -39,12 +39,12 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryViewHolder> {
         holder.getItemPrice().setText(this.categoryFoodsList.get(position).getPrice());
 
         holder.itemView.setOnClickListener(view -> {
-            Intent intent = new Intent(context, FoodDetailsActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); //TODO: | FLAG_ACTIVITY_CLEAR_TASK?
+            Intent intent = new Intent(this.context, FoodDetailsActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); //TODO: | FLAG_ACTIVITY_CLEAR_TASK?
             intent.putExtra("foodDetailNameTextView", this.categoryFoodsList.get(holder.getAdapterPosition()).getName());
             intent.putExtra("foodDetailCurrencyTextView", this.categoryFoodsList.get(holder.getAdapterPosition()).getCurrency());
             intent.putExtra("foodDetailPriceTextView", this.categoryFoodsList.get(holder.getAdapterPosition()).getPrice());
             intent.putExtra("foodDetailImageView", this.categoryFoodsList.get(holder.getAdapterPosition()).getImageUrl());
-            context.startActivity(intent);
+            this.context.startActivity(intent);
         });
     }
 

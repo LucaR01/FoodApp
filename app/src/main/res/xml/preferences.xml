@@ -4,16 +4,17 @@
         android:title="General">
         <SwitchPreference
             android:key="theme_preference"
+            android:title="Dark Theme"
             android:defaultValue="false"
-            android:title="Dark Theme" />
-        <Preference
+            android:summary="Enable or disable the dark theme"/>
+        <!-- <Preference
             android:key="import_preference"
             android:summary="Import Database"
             android:title="Import " />
         <Preference
             android:key="export_preference"
             android:summary="Export Database"
-            android:title="Export"/>
+            android:title="Export"/> --> <!-- TODO: uncomment/remove -->
     </PreferenceCategory>
     <PreferenceCategory
         android:title="About">

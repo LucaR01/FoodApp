@@ -49,6 +49,8 @@ public class FoodDetailsActivity extends AppCompatActivity {
 
         setOnBackPressedArrow();
 
+        //getIntent().getBooleanExtra("foodDetailFavorite", false); //TODO: uncomment and if
+
         foodName.setText(getIntent().getStringExtra("foodDetailNameTextView")); //TODO: item_name?
         foodPrice.setText(getIntent().getStringExtra("foodDetailPriceTextView")); //TODO: item_price?
         foodCurrency.setText(getIntent().getStringExtra("foodDetailCurrencyTextView"));

@@ -12,17 +12,16 @@ import com.example.foodapp.R;
 public class RecommendedFoodViewHolder extends RecyclerView.ViewHolder {
 
     private ImageView itemImage;
+    private ImageView itemFavorite;
     private TextView itemCurrency;
     private TextView itemPrice;
     private TextView itemName;
-
-    private ImageView itemFavorite; //TODO: remove?
-    private ImageView itemShoppingBasket; //TODO: remove?
 
     public RecommendedFoodViewHolder(@NonNull View itemView) {
         super(itemView);
 
         this.itemImage = itemView.findViewById(R.id.item_image);
+        this.itemFavorite = itemView.findViewById(R.id.item_favorite);
         this.itemCurrency = itemView.findViewById(R.id.item_currency);
         this.itemPrice = itemView.findViewById(R.id.item_price);
         this.itemName = itemView.findViewById(R.id.item_name);
@@ -30,6 +29,10 @@ public class RecommendedFoodViewHolder extends RecyclerView.ViewHolder {
 
     public ImageView getItemImage() {
         return this.itemImage;
+    }
+
+    public ImageView getItemFavorite() {
+        return this.itemFavorite;
     }
 
     public TextView getItemCurrency() {
@@ -46,5 +49,9 @@ public class RecommendedFoodViewHolder extends RecyclerView.ViewHolder {
 
     public void setItemImage(int resId) { //TODO: remove
         this.itemImage.setImageResource(resId);
+    }
+
+    public void setItemFavorite(int resId) {
+        this.itemFavorite.setImageResource(resId);
     }
 }

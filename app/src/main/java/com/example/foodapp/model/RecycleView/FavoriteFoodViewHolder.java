@@ -11,21 +11,26 @@ import com.example.foodapp.R;
 
 public class FavoriteFoodViewHolder extends RecyclerView.ViewHolder {
 
+    private ImageView itemFavorite;
     private ImageView itemImage;
     private TextView itemCurrency;
     private TextView itemPrice;
     private TextView itemName;
 
-    private ImageView itemFavorite; //TODO: remove?
     private ImageView itemShoppingBasket; //TODO: remove?
 
     public FavoriteFoodViewHolder(@NonNull View itemView) {
         super(itemView);
 
+        this.itemFavorite = itemView.findViewById(R.id.item_favorite);
         this.itemImage = itemView.findViewById(R.id.item_image);
         this.itemCurrency = itemView.findViewById(R.id.item_currency);
         this.itemPrice = itemView.findViewById(R.id.item_price);
         this.itemName = itemView.findViewById(R.id.item_name);
+    }
+
+    public ImageView getItemFavorite() {
+        return this.itemFavorite;
     }
 
     public ImageView getItemImage() {
@@ -42,6 +47,10 @@ public class FavoriteFoodViewHolder extends RecyclerView.ViewHolder {
 
     public TextView getItemName() {
         return this.itemName;
+    }
+
+    public void setItemFavoriteImage(final int resId) {
+        this.itemFavorite.setImageResource(resId);
     }
 
     public void setItemCurrency(final TextView itemCurrency) {

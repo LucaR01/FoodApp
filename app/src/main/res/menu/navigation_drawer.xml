@@ -5,8 +5,8 @@
             android:title="@string/home"
             android:icon="@drawable/ic_baseline_home_24"
             />
-        <item android:id="@+id/nav_drawer_foods"
-            android:title="@string/foods"
+        <item android:id="@+id/nav_drawer_favorite_foods"
+            android:title="@string/favorite_foods"
             android:icon="@drawable/ic_baseline_food_bank_24"
             />
     </group>

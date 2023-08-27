@@ -31,6 +31,7 @@ public class FoodDetailsActivity extends AppCompatActivity {
 
     private Button addToCartButton;
 
+    private ImageView foodFavorite;
     private ImageView backArrowImageView;
     private ImageView foodImageView;
 
@@ -49,25 +50,51 @@ public class FoodDetailsActivity extends AppCompatActivity {
 
         setOnBackPressedArrow();
 
-        //getIntent().getBooleanExtra("foodDetailFavorite", false); //TODO: uncomment and if
+        this.foodName.setText(getIntent().getStringExtra("foodDetailNameTextView")); //TODO: item_name?
+        this.foodPrice.setText(getIntent().getStringExtra("foodDetailPriceTextView")); //TODO: item_price?
+        this.foodCurrency.setText(getIntent().getStringExtra("foodDetailCurrencyTextView"));
+        this.foodIngredients.setText("SAMPLE TEXT"); //TODO: Update
+        this.foodImageView.setImageResource(getIntent().getIntExtra("foodDetailImageView", R.drawable.southfin_bowls_chicken)); //TODO: update R.drawable?; //TODO: item_image?
 
-        foodName.setText(getIntent().getStringExtra("foodDetailNameTextView")); //TODO: item_name?
-        foodPrice.setText(getIntent().getStringExtra("foodDetailPriceTextView")); //TODO: item_price?
-        foodCurrency.setText(getIntent().getStringExtra("foodDetailCurrencyTextView"));
-        foodIngredients.setText("SAMPLE TEXT"); //TODO: Update
-        foodImageView.setImageResource(getIntent().getIntExtra("foodDetailImageView", R.drawable.southfin_bowls_chicken)); //TODO: update R.drawable?; //TODO: item_image?
+        this.counterTextView.setText(String.valueOf(this.counter)); //TODO: remove?
 
-        //TODO: do the rest.
-
-        counterTextView.setText(String.valueOf(counter)); //TODO: remove?
-
-        addFloatingActionButton.setOnClickListener(view -> {
-            counterTextView.setText(String.valueOf(++counter));
+        this.addFloatingActionButton.setOnClickListener(view -> {
+            this.counterTextView.setText(String.valueOf(++this.counter));
         });
 
-        removeFloatingActionButton.setOnClickListener(view -> {
-            counterTextView.setText(counter > 1 ? String.valueOf(--counter) : String.valueOf(counter));
+        this.removeFloatingActionButton.setOnClickListener(view -> {
+            this.counterTextView.setText(this.counter > 1 ? String.valueOf(--this.counter) : String.valueOf(this.counter));
         });
+
+        // Qui per verificare se era già stato favorito.
+        //TODO: mettere in una funzione.
+        if(getIntent().getBooleanExtra("foodDetailFavorite", false)) {
+            this.foodFavorite.setImageResource(R.drawable.red_heart2);
+            this.foodFavorite.setTag("new_image");
+            //TODO: aggiungere al database.
+        } else {
+            this.foodFavorite.setImageResource(R.drawable.heart);
+            this.foodFavorite.setTag("initial_image");
+            //TODO: rimuovere  dal database.
+        }
+
+        //this.food = retrieveFood();
+
+        // Questo per poterlo cliccare nel FoodDetail
+        //TODO: uncomment/remove? perché poi va sincronizzato quando torni indietro.
+        /*this.foodFavorite.setOnClickListener(view -> {
+            if (this.foodFavorite.getTag() == null || this.foodFavorite.getTag().equals("initial_image")) {
+                this.foodFavorite.setImageResource(R.drawable.red_heart2);
+                this.foodFavorite.setTag("new_image");
+                this.food.setFavorite(true);
+                //TODO: aggiungere al database.
+            } else {
+                this.foodFavorite.setImageResource(R.drawable.heart);
+                this.foodFavorite.setTag("initial_image");
+                this.food.setFavorite(false);
+                //TODO: rimuovere  dal database.
+            }
+        });*/
 
         addToCart();
     }
@@ -81,7 +108,7 @@ public class FoodDetailsActivity extends AppCompatActivity {
     private void addToCart() {
         addToCartButton.setOnClickListener(view -> {
             System.out.println("Counter: " + counter); //TODO: remove; use logger
-            getFoodDatabase().foodDAO().insertFood(retrieveFood());
+            getFoodDatabase().foodDAO().insertFood(retrieveFood()); //TODO: prima era retrieveFood(); this.food
 
             AlertDialog.Builder builder = new AlertDialog.Builder(FoodDetailsActivity.this);
             builder.setTitle("Success");
@@ -109,6 +136,7 @@ public class FoodDetailsActivity extends AppCompatActivity {
 
         this.addToCartButton = findViewById(R.id.foodDetailAddToCartButton);
 
+        this.foodFavorite = findViewById(R.id.foodDetailFavoriteImageView);
         this.backArrowImageView = findViewById(R.id.foodDetailBackImageView);
         this.foodImageView = findViewById(R.id.foodDetailImageView);
     }
@@ -121,9 +149,13 @@ public class FoodDetailsActivity extends AppCompatActivity {
         //TODO: recuperare isFavorite in base all'id dell'immagine.
         //TODO: recuperare la categoria.
         this.food = new Food(this.foodName.getText().toString(), Category.UNSPECIFIED, Integer.parseInt(this.counterTextView.getText().toString()),
-                this.foodCurrency.getText().toString(), this.foodPrice.getText().toString(), false, this.foodImageView.getId());
+                this.foodCurrency.getText().toString(), this.foodPrice.getText().toString(), !this.foodFavorite.getTag().equals("new_image"), this.foodImageView.getId());
         return food;
     }
 
+    //TODO:
+    private void setFoodFavorite() {
+
+    }
 
 }

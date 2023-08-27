@@ -35,7 +35,7 @@ public class RecommendedFoodAdapter extends RecyclerView.Adapter<RecommendedFood
     @NonNull
     @Override
     public RecommendedFoodViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new RecommendedFoodViewHolder(LayoutInflater.from(context).inflate(R.layout.food_item, parent, false));
+        return new RecommendedFoodViewHolder(LayoutInflater.from(this.context).inflate(R.layout.food_item, parent, false));
     }
 
     @Override
@@ -57,10 +57,12 @@ public class RecommendedFoodAdapter extends RecyclerView.Adapter<RecommendedFood
                 holder.getItemFavorite().setImageResource(R.drawable.red_heart2);
                 holder.getItemFavorite().setTag("new_image");
                 this.recommendedFoodList.get(position).getRecommendedFood().setFavorite(true);
+                //TODO: aggiungere al database.
             } else {
                 holder.getItemFavorite().setImageResource(R.drawable.heart);
                 holder.getItemFavorite().setTag("initial_image");
                 this.recommendedFoodList.get(position).getRecommendedFood().setFavorite(false);
+                //TODO: rimuovere dal database.
             }
         });
 
@@ -68,7 +70,7 @@ public class RecommendedFoodAdapter extends RecyclerView.Adapter<RecommendedFood
             Intent intent = new Intent(this.context, FoodDetailsActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); //TODO: | FLAG_ACTIVITY_CLEAR_TASK?
             intent.putExtra("foodDetailNameTextView", this.recommendedFoodList.get(holder.getAdapterPosition()).getRecommendedFood().getName()); //TODO: item_name
             intent.putExtra("foodDetailCurrencyTextView", this.recommendedFoodList.get(holder.getAdapterPosition()).getRecommendedFood().getCurrency());
-            //intent.putExtra("foodDetailFavorite", this.recommendedFoodList.get(holder.getAdapterPosition()).getRecommendedFood().isFavorite()); //TODO: uncomment
+            intent.putExtra("foodDetailFavorite", this.recommendedFoodList.get(holder.getAdapterPosition()).getRecommendedFood().isFavorite()); //TODO: uncomment
             intent.putExtra("foodDetailPriceTextView", this.recommendedFoodList.get(holder.getAdapterPosition()).getRecommendedFood().getPrice()); //TODO: item_price
             intent.putExtra("foodDetailImageView", this.recommendedFoodList.get(holder.getAdapterPosition()).getRecommendedFood().getImageUrl()); //TODO: item_image
             this.context.startActivity(intent);

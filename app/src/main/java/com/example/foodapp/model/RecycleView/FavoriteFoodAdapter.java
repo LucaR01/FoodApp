@@ -26,7 +26,7 @@ public class FavoriteFoodAdapter extends RecyclerView.Adapter<FavoriteFoodViewHo
     @NonNull
     @Override
     public FavoriteFoodViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new FavoriteFoodViewHolder(LayoutInflater.from(context).inflate(R.layout.food_item, parent, false)); //TODO: update
+        return new FavoriteFoodViewHolder(LayoutInflater.from(this.context).inflate(R.layout.food_item, parent, false)); //TODO: update
     }
 
     @Override
@@ -36,10 +36,34 @@ public class FavoriteFoodAdapter extends RecyclerView.Adapter<FavoriteFoodViewHo
         holder.getItemName().setText(this.favoriteFoodList.get(position).getName());
         holder.getItemPrice().setText(this.favoriteFoodList.get(position).getPrice());
 
+        // Questo casomai fosse stato già favorito in precedenza.
+        /*if (this.favoriteFoodList.get(position).isFavorite()) {
+            holder.getItemFavorite().setImageResource(R.drawable.red_heart2);
+        } else {
+            holder.getItemFavorite().setImageResource(R.drawable.heart);
+        }
+
+        holder.getItemFavorite().setOnClickListener(view -> {
+            if (holder.getItemFavorite().getTag() == null || holder.getItemFavorite().getTag().equals("initial_image")) {
+                holder.getItemFavorite().setImageResource(R.drawable.red_heart2);
+                holder.getItemFavorite().setTag("new_image");
+                this.favoriteFoodList.get(position).setFavorite(true);
+                //TODO: aggiungere al database.
+            } else {
+                holder.getItemFavorite().setImageResource(R.drawable.heart);
+                holder.getItemFavorite().setTag("initial_image");
+                this.favoriteFoodList.get(position).setFavorite(false);
+                //TODO: rimuovere dal database.
+            }
+        });*/
+
+        setItemFavorite(holder, position); //TODO: remove?
+
         holder.itemView.setOnClickListener(view -> {
             Intent intent = new Intent(this.context, FoodDetailsActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); //TODO: | FLAG_ACTIVITY_CLEAR_TASK?
             intent.putExtra("foodDetailNameTextView", this.favoriteFoodList.get(holder.getAdapterPosition()).getName()); //TODO: item_name?
             intent.putExtra("foodDetailCurrencyTextView", this.favoriteFoodList.get(holder.getAdapterPosition()).getCurrency());
+            intent.putExtra("foodDetailFavorite", this.favoriteFoodList.get(holder.getAdapterPosition()).isFavorite());
             intent.putExtra("foodDetailPriceTextView", this.favoriteFoodList.get(holder.getAdapterPosition()).getPrice()); //TODO: item_price?
             intent.putExtra("foodDetailImageView", this.favoriteFoodList.get(holder.getAdapterPosition()).getImageUrl()); //TODO: item_image?
             this.context.startActivity(intent);
@@ -49,5 +73,29 @@ public class FavoriteFoodAdapter extends RecyclerView.Adapter<FavoriteFoodViewHo
     @Override
     public int getItemCount() {
         return this.favoriteFoodList.size();
+    }
+
+    //TODO: remove?
+    private void setItemFavorite(@NonNull FavoriteFoodViewHolder holder, int position) {
+        // Questo casomai fosse stato già favorito in precedenza.
+        if (this.favoriteFoodList.get(position).isFavorite()) {
+            holder.getItemFavorite().setImageResource(R.drawable.red_heart2);
+        } else {
+            holder.getItemFavorite().setImageResource(R.drawable.heart);
+        }
+
+        holder.getItemFavorite().setOnClickListener(view -> {
+            if (holder.getItemFavorite().getTag() == null || holder.getItemFavorite().getTag().equals("initial_image")) {
+                holder.getItemFavorite().setImageResource(R.drawable.red_heart2);
+                holder.getItemFavorite().setTag("new_image");
+                this.favoriteFoodList.get(position).setFavorite(true);
+                //TODO: aggiungere al database.
+            } else {
+                holder.getItemFavorite().setImageResource(R.drawable.heart);
+                holder.getItemFavorite().setTag("initial_image");
+                this.favoriteFoodList.get(position).setFavorite(false);
+                //TODO: rimuovere dal database.
+            }
+        });
     }
 }

@@ -43,6 +43,7 @@ public class FoodsAdapter extends RecyclerView.Adapter<FoodsViewHolder> {
             Intent intent = new Intent(this.context, FoodDetailsActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); //TODO: | FLAG_ACTIVITY_CLEAR_TASK?
             intent.putExtra("foodDetailNameTextView", this.foodsList.get(holder.getAdapterPosition()).getName());
             intent.putExtra("foodDetailCurrencyTextView", this.foodsList.get(holder.getAdapterPosition()).getCurrency());
+            //intent.putExtra("foodDetailFavorite", this.foodsList.get(holder.getAdapterPosition()).isFavorite()); //TODO: remove, non c'è il cuore in questo.
             intent.putExtra("foodDetailPriceTextView", this.foodsList.get(holder.getAdapterPosition()).getPrice());
             intent.putExtra("foodDetailImageView", this.foodsList.get(holder.getAdapterPosition()).getImageUrl());
             this.context.startActivity(intent);

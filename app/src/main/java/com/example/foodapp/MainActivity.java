@@ -14,6 +14,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -31,6 +32,7 @@ import android.widget.Toast;
 
 import com.example.foodapp.Activities.CartActivity;
 import com.example.foodapp.Activities.CategoryActivity;
+import com.example.foodapp.Activities.FavoriteFoodsActivity;
 import com.example.foodapp.Activities.FoodsActivity;
 import com.example.foodapp.Activities.PrivacyPolicyActivity;
 import com.example.foodapp.Activities.SettingsActivity;
@@ -321,10 +323,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setRecommendedFoodsRecyclerView(recommendedFoodList);
 
         List<FavoriteFood> favoriteFoodList = new ArrayList<>();
-        favoriteFoodList.add(new FavoriteFood("Nuts", Category.NUTS, 3, "$", "4.5", R.drawable.fruit_background)); //TODO: update drawable
-        favoriteFoodList.add(new FavoriteFood("Cereals", Category.CEREALS, 2, "$", "3.0", R.drawable.poke_background)); //TODO: update drawable
+        favoriteFoodList.add(new FavoriteFood("Nuts", Category.NUTS, 3, "$", "4.5", true, R.drawable.fruit_background)); //TODO: update drawable
+        favoriteFoodList.add(new FavoriteFood("Cereals", Category.CEREALS, 2, "$", "3.0", true, R.drawable.poke_background)); //TODO: update drawable
 
-        setFavoriteFoodsRecyclerView(favoriteFoodList); //TODO: uncomment
+        setFavoriteFoodsRecyclerView(favoriteFoodList);
     }
 
     private void initBottomNavigationBar() {
@@ -363,14 +365,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch(item.getItemId()) {
             case R.id.nav_drawer_home:
                 getSupportFragmentManager().beginTransaction().replace(R.id.homeFragment, new HomeFragment()).commit();
+                //TODO: startActivity(new Intent(MainActivity.this, MainActivity.class)); ?
+                //TODO: return true?
                 break;
 
-            case R.id.nav_drawer_foods:
+            case R.id.nav_drawer_favorite_foods:
                 //getSupportFragmentManager().beginTransaction().replace(R.id.foodsFragment, new FoodsFragment()).commit(); //TODO: uncomment || remove
-                startActivity(new Intent(MainActivity.this, FoodsActivity.class));
+                startActivity(new Intent(MainActivity.this, FavoriteFoodsActivity.class)); //TODO: prima era FoodsActivity
                 break;
 
             case R.id.nav_drawer_settings:
+                //TODO: startActivity(new Intent(MainActivity.this, SettingsActivity.class)); ?
                 getSupportFragmentManager().beginTransaction().replace(R.id.settingsFragment, new SettingsFragment()).commit();
                 break;
             case R.id.nav_drawer_privacy:

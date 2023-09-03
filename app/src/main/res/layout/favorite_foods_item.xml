@@ -62,7 +62,32 @@
                     android:ellipsize="end"
                     android:fontFamily="@font/istok_web"
                     android:maxLines="1"
+                    android:text="Category:"
+                    android:textStyle="bold"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/favoriteFoodsItemCategoryTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginStart="3dp"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/istok_web"
+                    android:maxLines="1"
+                    android:text="{Category}"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginStart="6dp"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/istok_web"
+                    android:maxLines="1"
                     android:text="Quantità:"
+                    android:textStyle="bold"
                     android:textSize="14sp" />
 
                 <TextView
@@ -96,7 +121,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/favoriteFoodstemPriceTextView"
+                    android:id="@+id/favoriteFoodsItemPriceTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="4dp"

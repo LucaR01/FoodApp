@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.foodapp.Activities.FoodDetailsActivity;
 import com.example.foodapp.R;
+import com.example.foodapp.model.Databases.FavoriteFoodDatabase.FavoriteFoodDatabase;
 import com.example.foodapp.model.Databases.FoodDatabase.FoodDatabase;
 import com.example.foodapp.model.Food.FavoriteFood;
 
@@ -33,9 +34,9 @@ public class FavoriteFoodsListAdapter extends RecyclerView.Adapter<FavoriteFoods
 
     @Override
     public void onBindViewHolder(@NonNull FavoriteFoodsListViewHolder holder, int position) {
-        holder.getItemImage().setImageResource(this.favoriteFoodsList.get(position).getImageUrl());
+        //holder.getItemImage().setImageResource(this.favoriteFoodsList.get(position).getImageUrl()); //FIXME
         holder.getItemName().setText(this.favoriteFoodsList.get(position).getName());
-        //holder.getItemCategory().setText(this.favoriteFoodsList.get(position).getCategory().toString()); //TODO: uncomment when fixed.
+        holder.getItemCategory().setText(this.favoriteFoodsList.get(position).getCategory().toString());
         holder.getItemQuantity().setText(String.valueOf(this.favoriteFoodsList.get(position).getQuantity()));
         holder.getItemCurrency().setText(this.favoriteFoodsList.get(position).getCurrency());
         holder.getItemPrice().setText(this.favoriteFoodsList.get(position).getPrice());
@@ -51,8 +52,8 @@ public class FavoriteFoodsListAdapter extends RecyclerView.Adapter<FavoriteFoods
         });
 
         holder.itemView.findViewById(R.id.favoriteFoodsDeleteImageView).setOnClickListener(view -> {
-            //FoodDatabase.getDatabaseInstance(holder.itemView.getContext()).foodDAO().deleteFood(this.favoriteFoodsList.get(position).foodId); //TODO: change database
             this.favoriteFoodsList.remove(position);
+            FavoriteFoodDatabase.getDatabaseInstance(this.context).favoriteFoodDAO().deleteFavoriteFood(this.favoriteFoodsList.get(position).foodId);
             notifyItemRemoved(position);
         });
     }

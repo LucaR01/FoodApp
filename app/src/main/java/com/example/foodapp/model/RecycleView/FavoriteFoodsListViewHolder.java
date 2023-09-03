@@ -23,9 +23,10 @@ public class FavoriteFoodsListViewHolder extends RecyclerView.ViewHolder{
 
         this.itemImage = itemView.findViewById(R.id.favoriteFoodsItemImageView);
         this.itemName = itemView.findViewById(R.id.favoriteFoodsItemFoodNameTextView);
+        this.itemCategory = itemView.findViewById(R.id.favoriteFoodsItemCategoryTextView);
         this.itemQuantity = itemView.findViewById(R.id.favoriteFoodsItemQuantityTextView);
         this.itemCurrency = itemView.findViewById(R.id.favoriteFoodsItemCurrencyTextView);
-        this.itemPrice = itemView.findViewById(R.id.favoriteFoodstemPriceTextView);
+        this.itemPrice = itemView.findViewById(R.id.favoriteFoodsItemPriceTextView);
     }
 
     public ImageView getItemImage() {

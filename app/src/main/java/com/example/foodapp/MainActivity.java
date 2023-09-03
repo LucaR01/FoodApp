@@ -41,6 +41,7 @@ import com.example.foodapp.Fragments.FoodsFragment;
 import com.example.foodapp.Fragments.HomeFragment;
 import com.example.foodapp.Fragments.SettingsFragment;
 import com.example.foodapp.model.Category.Category;
+import com.example.foodapp.model.Databases.FavoriteFoodDatabase.FavoriteFoodDatabase;
 import com.example.foodapp.model.Databases.UserDatabase.UserDatabase;
 import com.example.foodapp.model.Food.FavoriteFood;
 import com.example.foodapp.model.Food.Food;
@@ -111,7 +112,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         initRecommendedAndFavoriteFoods();
 
-        initDatabase(); //TODO: remove
+        initUserDatabase(); //TODO: remove
 
         initBottomNavigationBar();
     }
@@ -286,7 +287,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     //TODO: remove
-    private void initDatabase() {
+    private void initUserDatabase() {
         UserDatabase db = UserDatabase.getDatabaseInstance(getApplicationContext());
         /*if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) { //TODO: uncomment or remove?
             User bob = new User("bob", "email@com", "1234", Optional.of(""), Optional.of("")); //Optional.empty()
@@ -326,6 +327,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         favoriteFoodList.add(new FavoriteFood("Nuts", Category.NUTS, 3, "$", "4.5", true, R.drawable.fruit_background)); //TODO: update drawable
         favoriteFoodList.add(new FavoriteFood("Cereals", Category.CEREALS, 2, "$", "3.0", true, R.drawable.poke_background)); //TODO: update drawable
 
+        for(var fav : favoriteFoodList) {
+            FavoriteFoodDatabase.getDatabaseInstance(getApplicationContext()).favoriteFoodDAO().insertFavoriteFood(fav);
+        }
+
         setFavoriteFoodsRecyclerView(favoriteFoodList);
     }
 
@@ -353,7 +358,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     //return true;
                     break;
                 case R.id.bottom_foods:
-                    startActivity(new Intent(MainActivity.this, FoodsActivity.class));
+                    startActivity(new Intent(MainActivity.this, FavoriteFoodsActivity.class)); //TODO: deve essere FoodsActivity.class!
                     break;
             }
             return true;

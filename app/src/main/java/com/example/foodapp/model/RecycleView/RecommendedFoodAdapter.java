@@ -11,18 +11,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.foodapp.Activities.FoodDetailsActivity;
 import com.example.foodapp.R;
+import com.example.foodapp.model.Category.Category;
+import com.example.foodapp.model.Databases.FavoriteFoodDatabase.FavoriteFoodDatabase;
+import com.example.foodapp.model.Food.FavoriteFood;
+import com.example.foodapp.model.Food.Food;
 import com.example.foodapp.model.Food.RecommendedFood;
 
 import java.util.List;
 
-public class RecommendedFoodAdapter extends RecyclerView.Adapter<RecommendedFoodViewHolder> { //TODO: RecommendedFoodAdapter.RecommendedFoodViewHolder; public?
-
-    /*public static final class RecommendedFoodViewHolder extends RecyclerView.ViewHolder {
-
-        public RecommendedFoodViewHolder(@NonNull View itemView) {
-            super(itemView);
-        }
-    }*/
+public class RecommendedFoodAdapter extends RecyclerView.Adapter<RecommendedFoodViewHolder> {
 
     private Context context;
     private List<RecommendedFood> recommendedFoodList;
@@ -45,11 +42,16 @@ public class RecommendedFoodAdapter extends RecyclerView.Adapter<RecommendedFood
         holder.getItemCurrency().setText(this.recommendedFoodList.get(position).getRecommendedFood().getCurrency());
         holder.getItemPrice().setText(this.recommendedFoodList.get(position).getRecommendedFood().getPrice());
 
+        final FavoriteFood favoriteFood = new FavoriteFood(holder.getItemName().getText().toString(), Category.NONE, 1, holder.getItemCurrency().getText().toString(),
+                holder.getItemPrice().getText().toString(), false, holder.getItemImage().getId()); //TODO: category e quantity.
+
         // Questo casomai fosse stato già favorito in precedenza.
         if (this.recommendedFoodList.get(position).getRecommendedFood().isFavorite()) {
             holder.getItemFavorite().setImageResource(R.drawable.red_heart2);
+            favoriteFood.setFavorite(true);
         } else {
             holder.getItemFavorite().setImageResource(R.drawable.heart);
+            favoriteFood.setFavorite(false);
         }
 
         holder.getItemFavorite().setOnClickListener(view -> {
@@ -57,12 +59,12 @@ public class RecommendedFoodAdapter extends RecyclerView.Adapter<RecommendedFood
                 holder.getItemFavorite().setImageResource(R.drawable.red_heart2);
                 holder.getItemFavorite().setTag("new_image");
                 this.recommendedFoodList.get(position).getRecommendedFood().setFavorite(true);
-                //TODO: aggiungere al database.
+                retrieveFavoriteFoodsDatabase().favoriteFoodDAO().insertFavoriteFood(favoriteFood);
             } else {
                 holder.getItemFavorite().setImageResource(R.drawable.heart);
                 holder.getItemFavorite().setTag("initial_image");
                 this.recommendedFoodList.get(position).getRecommendedFood().setFavorite(false);
-                //TODO: rimuovere dal database.
+                retrieveFavoriteFoodsDatabase().favoriteFoodDAO().deleteFavoriteFood(favoriteFood.foodId);
             }
         });
 
@@ -81,5 +83,9 @@ public class RecommendedFoodAdapter extends RecyclerView.Adapter<RecommendedFood
     @Override
     public int getItemCount() {
         return this.recommendedFoodList.size();
+    }
+
+    private FavoriteFoodDatabase retrieveFavoriteFoodsDatabase() {
+        return FavoriteFoodDatabase.getDatabaseInstance(this.context);
     }
 }

@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.foodapp.model.Databases.FavoriteFoodDatabase.FavoriteFoodDatabase;
 import com.example.foodapp.model.Databases.UserDatabase.UserDatabase;
 import com.example.foodapp.model.Users.Client.Client;
 import com.example.foodapp.model.Users.Restaurant.Restaurant;
@@ -72,7 +73,7 @@ public class WelcomeActivity extends AppCompatActivity {
         this.joinUsButton.setOnClickListener(view -> startActivity(new Intent(WelcomeActivity.this, LoginActivity.class)));
     }
 
-    //TODO: remove
+    //TODO: remove; solo per testing.
     private void initDatabase() {
         UserDatabase db = UserDatabase.getDatabaseInstance(getApplicationContext());
 
@@ -86,5 +87,8 @@ public class WelcomeActivity extends AppCompatActivity {
         for(final User user : userList) {
             Log.d("users", user.getUsername() + " " + user.getEmail() + " " + user.getPassword());
         }
+
+        // FAVORITE FOODS DATABASE //TODO: remove
+        FavoriteFoodDatabase.getDatabaseInstance(getApplicationContext()).favoriteFoodDAO().deleteAllFavoriteFoods(); //TODO: remove; solo per testing;
     }
 }

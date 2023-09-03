@@ -9,6 +9,7 @@ import android.widget.ImageView;
 
 import com.example.foodapp.R;
 import com.example.foodapp.model.Category.Category;
+import com.example.foodapp.model.Databases.FavoriteFoodDatabase.FavoriteFoodDatabase;
 import com.example.foodapp.model.Food.FavoriteFood;
 import com.example.foodapp.model.Food.Food;
 import com.example.foodapp.model.RecycleView.FavoriteFoodsListAdapter;
@@ -49,11 +50,14 @@ public class FavoriteFoodsActivity extends AppCompatActivity {
         });
     }
 
+    //TODO: recuperare dal database?
     private void initList() {
-        List<FavoriteFood> favoriteFoodsList = new ArrayList<>(Arrays.asList(
+        List<FavoriteFood> favoriteFoodsList = retrieveFavoriteFoodsDatabase().favoriteFoodDAO().getFavoriteFoods();
+
+        /*List<FavoriteFood> favoriteFoodsList = new ArrayList<>(Arrays.asList(
                 new FavoriteFood("Salad", Category.SALAD, 1, "$", "7.00", true, R.drawable.salad_background),
                 new FavoriteFood("Salad 2", Category.SALAD, 2, "$", "6.50", true, R.drawable.salad_background)
-        ));
+        ));*/ //TODO: remove
 
         setFavoriteFoodsRecyclerView(favoriteFoodsList);
     }
@@ -64,5 +68,9 @@ public class FavoriteFoodsActivity extends AppCompatActivity {
         this.favoriteFoodsRecyclerView.setLayoutManager(layoutManager);
         this.favoriteFoodsListAdapter = new FavoriteFoodsListAdapter(this, favoriteFoodsList);
         this.favoriteFoodsRecyclerView.setAdapter(this.favoriteFoodsListAdapter);
+    }
+
+    private FavoriteFoodDatabase retrieveFavoriteFoodsDatabase() {
+        return FavoriteFoodDatabase.getDatabaseInstance(getApplicationContext());
     }
 }

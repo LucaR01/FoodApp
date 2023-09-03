@@ -1,6 +1,7 @@
 package com.example.foodapp.Fragments;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -18,6 +19,8 @@ import com.example.foodapp.Activities.PrivacyPolicyActivity;
 import com.example.foodapp.Activities.TermsAndConditionsActivity;
 import com.example.foodapp.R;
 
+import java.util.Objects;
+
 public class SettingsFragment extends PreferenceFragmentCompat {
 
     @Override
@@ -25,16 +28,30 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         setPreferencesFromResource(R.xml.preferences, rootKey);
 
         Preference themePreference = findPreference("theme_preference");
-        themePreference.setOnPreferenceChangeListener(((preference, newValue) -> {
+
+        //TODO: remove commented code?
+        /*themePreference.setOnPreferenceChangeListener(((preference, newValue) -> {
             boolean isDarkThemeEnabled = (boolean) newValue;
 
             if (isDarkThemeEnabled) {
-                getContext().setTheme(R.style.Theme_FoodApp_Dark);
+                requireActivity().setTheme(R.style.Theme_FoodApp_Dark);
             } else {
-                getContext().setTheme(R.style.Theme_FoodApp);
+                requireActivity().setTheme(R.style.Theme_FoodApp);
             }
 
             getActivity().recreate(); // Recreate the activity to apply the new theme
+            return true;
+        }));*/
+
+        themePreference.setOnPreferenceChangeListener(((preference, newValue) -> {
+            boolean isDarkThemeEnabled = (boolean) newValue;
+
+            // Store the theme choice in shared preferences
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(requireContext());
+            preferences.edit().putBoolean("is_dark_theme_enabled", isDarkThemeEnabled).apply();
+
+            requireActivity().recreate();
+
             return true;
         }));
 

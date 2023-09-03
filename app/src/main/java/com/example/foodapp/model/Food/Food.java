@@ -46,10 +46,6 @@ public class Food {
         this.imageUrl = imageUrl;
     }
 
-    /*public final int getFoodId() { //TODO: remove foodId è public.
-        return this.foodId;
-    }*/
-
     public final String getName() {
         return this.name;
     }

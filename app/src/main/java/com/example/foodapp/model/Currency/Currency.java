@@ -11,6 +11,8 @@ public enum Currency {
         this.currency = currency;
     }
 
+    //TODO: getCurrency e toString sono uguali, remove one of the two!
+
     public final String getCurrency() {
         return this.currency;
     }
@@ -19,5 +21,7 @@ public enum Currency {
     public String toString() {
         return this.currency;
     }
+
+    public static final Currency DEFAULT_CURRENCY = Currency.USD;
 
 }

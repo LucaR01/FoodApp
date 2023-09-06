@@ -30,6 +30,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.foodapp.Activities.AboutActivity;
 import com.example.foodapp.Activities.CartActivity;
 import com.example.foodapp.Activities.CategoryActivity;
 import com.example.foodapp.Activities.FavoriteFoodsActivity;
@@ -41,6 +42,7 @@ import com.example.foodapp.Fragments.FoodsFragment;
 import com.example.foodapp.Fragments.HomeFragment;
 import com.example.foodapp.Fragments.SettingsFragment;
 import com.example.foodapp.model.Category.Category;
+import com.example.foodapp.model.Currency.Currency;
 import com.example.foodapp.model.Databases.FavoriteFoodDatabase.FavoriteFoodDatabase;
 import com.example.foodapp.model.Databases.UserDatabase.UserDatabase;
 import com.example.foodapp.model.Food.FavoriteFood;
@@ -81,6 +83,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private BottomNavigationView bottomNavigationView;
 
     private TextView username;
+    private TextView navDrawerUsername;
+    private TextView navDrawerCurrency;
+    private TextView navDrawerBalance;
     private ImageView shoppingCart;
 
     private ImageView pokeImageView;
@@ -126,8 +131,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         this.navigationView = findViewById(R.id.navigation_drawer);
         this.navDrawerMenuImageView = findViewById(R.id.nav_menu_imageView);
 
+        final String usernameText =  getIntent().getStringExtra("username");
+
+        this.navDrawerUsername = findViewById(R.id.navDrawerHeaderUsername);
+        this.navDrawerUsername.setText(usernameText);
+
+        this.navDrawerCurrency = findViewById(R.id.navDrawerHeaderCurrency);
+        this.navDrawerCurrency.setText(Currency.DEFAULT_CURRENCY.toString());
+
+        this.navDrawerBalance = findViewById(R.id.navDrawerHeaderBalance);
+        this.navDrawerBalance.setText(getIntent().getStringExtra("balance"));
+
         this.username = findViewById(R.id.username);
-        this.username.setText(getIntent().getStringExtra("username"));
+        this.username.setText(usernameText);
 
         this.shoppingCart = findViewById(R.id.shopping_cart);
 
@@ -179,22 +195,38 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         this.navigationView.setNavigationItemSelectedListener(this);
 
         //TODO: uncomment
-        drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
-        drawerLayout.addDrawerListener(drawerToggle);
-        drawerToggle.syncState();
+        this.drawerToggle = new ActionBarDrawerToggle(this, this.drawerLayout, R.string.open, R.string.close);
+        this.drawerLayout.addDrawerListener(this.drawerToggle);
+        this.drawerToggle.syncState();
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true); //TODO: uncomment maybe.
 
         //TODO: fix
-        navDrawerMenuImageView.setOnClickListener(listener -> {
+        /*navDrawerMenuImageView.setOnClickListener(listener -> {
             //drawerLayout.addDrawerListener(drawerToggle);
-            drawerToggle.syncState(); //TODO: remove?
+            this.drawerToggle.syncState(); //TODO: remove?
 
-            if(drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            if(this.drawerLayout.isDrawerOpen(GravityCompat.START)) {
                 //drawerLayout.closeDrawer(GravityCompat.START, false);
             } else {
-                drawerLayout.openDrawer(GravityCompat.START, false);
+                this.drawerLayout.openDrawer(GravityCompat.START, false);
+            }
+        });*/
+
+        this.navDrawerMenuImageView.setOnClickListener(view -> {
+            if (!this.drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                this.drawerLayout.openDrawer(GravityCompat.START);
             }
         });
+
+        View rootView = findViewById(android.R.id.content); // Get the root view of your activity
+
+        rootView.setOnClickListener(view -> {
+            if (this.drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                this.drawerLayout.closeDrawer(GravityCompat.START);
+            }
+        });
+
+
 
         //TODO: remove, c'è la funzione sotto.
         /*this.navigationView.setNavigationItemSelectedListener(item -> {
@@ -205,13 +237,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     //drawerLayout.closeDrawer(GravityCompat.START, false); //TODO: remove
                     //TODO: spostare nella pagina selezionata.
                     break;
-                case R.id.nav_drawer_foods:
+                case R.id.nav_drawer_favorite_foods:
                     Toast.makeText(MainActivity.this, "Foods Page selected", Toast.LENGTH_LONG).show();
                     System.out.println("Foods!"); //TODO: remove
                     //drawerLayout.closeDrawers(); //TODO: remove
                     //TODO: spostare nella pagina selezionata.
                     break;
-                case R.id.settings:
+                case R.id.nav_drawer_settings:
                     Toast.makeText(MainActivity.this, "Settings selected", Toast.LENGTH_LONG).show();
                     startActivity(new Intent(MainActivity.this, SettingsActivity.class));
                     //TODO: spostare nella pagina selezionata.
@@ -302,8 +334,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }*/
 
         //TODO: remove
-        User bob = new Client("bob", "email@example.com", "1234"); //Optional.empty(); new User
-        User veganRestaurant = new Restaurant("restaurant", "vegan@example.com", "a56789b"); // new Restaurant
+        User bob = new Client("bob", "email@example.com", "1234", 0.0); //Optional.empty(); new User
+        User veganRestaurant = new Restaurant("restaurant", "vegan@example.com", "a56789b", 0.0); // new Restaurant
 
         db.userDAO().insertList(bob, veganRestaurant);
 
@@ -358,7 +390,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     //return true;
                     break;
                 case R.id.bottom_foods:
-                    startActivity(new Intent(MainActivity.this, FavoriteFoodsActivity.class)); //TODO: deve essere FoodsActivity.class!
+                    startActivity(new Intent(MainActivity.this, AboutActivity.class)); //TODO: deve essere FoodsActivity.class!
                     break;
             }
             return true;
@@ -369,25 +401,35 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()) {
             case R.id.nav_drawer_home:
+                Log.d("Navigation", "Home clicked");
                 getSupportFragmentManager().beginTransaction().replace(R.id.homeFragment, new HomeFragment()).commit();
                 //TODO: startActivity(new Intent(MainActivity.this, MainActivity.class)); ?
                 //TODO: return true?
                 break;
 
             case R.id.nav_drawer_favorite_foods:
+                Log.d("Navigation", "Favorite Foods");
                 //getSupportFragmentManager().beginTransaction().replace(R.id.foodsFragment, new FoodsFragment()).commit(); //TODO: uncomment || remove
                 startActivity(new Intent(MainActivity.this, FavoriteFoodsActivity.class)); //TODO: prima era FoodsActivity
                 break;
 
+            case R.id.nav_drawer_about:
+                Log.d("Navigation", "About");
+                startActivity(new Intent(MainActivity.this, AboutActivity.class));
+                break;
+
             case R.id.nav_drawer_settings:
+                Log.d("Navigation", "Settings");
                 //TODO: startActivity(new Intent(MainActivity.this, SettingsActivity.class)); ?
                 getSupportFragmentManager().beginTransaction().replace(R.id.settingsFragment, new SettingsFragment()).commit();
                 break;
             case R.id.nav_drawer_privacy:
+                Log.d("Navigation", "Privacy Policy");
                 //getSupportFragmentManager().beginTransaction().replace(R.id.settingsFragment, new PrivacyPolicyFragment()).commit(); //TODO: uncomment when ready.
                 startActivity(new Intent(MainActivity.this, PrivacyPolicyActivity.class));
                 break;
             case R.id.nav_drawer_terms_and_conditions:
+                Log.d("Navigation", "Terms & Conditions");
                 //getSupportFragmentManager().beginTransaction().replace(R.id.settingsFragment, new TermsAndConditionsFragment()).commit(); //TODO: uncomment when ready.
                 startActivity(new Intent(MainActivity.this, TermsAndConditionsActivity.class));
                 break;

@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.foodapp.model.Databases.FavoriteFoodDatabase.FavoriteFoodDatabase;
+import com.example.foodapp.model.Databases.FoodDatabase.FoodDatabase;
 import com.example.foodapp.model.Databases.UserDatabase.UserDatabase;
 import com.example.foodapp.model.Users.Client.Client;
 import com.example.foodapp.model.Users.Restaurant.Restaurant;
@@ -76,10 +77,13 @@ public class WelcomeActivity extends AppCompatActivity {
     //TODO: remove; solo per testing.
     private void initDatabase() {
         UserDatabase db = UserDatabase.getDatabaseInstance(getApplicationContext());
+        db.userDAO().deleteAll(); //TODO: remove, just for testing.
+
+        FoodDatabase.getDatabaseInstance(getApplicationContext()).foodDAO().deleteAllFoods(); //TODO: remove, just for testing.
 
         //TODO: remove
-        User bob = new Client("bob", "email@example.com", "1234"); //Optional.empty(); new User
-        User veganRestaurant = new Restaurant("restaurant", "vegan@example.com", "a56789b"); // new Restaurant
+        User bob = new Client("bob", "email@example.com", "1234", 0.0); //Optional.empty(); new User
+        User veganRestaurant = new Restaurant("restaurant", "vegan@example.com", "a56789b", 0.0); // new Restaurant
 
         db.userDAO().insertList(bob, veganRestaurant);
 

@@ -85,7 +85,7 @@ public class CartActivity extends AppCompatActivity {
         //TODO: remove; only for test.
         for(var c : this.cartFoodList) {
             Log.d("cartFood name: ", c.getName() + " quantity: " + c.getQuantity() + " price: " + c.getPrice() + " category: " + c.getCategory().toString()
-                    + " img: " + c.getImageUrl() + " currency: " + c.getCurrency());
+                    + " img: " + c.getImageResourceId() + " currency: " + c.getCurrency());
         }
     }
 

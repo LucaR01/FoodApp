@@ -23,16 +23,20 @@ public class User {
     @ColumnInfo(name = "password")
     private String password;
 
+    @ColumnInfo(name = "balance")
+    private double balance;
+
     /*@ColumnInfo(name = "name")
     private String name;
 
     @ColumnInfo(name = "surname")
     private String surname;*/
 
-    public User(final String username, final String email, final String password) { //TODO: final Optional<String> name, final Optional<String> surname
+    public User(final String username, final String email, final String password, final double balance) { //TODO: final Optional<String> name, final Optional<String> surname
         this.username = username;
         this.email = email;
         this.password = password;
+        this.balance = balance;
 
         /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             this.name = name.orElse(User.EMPTY_STRING);
@@ -40,20 +44,20 @@ public class User {
         }*/
     }
 
-    public int getUserId() {
-        return userId;
-    }
-
     public String getUsername() {
-        return username;
+        return this.username;
     }
 
     public String getEmail() {
-        return email;
+        return this.email;
     }
 
     public String getPassword() {
-        return password;
+        return this.password;
+    }
+
+    public double getBalance() {
+        return this.balance;
     }
 
     /*public String getName() {

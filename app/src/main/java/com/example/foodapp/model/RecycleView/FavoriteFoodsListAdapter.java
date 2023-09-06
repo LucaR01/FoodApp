@@ -34,7 +34,7 @@ public class FavoriteFoodsListAdapter extends RecyclerView.Adapter<FavoriteFoods
 
     @Override
     public void onBindViewHolder(@NonNull FavoriteFoodsListViewHolder holder, int position) {
-        //holder.getItemImage().setImageResource(this.favoriteFoodsList.get(position).getImageUrl()); //FIXME
+        //holder.getItemImage().setImageResource(this.favoriteFoodsList.get(position).getImageResourceId()); //FIXME
         holder.getItemName().setText(this.favoriteFoodsList.get(position).getName());
         holder.getItemCategory().setText(this.favoriteFoodsList.get(position).getCategory().toString());
         holder.getItemQuantity().setText(String.valueOf(this.favoriteFoodsList.get(position).getQuantity()));
@@ -47,7 +47,7 @@ public class FavoriteFoodsListAdapter extends RecyclerView.Adapter<FavoriteFoods
             intent.putExtra("foodDetailCurrencyTextView", this.favoriteFoodsList.get(holder.getAdapterPosition()).getCurrency());
             intent.putExtra("foodDetailFavorite", this.favoriteFoodsList.get(holder.getAdapterPosition()).isFavorite()); //TODO: uncomment
             intent.putExtra("foodDetailPriceTextView", this.favoriteFoodsList.get(holder.getAdapterPosition()).getPrice());
-            intent.putExtra("foodDetailImageView", this.favoriteFoodsList.get(holder.getAdapterPosition()).getImageUrl());
+            intent.putExtra("foodDetailImageView", this.favoriteFoodsList.get(holder.getAdapterPosition()).getImageResourceId());
             this.context.startActivity(intent);
         });
 

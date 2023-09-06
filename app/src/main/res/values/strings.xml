@@ -23,4 +23,9 @@
     <string name="privacy">Privacy</string>
     <string name="terms_and_conditions"><![CDATA[Terms & Conditions]]></string>
     <string name="favorite_foods">Favorite Foods</string>
+    <string name="balance">Balance:</string>
+    <string name="currency">{Currency}</string>
+    <string name="balance_value">{Balance}</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="send_feedback">Send Feedback</string>
 </resources>

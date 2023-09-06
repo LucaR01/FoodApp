@@ -11,7 +11,7 @@ import com.example.foodapp.model.Food.Food;
 
 import java.util.Objects;
 
-@Database(entities = {Food.class}, version = 1)
+@Database(entities = {Food.class}, version = 2)
 public abstract class FoodDatabase extends RoomDatabase {
 
     public abstract FoodDAO foodDAO();
@@ -24,6 +24,7 @@ public abstract class FoodDatabase extends RoomDatabase {
             if(Objects.isNull(FoodDatabase.INSTANCE)) {
                 FoodDatabase.INSTANCE = Room.databaseBuilder(context.getApplicationContext(), FoodDatabase.class, FoodDatabase.DATABASE_NAME)
                         .allowMainThreadQueries() //TODO: remove .allowMainThreadQueries()?
+                        .fallbackToDestructiveMigration()
                         .build();
             }
         }

@@ -16,7 +16,7 @@ import com.example.foodapp.model.Food.Food;
 
 import java.util.Objects;
 
-@Database(entities = {Food.class}, version = 1)
+@Database(entities = {Food.class}, version = 2)
 public abstract class FavoriteFoodDatabase extends RoomDatabase {
 
     public abstract FavoriteFoodDAO favoriteFoodDAO();
@@ -29,6 +29,7 @@ public abstract class FavoriteFoodDatabase extends RoomDatabase {
             if(Objects.isNull(FavoriteFoodDatabase.INSTANCE)) {
                 FavoriteFoodDatabase.INSTANCE = Room.databaseBuilder(context.getApplicationContext(), FavoriteFoodDatabase.class, FavoriteFoodDatabase.DATABASE_NAME)
                         .allowMainThreadQueries() //TODO: remove .allowMainThreadQueries()?
+                        .fallbackToDestructiveMigration()
                         .build();
             }
         }

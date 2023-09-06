@@ -22,4 +22,9 @@
     <string name="terms_and_conditions"><![CDATA[Termini & Condizioni]]></string>
     <string name="hello_blank_fragment">Ciao frammento vuoto</string>
     <string name="favorite_foods">Pietanze Preferite</string>
+    <string name="balance">Saldo:</string>
+    <string name="currency">{Valuta}</string>
+    <string name="balance_value">{Saldo Conto}</string>
+    <string name="privacy_policy">Norme sulla Privacy</string>
+    <string name="send_feedback">Invia Feedback</string>
 </resources>

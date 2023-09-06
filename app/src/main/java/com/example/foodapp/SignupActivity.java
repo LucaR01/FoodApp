@@ -26,6 +26,7 @@ public class SignupActivity extends AppCompatActivity {
 
     private static final String EMPTY_STRING = ""; //TODO: move/remove
     private static final String CLIENT = "Client"; //TODO: move/remove
+    private static final double NO_BALANCE = 0.0; //TODO: move/remove
 
     private TextView loginLinkTextView;
     private Button signupButton;
@@ -35,7 +36,7 @@ public class SignupActivity extends AppCompatActivity {
     private EditText passwordEditText;
     private EditText confirmPasswordEditText;
 
-    private RadioGroup radioGroup;
+    //private RadioGroup radioGroup; //TODO: remove
     //private RadioButton clientRadioButton; //TODO: remove
     //private RadioButton restaurantRadioButton; //TODO: remove
 
@@ -46,9 +47,11 @@ public class SignupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        initView();
+        initView(); //TODO: uncomment?
 
-        signup();
+        //initView2(); //TODO: remove
+
+        signup(); //TODO: uncomment
 
         onLoginLinkClickListener();
 
@@ -63,9 +66,19 @@ public class SignupActivity extends AppCompatActivity {
         this.passwordEditText = findViewById(R.id.signup_password_editText);
         this.confirmPasswordEditText = findViewById(R.id.signup_confirm_password_editText);
 
-        this.radioGroup = findViewById(R.id.signup_radioButton);
+        //this.radioGroup = findViewById(R.id.signup_radioButton);
         /*this.clientRadioButton = findViewById(R.id.client_radioButton);
         this.restaurantRadioButton = findViewById(R.id.restaurant_radioButton);*/
+    }
+
+    //TODO: remove
+    private void initView2() {
+        this.loginLinkTextView = findViewById(R.id.signin_link_textView2);
+        this.signupButton = findViewById(R.id.signup_button2);
+        this.usernameEditText = findViewById(R.id.signup_username_editText2);
+        this.emailEditText = findViewById(R.id.signup_email_editText2);
+        this.passwordEditText = findViewById(R.id.signup_password_editText2);
+        this.confirmPasswordEditText = findViewById(R.id.signup_confirm_password_editText2);
     }
 
     private void signup() {
@@ -78,10 +91,16 @@ public class SignupActivity extends AppCompatActivity {
                         return;
                     }*/
 
-                    int selectedId = radioGroup.getCheckedRadioButtonId();
-                    this.selectedRadioButton = findViewById(selectedId);
+                    //int selectedId = radioGroup.getCheckedRadioButtonId();
+                    //this.selectedRadioButton = findViewById(selectedId);
 
-                    if(selectedId != 1) {
+                    final UserDatabase db = UserDatabase.getDatabaseInstance(getApplicationContext());
+                    Client client = new Client(this.usernameEditText.getText().toString(), this.emailEditText.getText().toString(), this.passwordEditText.getText().toString(), 0.0);
+                    db.userDAO().insertUser(client);
+
+                    startActivity(new Intent(SignupActivity.this, MainActivity.class));
+
+                    /*if(selectedId != 1) {
                         Log.d("[RADIOS]", "selected index: " + selectedId + " radioSelected: " + selectedRadioButton.getId());
                         Log.d("[RADIOS]", "selectedRadioButton.getText(): " + selectedRadioButton.getText().toString());
                         final UserDatabase db = UserDatabase.getDatabaseInstance(getApplicationContext());
@@ -96,7 +115,7 @@ public class SignupActivity extends AppCompatActivity {
                             db.userDAO().insertUser(restaurant);
                         }
                         startActivity(new Intent(SignupActivity.this, MainActivity.class));
-                    }
+                    }*/
                 }
             }
         });

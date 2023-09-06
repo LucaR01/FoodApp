@@ -1,28 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="240dp"
+    android:layout_height="120dp"
     android:padding="18dp"
     android:orientation="vertical"
     android:background="@drawable/ic_healthy_food_welcome_screen_background1"
     android:gravity="bottom">
 
+    <!-- TODO: prima era layout_height="240dp" ma era troppo grande. -->
+
     <TextView
         android:id="@+id/navDrawerHeaderUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="{Nome utente}"
-        android:textColor="#FFFF"
+        android:text="@string/username"
+        android:textColor="?colorOnPrimary"
         android:textSize="30sp"
         android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/navDrawerHeaderBalance"
-        android:layout_width="wrap_content"
+    <!-- TODO: Aggiungere Currency, e scritta "Saldo:" -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="{Saldo Conto?}"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:textColor="#FFFF" />
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/balance"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="?colorOnPrimary" />
+
+        <TextView
+            android:id="@+id/navDrawerHeaderCurrency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/currency"
+            android:layout_marginStart="3dp"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="?colorOnPrimary" />
+
+        <TextView
+            android:id="@+id/navDrawerHeaderBalance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/balance_value"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="?colorOnPrimary" />
+
+    </LinearLayout>
 
 </androidx.appcompat.widget.LinearLayoutCompat>

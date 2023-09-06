@@ -14,7 +14,7 @@ import com.example.foodapp.model.Users.User;
 
 import java.util.Objects;
 
-@Database(entities = {User.class}, version = 1) //TODO: , Client.class, Restaurant.class
+@Database(entities = {User.class}, version = 2) //TODO: , Client.class, Restaurant.class
 public abstract class UserDatabase extends RoomDatabase {
     public abstract UserDAO userDAO();
 
@@ -27,6 +27,7 @@ public abstract class UserDatabase extends RoomDatabase {
             if(Objects.isNull(UserDatabase.INSTANCE)) {
                 UserDatabase.INSTANCE = Room.databaseBuilder(context.getApplicationContext(), UserDatabase.class, UserDatabase.databaseName)
                         .allowMainThreadQueries() //TODO: remove .allowMainThreadQueries()?
+                        .fallbackToDestructiveMigration() //TODO: remove when the app will be launched.
                         .build();
             }
         }

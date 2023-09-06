@@ -32,18 +32,18 @@ public class Food {
     @ColumnInfo(name = "is_favorite")
     private boolean isFavorite;
 
-    @ColumnInfo(name = "image_url")
-    private int imageUrl;
+    @ColumnInfo(name = "image_resource_id")
+    private int imageResourceId;
 
     public Food(final String name, final Category category, final int quantity, final String currency,
-                final String price, final boolean isFavorite, final int imageUrl) {
+                final String price, final boolean isFavorite, final int imageResourceId) {
         this.name = name;
         this.category = category;
         this.quantity = quantity;
         this.currency = currency;
         this.price = price;
         this.isFavorite = isFavorite;
-        this.imageUrl = imageUrl;
+        this.imageResourceId = imageResourceId;
     }
 
     public final String getName() {
@@ -70,7 +70,7 @@ public class Food {
         return this.isFavorite;
     }
 
-    public final int getImageUrl() { return this.imageUrl; }
+    public final int getImageResourceId() { return this.imageResourceId; }
 
     public void setQuantity(final int quantity) {
         this.quantity = quantity;
@@ -88,7 +88,7 @@ public class Food {
         this.isFavorite = favorite;
     }
 
-    public void setImageUrl(final int imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setImageResourceId(final int imageResourceId) {
+        this.imageResourceId = imageResourceId;
     }
 }

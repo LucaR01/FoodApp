@@ -21,8 +21,8 @@ public interface FoodDAO {
     @Query("DELETE FROM food WHERE foodId = :id")
     void deleteFood(int id);
 
-    @Query("UPDATE food SET name = :name, category = :category, quantity = :quantity, currency = :currency, price = :price, is_favorite = :isFavorite, image_url = :imageUrl WHERE foodId = :foodId")
-    void updateFood(final int foodId, final String name, final String category, final int quantity, final String currency, final String price, final boolean isFavorite, final int imageUrl);
+    @Query("UPDATE food SET name = :name, category = :category, quantity = :quantity, currency = :currency, price = :price, is_favorite = :isFavorite, image_resource_id = :imageResourceId WHERE foodId = :foodId")
+    void updateFood(final int foodId, final String name, final String category, final int quantity, final String currency, final String price, final boolean isFavorite, final int imageResourceId);
 
     @Delete
     void deleteFoods(Food... foods);

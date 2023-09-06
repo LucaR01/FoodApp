@@ -6,7 +6,7 @@ import java.util.Optional;
 
 public class Restaurant extends User {
 
-    public Restaurant(final String username, final String email, final String password) {
-        super(username, email, password);
+    public Restaurant(final String username, final String email, final String password, final double balance) {
+        super(username, email, password, balance);
     }
 }

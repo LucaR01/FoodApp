@@ -21,7 +21,9 @@ public enum Category { //TODO: Aggiungere delle categorie
 
     public enum Bevarages { //TODO: Aggiungere altre bevande
         TEA("Tea"),
-        COFFEE("Coffee");
+        COFFEE("Coffee"),
+        COLA("Coca cola"),
+        ORANGEADE("Orangeade");
 
         private final String beverageName;
 

@@ -30,7 +30,7 @@ public class CartFoodAdapter extends RecyclerView.Adapter<CartFoodViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull CartFoodViewHolder holder, int position) {
-        //holder.getItemImage().setImageResource(this.cartFoodList.get(position).getImageUrl()); //FIXME? or just remove? (per passare
+        holder.getItemImage().setImageResource(this.cartFoodList.get(position).getImageResourceId()); //FIXME il problema è che avevo usato android:src al posto di app:srcCompat
         holder.getItemName().setText(this.cartFoodList.get(position).getName());
         holder.getItemQuantity().setText(String.valueOf(this.cartFoodList.get(position).getQuantity()));
         holder.getItemCurrency().setText(this.cartFoodList.get(position).getCurrency());

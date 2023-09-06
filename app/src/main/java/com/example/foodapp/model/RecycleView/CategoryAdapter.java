@@ -32,7 +32,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull CategoryViewHolder holder, int position) {
-        holder.getItemImage().setImageResource(this.categoryFoodsList.get(position).getImageUrl());
+        holder.getItemImage().setImageResource(this.categoryFoodsList.get(position).getImageResourceId());
         holder.getItemName().setText(this.categoryFoodsList.get(position).getName());
         holder.getItemQuantity().setText(String.valueOf(this.categoryFoodsList.get(position).getQuantity()));
         holder.getItemCurrency().setText(this.categoryFoodsList.get(position).getCurrency());
@@ -43,7 +43,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryViewHolder> {
             intent.putExtra("foodDetailNameTextView", this.categoryFoodsList.get(holder.getAdapterPosition()).getName());
             intent.putExtra("foodDetailCurrencyTextView", this.categoryFoodsList.get(holder.getAdapterPosition()).getCurrency());
             intent.putExtra("foodDetailPriceTextView", this.categoryFoodsList.get(holder.getAdapterPosition()).getPrice());
-            intent.putExtra("foodDetailImageView", this.categoryFoodsList.get(holder.getAdapterPosition()).getImageUrl());
+            intent.putExtra("foodDetailImageView", this.categoryFoodsList.get(holder.getAdapterPosition()).getImageResourceId());
             this.context.startActivity(intent);
         });
     }

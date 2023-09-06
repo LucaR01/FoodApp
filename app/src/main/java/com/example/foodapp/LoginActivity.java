@@ -76,6 +76,7 @@ public class LoginActivity extends AppCompatActivity {
                             Log.d("[USERS]", "username | email: " + usernameEditText.getText().toString() + " password: " + passwordEditText.getText().toString());
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                             intent.putExtra("username", user.getUsername());
+                            intent.putExtra("balance", String.valueOf(user.getBalance()));
                             startActivity(intent);
                             return; // prima c'era un break; Col return evitiamo che anche se l'utente viene trovato, non mostra l'alert.
                         }

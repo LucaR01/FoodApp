@@ -32,7 +32,7 @@ public class FoodsAdapter extends RecyclerView.Adapter<FoodsViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull FoodsViewHolder holder, int position) {
-        holder.getItemImage().setImageResource(this.foodsList.get(position).getImageUrl());
+        holder.getItemImage().setImageResource(this.foodsList.get(position).getImageResourceId());
         holder.getItemName().setText(this.foodsList.get(position).getName());
         holder.getItemCategory().setText(this.foodsList.get(position).getCategory().toString());
         holder.getItemQuantity().setText(String.valueOf(this.foodsList.get(position).getQuantity()));
@@ -45,7 +45,7 @@ public class FoodsAdapter extends RecyclerView.Adapter<FoodsViewHolder> {
             intent.putExtra("foodDetailCurrencyTextView", this.foodsList.get(holder.getAdapterPosition()).getCurrency());
             //intent.putExtra("foodDetailFavorite", this.foodsList.get(holder.getAdapterPosition()).isFavorite()); //TODO: remove, non c'è il cuore in questo.
             intent.putExtra("foodDetailPriceTextView", this.foodsList.get(holder.getAdapterPosition()).getPrice());
-            intent.putExtra("foodDetailImageView", this.foodsList.get(holder.getAdapterPosition()).getImageUrl());
+            intent.putExtra("foodDetailImageView", this.foodsList.get(holder.getAdapterPosition()).getImageResourceId());
             this.context.startActivity(intent);
         });
     }

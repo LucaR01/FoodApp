@@ -6,6 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?attr/mainBackground"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="end"
     tools:context=".MainActivity">
 
     <!-- prima era android:fitsSystemWindows="true" -->
@@ -38,17 +40,17 @@
 
     </LinearLayout> -->
 
-    <ScrollView
+    <!-- <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:scrollbars="vertical"
-        android:fillViewport="true">
+        android:fillViewport="true"> -->
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigation_drawer"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_gravity="start"
         app:headerLayout="@layout/navigation_drawer_header"
         app:layout_constraintStart_toStartOf="parent"
@@ -58,7 +60,7 @@
 
         </com.google.android.material.navigation.NavigationView>
 
-    </ScrollView>
+    <!-- </ScrollView> -->
 
     <!-- TODO: prima stavo utilizzando la normale ScrollView -->
     <!-- TODO: magari mettere la scroll view sul constraint layout -->

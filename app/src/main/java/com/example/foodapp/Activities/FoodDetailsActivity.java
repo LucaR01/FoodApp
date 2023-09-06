@@ -2,8 +2,10 @@ package com.example.foodapp.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -54,7 +56,18 @@ public class FoodDetailsActivity extends AppCompatActivity {
         this.foodPrice.setText(getIntent().getStringExtra("foodDetailPriceTextView")); //TODO: item_price?
         this.foodCurrency.setText(getIntent().getStringExtra("foodDetailCurrencyTextView"));
         this.foodIngredients.setText("SAMPLE TEXT"); //TODO: Update
-        this.foodImageView.setImageResource(getIntent().getIntExtra("foodDetailImageView", R.drawable.southfin_bowls_chicken)); //TODO: update R.drawable?; //TODO: item_image?
+        //this.foodImageView.setImageResource(getIntent().getIntExtra("foodDetailImageView", R.drawable.southfin_bowls_chicken)); //TODO: update R.drawable?; //TODO: item_image?
+        int imageResource = getIntent().getIntExtra("foodDetailImageView", R.drawable.southfin_bowls_chicken);
+        Log.d("Debug", "Image Resource: " + imageResource); // Log the image resource //TODO: remove
+
+        //TODO: remove, just for testing;
+        /*Resources res = getResources();
+        @SuppressLint("ResourceType") String resourceName = res.getResourceEntryName(2131230919); // This will give you the resource name.
+        @SuppressLint("ResourceType") String resourceType = res.getResourceTypeName(2131230919); // This will give you the resource type (e.g., "drawable").
+        Log.d("Resource Info", "Name: " + resourceName + ", Type: " + resourceType);*/
+
+
+        this.foodImageView.setImageResource(imageResource);
 
         this.counterTextView.setText(String.valueOf(this.counter)); //TODO: remove?
 

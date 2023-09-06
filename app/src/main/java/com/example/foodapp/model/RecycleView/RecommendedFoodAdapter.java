@@ -37,7 +37,7 @@ public class RecommendedFoodAdapter extends RecyclerView.Adapter<RecommendedFood
 
     @Override
     public void onBindViewHolder(@NonNull RecommendedFoodViewHolder holder, int position) {
-        holder.getItemImage().setImageResource(this.recommendedFoodList.get(position).getRecommendedFood().getImageUrl());
+        holder.getItemImage().setImageResource(this.recommendedFoodList.get(position).getRecommendedFood().getImageResourceId());
         holder.getItemName().setText(this.recommendedFoodList.get(position).getRecommendedFood().getName());
         holder.getItemCurrency().setText(this.recommendedFoodList.get(position).getRecommendedFood().getCurrency());
         holder.getItemPrice().setText(this.recommendedFoodList.get(position).getRecommendedFood().getPrice());
@@ -74,7 +74,7 @@ public class RecommendedFoodAdapter extends RecyclerView.Adapter<RecommendedFood
             intent.putExtra("foodDetailCurrencyTextView", this.recommendedFoodList.get(holder.getAdapterPosition()).getRecommendedFood().getCurrency());
             intent.putExtra("foodDetailFavorite", this.recommendedFoodList.get(holder.getAdapterPosition()).getRecommendedFood().isFavorite()); //TODO: uncomment
             intent.putExtra("foodDetailPriceTextView", this.recommendedFoodList.get(holder.getAdapterPosition()).getRecommendedFood().getPrice()); //TODO: item_price
-            intent.putExtra("foodDetailImageView", this.recommendedFoodList.get(holder.getAdapterPosition()).getRecommendedFood().getImageUrl()); //TODO: item_image
+            intent.putExtra("foodDetailImageView", this.recommendedFoodList.get(holder.getAdapterPosition()).getRecommendedFood().getImageResourceId()); //TODO: item_image
             this.context.startActivity(intent);
         });
 

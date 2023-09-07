@@ -105,7 +105,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
-        android:background="@drawable/rectangle_background"
+        android:background="@drawable/green_button_background2"
         android:backgroundTint="@color/custom_green"
         android:text="Aggiungi al carrello"
         android:textAlignment="center"
@@ -116,9 +116,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/foodDetailIngredientsTextView" />
 
+    <!-- TODO: layout_height="wrap_content" -->
     <TextView
         android:id="@+id/foodDetailIngredientsTextView"
-        android:layout_width="385dp"
+        android:layout_width="match_parent"
         android:layout_height="122dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
@@ -127,6 +128,7 @@
         android:maxLines="5"
         android:text="{Descrizione Ingredienti}"
         android:textSize="18sp"
+        android:gravity="start"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView11" />
@@ -135,7 +137,7 @@
         android:id="@+id/foodDetailCounterTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="59dp"
         android:fontFamily="@font/jaldi"
         android:text="{Porzione}"
         android:textSize="18sp"
@@ -147,28 +149,30 @@
         android:id="@+id/foodDetailAddFAB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="51dp"
         android:clickable="true"
         android:contentDescription="add item"
         app:backgroundTint="@color/custom_green"
         app:fabSize="mini"
         app:layout_constraintStart_toEndOf="@+id/foodDetailCounterTextView"
         app:layout_constraintTop_toBottomOf="@+id/foodDetailImageView"
-        app:srcCompat="@drawable/ic_baseline_add_24" />
+        app:srcCompat="@drawable/ic_baseline_add_24"
+        android:focusable="true" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/foodDetailRemoveFAB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="111dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="51dp"
         android:clickable="true"
         android:contentDescription="remove item"
         app:backgroundTint="#F42626"
         app:fabSize="mini"
-        app:layout_constraintStart_toEndOf="@+id/foodDetailNameTextView"
+        app:layout_constraintStart_toEndOf="@+id/foodDetailPriceTextView"
         app:layout_constraintTop_toBottomOf="@+id/foodDetailImageView"
-        app:srcCompat="@drawable/ic_baseline_remove_24" />
+        app:srcCompat="@drawable/ic_baseline_remove_24"
+        android:focusable="true" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -12,7 +12,7 @@ public class Food {
     @PrimaryKey(autoGenerate = true)
     public int foodId;
 
-    //TODO: Creare un FoodFactory con un enum FoodType: FavoriteFood, RecommendedFood, Food, CartFood, ecc.
+    //TODO: Creare un FoodFactory con un enum FoodType: FavoriteFood, RecommendedFood, Food, CartFood, ecc? o non serve?
 
     @ColumnInfo(name = "name")
     private final String name;
@@ -35,8 +35,11 @@ public class Food {
     @ColumnInfo(name = "image_resource_id")
     private int imageResourceId;
 
+    @ColumnInfo(name ="ingredients")
+    private String ingredients;
+
     public Food(final String name, final Category category, final int quantity, final String currency,
-                final String price, final boolean isFavorite, final int imageResourceId) {
+                final String price, final boolean isFavorite, final int imageResourceId, final String ingredients) {
         this.name = name;
         this.category = category;
         this.quantity = quantity;
@@ -44,6 +47,7 @@ public class Food {
         this.price = price;
         this.isFavorite = isFavorite;
         this.imageResourceId = imageResourceId;
+        this.ingredients = ingredients;
     }
 
     public final String getName() {
@@ -72,6 +76,10 @@ public class Food {
 
     public final int getImageResourceId() { return this.imageResourceId; }
 
+    public final String getIngredients() {
+        return this.ingredients;
+    }
+
     public void setQuantity(final int quantity) {
         this.quantity = quantity;
     }
@@ -90,5 +98,9 @@ public class Food {
 
     public void setImageResourceId(final int imageResourceId) {
         this.imageResourceId = imageResourceId;
+    }
+
+    public void setIngredients(final String ingredients) {
+        this.ingredients = ingredients;
     }
 }

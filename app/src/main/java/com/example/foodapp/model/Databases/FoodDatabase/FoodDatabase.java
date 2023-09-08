@@ -11,7 +11,7 @@ import com.example.foodapp.model.Food.Food;
 
 import java.util.Objects;
 
-@Database(entities = {Food.class}, version = 2)
+@Database(entities = {Food.class}, version = 3)
 public abstract class FoodDatabase extends RoomDatabase {
 
     public abstract FoodDAO foodDAO();

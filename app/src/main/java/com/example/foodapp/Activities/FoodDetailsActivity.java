@@ -55,7 +55,7 @@ public class FoodDetailsActivity extends AppCompatActivity {
         this.foodName.setText(getIntent().getStringExtra("foodDetailNameTextView")); //TODO: item_name?
         this.foodPrice.setText(getIntent().getStringExtra("foodDetailPriceTextView")); //TODO: item_price?
         this.foodCurrency.setText(getIntent().getStringExtra("foodDetailCurrencyTextView"));
-        this.foodIngredients.setText("SAMPLE TEXT"); //TODO: Update
+        this.foodIngredients.setText(getIntent().getStringExtra("foodDetailIngredients")); //TODO: Update
         //this.foodImageView.setImageResource(getIntent().getIntExtra("foodDetailImageView", R.drawable.southfin_bowls_chicken)); //TODO: update R.drawable?; //TODO: item_image?
         int imageResource = getIntent().getIntExtra("foodDetailImageView", R.drawable.southfin_bowls_chicken);
         Log.d("Debug", "Image Resource: " + imageResource); // Log the image resource //TODO: remove
@@ -162,7 +162,8 @@ public class FoodDetailsActivity extends AppCompatActivity {
         //TODO: recuperare isFavorite in base all'id dell'immagine.
         //TODO: recuperare la categoria.
         this.food = new Food(this.foodName.getText().toString(), Category.UNSPECIFIED, Integer.parseInt(this.counterTextView.getText().toString()),
-                this.foodCurrency.getText().toString(), this.foodPrice.getText().toString(), !this.foodFavorite.getTag().equals("new_image"), this.foodImageView.getId());
+                this.foodCurrency.getText().toString(), this.foodPrice.getText().toString(),
+                !this.foodFavorite.getTag().equals("new_image"), this.foodImageView.getId(), "{ingredients}");
         return food;
     }
 

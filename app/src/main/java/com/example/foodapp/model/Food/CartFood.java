@@ -10,8 +10,9 @@ public class CartFood extends Food {
     /*private String currency; //TODO: remove
     private int quantity;*/
 
-    public CartFood(final String name, final Category category, final int quantity, final String currency, final String price, final boolean isFavorite, final int imageUrl) {
-        super(name, category, quantity, currency, price, isFavorite, imageUrl);
+    public CartFood(final String name, final Category category, final int quantity, final String currency,
+                    final String price, final boolean isFavorite, final int imageUrl, final String ingredients) {
+        super(name, category, quantity, currency, price, isFavorite, imageUrl, ingredients);
         /*this.currency = currency; //TODO: remove
         this.quantity = quantity;*/
     }

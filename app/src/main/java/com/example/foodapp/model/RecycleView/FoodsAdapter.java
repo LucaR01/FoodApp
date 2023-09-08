@@ -46,6 +46,7 @@ public class FoodsAdapter extends RecyclerView.Adapter<FoodsViewHolder> {
             //intent.putExtra("foodDetailFavorite", this.foodsList.get(holder.getAdapterPosition()).isFavorite()); //TODO: remove, non c'è il cuore in questo.
             intent.putExtra("foodDetailPriceTextView", this.foodsList.get(holder.getAdapterPosition()).getPrice());
             intent.putExtra("foodDetailImageView", this.foodsList.get(holder.getAdapterPosition()).getImageResourceId());
+            intent.putExtra("foodDetailIngredients", this.foodsList.get(holder.getAdapterPosition()).getIngredients());
             this.context.startActivity(intent);
         });
     }

@@ -349,15 +349,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private void initRecommendedAndFavoriteFoods() {
         List<RecommendedFood> recommendedFoodList = new ArrayList<>();
-        recommendedFoodList.add(new RecommendedFood(new Food("Poke", Category.POKE, 2, "$","5.00", false, R.drawable.southfin_bowls_chicken)));
-        recommendedFoodList.add(new RecommendedFood(new Food("Salad", Category.SALAD, 3, "$","8.00", false, R.drawable.salad_background))); //TODO: cambiare drawable.
-        recommendedFoodList.add(new RecommendedFood(new Food("Spinach", Category.VEGETABLES, 1, "$","3.50", false, R.drawable.vegetables_background)));
+        recommendedFoodList.add(new RecommendedFood(new Food("Chicken Poké", Category.POKE, 1, "$", "5.60", false, R.drawable.southfin_bowls_chicken,
+                "Pollo, salsa di soia o tamari per marinare, olio di sesamo, aceto di riso, zenzero, aglio, cipollotti, semi di sesamo tostati, e coriandolo fresco per guarnire.")));
+        recommendedFoodList.add(new RecommendedFood(new Food("Greek Salad", Category.SALAD, 1, "$", "4.50", false, R.drawable.greek_salad, "{ingredients}")));
+        recommendedFoodList.add(new RecommendedFood(new Food("Caprese Salad", Category.VEGETABLES, 1, "$", "4.50", false, R.drawable.caprese_salad_no_background, "{ingredients}")));
+        recommendedFoodList.add(new RecommendedFood(new Food("Grilled Chicken Caeser", Category.SALAD, 1, "$", "7.50", false, R.drawable.grilled_chicken_caesar_salad, "{ingredients}")));
 
         setRecommendedFoodsRecyclerView(recommendedFoodList);
 
         List<FavoriteFood> favoriteFoodList = new ArrayList<>();
-        favoriteFoodList.add(new FavoriteFood("Nuts", Category.NUTS, 3, "$", "4.5", true, R.drawable.fruit_background)); //TODO: update drawable
-        favoriteFoodList.add(new FavoriteFood("Cereals", Category.CEREALS, 2, "$", "3.0", true, R.drawable.poke_background)); //TODO: update drawable
+        favoriteFoodList.add(new FavoriteFood("Strawberry Pairfait", Category.FRUIT, 1, "$", "7.50", true, R.drawable.strawberry_parfait_ice_cream, "{ingredients}"));
+        favoriteFoodList.add(new FavoriteFood("Avocado Lachs Poké Bowl", Category.POKE, 1, "$", "5.50", true, R.drawable.avocado_lachs_poke_bowl_no_background, "{ingredients}"));
+        favoriteFoodList.add(new FavoriteFood("Ratatouille", Category.VEGETABLES, 1, "$", "5.99", true, R.drawable.ratatouille_no_background, "{ingredients}"));
+        favoriteFoodList.add(new FavoriteFood("Fruit Salsa Cinnamon", Category.FRUIT, 1, "$", "8.50", true, R.drawable.tangy_fruit_salsa_with_cinnamon_chips_no_background, "{ingredients}"));
 
         for(var fav : favoriteFoodList) {
             FavoriteFoodDatabase.getDatabaseInstance(getApplicationContext()).favoriteFoodDAO().insertFavoriteFood(fav);
@@ -366,6 +370,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setFavoriteFoodsRecyclerView(favoriteFoodList);
     }
 
+    @SuppressLint("NonConstantResourceId")
     private void initBottomNavigationBar() {
         this.bottomNavigationView = findViewById(R.id.bottom_navigation_bar);
         this.bottomNavigationView.setSelectedItemId(R.id.bottom_home);
@@ -373,30 +378,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         this.bottomNavigationView.setOnItemSelectedListener(item -> {
             switch(item.getItemId()) {
                 case R.id.bottom_home:
-                    //replaceFragment(new HomeFragment()); //TODO: uncomment when I will create the fragment.
-                    /*if(!getApplicationContext().getClass().getName().contentEquals("MainActivity")) {
-                        System.out.println("getClass Name: " + getApplicationContext().getClass().getName()); //TODO: remove // android.app.Application
-                        startActivity(new Intent(MainActivity.this, MainActivity.class));
-                    }*/
-                    //startActivity(new Intent(MainActivity.this, MainActivity.class)); //TODO: uncomment?
                     return true;
-                    //TODO: return true?
-                    //break;
                 case R.id.bottom_settings:
-                    //replaceFragment(new SettingsFragment()); //TODO: uncomment when I will create the fragment.
                     startActivity(new Intent(MainActivity.this, SettingsActivity.class));
-                    //overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left); //TODO: remove
-                    //finish();
-                    //return true;
                     break;
                 case R.id.bottom_foods:
-                    startActivity(new Intent(MainActivity.this, AboutActivity.class)); //TODO: deve essere FoodsActivity.class!
+                    startActivity(new Intent(MainActivity.this, FoodsActivity.class)); //TODO: deve essere FoodsActivity.class!
                     break;
             }
             return true;
         });
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()) {

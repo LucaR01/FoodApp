@@ -40,14 +40,6 @@
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
-                <ImageView
-                    android:id="@+id/favoriteFoodsDeleteImageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="135dp"
-                    android:layout_marginTop="3dp"
-                    app:srcCompat="@drawable/ic_baseline_delete_24" />
-
             </LinearLayout>
 
             <LinearLayout
@@ -130,6 +122,14 @@
                     android:textColor="#1FA414"
                     android:textSize="24sp"
                     android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/favoriteFoodsDeleteImageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:layout_gravity="center"
+                    app:srcCompat="@drawable/ic_baseline_delete_24" />
 
 
             </LinearLayout>

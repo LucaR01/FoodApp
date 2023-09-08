@@ -40,7 +40,7 @@ public class FavoriteFoodAdapter extends RecyclerView.Adapter<FavoriteFoodViewHo
         holder.getItemPrice().setText(this.favoriteFoodList.get(position).getPrice());
 
         final FavoriteFood favoriteFood = new FavoriteFood(holder.getItemName().getText().toString(), Category.NONE, 1, holder.getItemCurrency().getText().toString(),
-                holder.getItemPrice().getText().toString(), false, holder.getItemImage().getId()); //TODO: category e quantity.
+                holder.getItemPrice().getText().toString(), false, holder.getItemImage().getId(), "{ingredients}"); //TODO: category e quantity.
 
         // Questo casomai fosse stato già favorito in precedenza.
         if (this.favoriteFoodList.get(position).isFavorite()) {
@@ -74,6 +74,7 @@ public class FavoriteFoodAdapter extends RecyclerView.Adapter<FavoriteFoodViewHo
             intent.putExtra("foodDetailFavorite", this.favoriteFoodList.get(holder.getAdapterPosition()).isFavorite());
             intent.putExtra("foodDetailPriceTextView", this.favoriteFoodList.get(holder.getAdapterPosition()).getPrice()); //TODO: item_price?
             intent.putExtra("foodDetailImageView", this.favoriteFoodList.get(holder.getAdapterPosition()).getImageResourceId()); //TODO: item_image?
+            intent.putExtra("foodDetailIngredients", this.favoriteFoodList.get(holder.getAdapterPosition()).getIngredients());
             this.context.startActivity(intent);
         });
     }

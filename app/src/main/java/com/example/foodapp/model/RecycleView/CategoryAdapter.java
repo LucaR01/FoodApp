@@ -44,6 +44,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryViewHolder> {
             intent.putExtra("foodDetailCurrencyTextView", this.categoryFoodsList.get(holder.getAdapterPosition()).getCurrency());
             intent.putExtra("foodDetailPriceTextView", this.categoryFoodsList.get(holder.getAdapterPosition()).getPrice());
             intent.putExtra("foodDetailImageView", this.categoryFoodsList.get(holder.getAdapterPosition()).getImageResourceId());
+            intent.putExtra("foodDetailIngredients", this.categoryFoodsList.get(holder.getAdapterPosition()).getIngredients());
             this.context.startActivity(intent);
         });
     }

@@ -58,7 +58,7 @@
 
         <include layout="@layout/navigation_drawer_header" />
 
-        </com.google.android.material.navigation.NavigationView>
+    </com.google.android.material.navigation.NavigationView>
 
     <!-- </ScrollView> -->
 
@@ -75,239 +75,239 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/main_activity_constraint_layout">
-
-
-    <ImageView
-        android:id="@+id/nav_menu_imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:contentDescription="menu"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_baseline_menu_24" />
-
-    <ImageView
-        android:id="@+id/shopping_cart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_baseline_shopping_cart_24" />
-
-    <ImageView
-        android:id="@+id/search"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/shopping_cart"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_baseline_search_24" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="Ciao"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nav_menu_imageView" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/jaldi"
-        android:text="Categorie"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-    <ImageView
-        android:id="@+id/pokeImageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5"
-        app:srcCompat="@drawable/food_category0"
-        app:layout_constraintHeight_percent="0.25"
-        app:layout_constraintWidth_percent="0.25"/>
-
-    <ImageView
-        android:id="@+id/fruitImageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/pokeImageView"
-        app:layout_constraintStart_toEndOf="@+id/pokeImageView"
-        app:layout_constraintTop_toTopOf="@+id/pokeImageView"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/food_category1"
-        app:layout_constraintHeight_percent="0.25"
-        app:layout_constraintWidth_percent="0.25"/>
-
-        <ImageView
-            android:id="@+id/vegetablesImageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            app:layout_constraintBottom_toBottomOf="@+id/fruitImageView"
-            app:layout_constraintHeight_percent="0.25"
-            app:layout_constraintStart_toEndOf="@+id/fruitImageView"
-            app:layout_constraintTop_toTopOf="@+id/fruitImageView"
-            app:layout_constraintVertical_bias="0.0"
-            app:layout_constraintWidth_percent="0.25"
-            app:srcCompat="@drawable/food_category2" />
-
-        <ImageView
-            android:id="@+id/saladImageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            app:layout_constraintBottom_toBottomOf="@+id/vegetablesImageView"
-            app:layout_constraintHeight_percent="0.25"
-            app:layout_constraintStart_toEndOf="@+id/vegetablesImageView"
-            app:layout_constraintTop_toTopOf="@+id/vegetablesImageView"
-            app:layout_constraintVertical_bias="0.0"
-            app:layout_constraintWidth_percent="0.25"
-            app:srcCompat="@drawable/food_category3" />
-
-    <TextView
-        android:id="@+id/your_recommended"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:text="I tuoi raccomandati"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pokeImageView" />
-
-        <!-- TODO: android:layout_width: 0; prima era 410dp. -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recommended_foods_recyclerView"
-        android:layout_width="410dp"
-        android:layout_height="200dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/your_recommended" />
-
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="3dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="12dp"
-        android:text="Poké"
-        app:layout_constraintBottom_toTopOf="@+id/your_recommended"
-        app:layout_constraintEnd_toStartOf="@+id/fruitImageView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pokeImageView" />
-
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="3dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginBottom="10dp"
-            android:text="Fruit"
-            app:layout_constraintBottom_toTopOf="@+id/your_recommended"
-            app:layout_constraintEnd_toStartOf="@+id/vegetablesImageView"
-            app:layout_constraintStart_toEndOf="@+id/textView7"
-            app:layout_constraintTop_toBottomOf="@+id/fruitImageView" />
-
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="3dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginBottom="10dp"
-            android:text="Vegetables"
-            app:layout_constraintBottom_toTopOf="@+id/your_recommended"
-            app:layout_constraintEnd_toStartOf="@+id/saladImageView"
-            app:layout_constraintStart_toEndOf="@+id/textView8"
-            app:layout_constraintTop_toBottomOf="@+id/vegetablesImageView" />
-
-        <TextView
-            android:id="@+id/textView10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="3dp"
-            android:layout_marginBottom="10dp"
-            android:text="Salad"
-            app:layout_constraintBottom_toTopOf="@+id/your_recommended"
-            app:layout_constraintStart_toEndOf="@+id/vegetablesImageView"
-            app:layout_constraintTop_toBottomOf="@+id/saladImageView" />
-
-    <TextView
-        android:id="@+id/your_favorites"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="I tuoi preferiti"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recommended_foods_recyclerView" />
-
-        <!-- TODO: android:layout_width: 0 ; prima era 408dp. -->
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/favorite_foods_recyclerView"
-            android:layout_width="424dp"
-            android:layout_height="260dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.538"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/your_favorites" />
-
-        <TextView
-        android:id="@+id/username"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="56dp"
-        android:text="{Nome utente}"
-        app:layout_constraintStart_toEndOf="@+id/textView4"
-        app:layout_constraintTop_toTopOf="parent" />
-
-        <!-- TODO: spostare bottom navigation fuori dalla scroll view? -->
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottom_navigation_bar"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_gravity="bottom"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:menu="@menu/bottom_navigation_bar" />
+            android:id="@+id/main_activity_constraint_layout">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <ImageView
+                android:id="@+id/nav_menu_imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:contentDescription="menu"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_baseline_menu_24" />
+
+            <ImageView
+                android:id="@+id/shopping_cart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_baseline_shopping_cart_24" />
+
+            <ImageView
+                android:id="@+id/search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toStartOf="@+id/shopping_cart"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_baseline_search_24" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Ciao"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/nav_menu_imageView" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/jaldi"
+                android:text="Categorie"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+            <ImageView
+                android:id="@+id/pokeImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView5"
+                app:srcCompat="@drawable/food_category0"
+                app:layout_constraintHeight_percent="0.25"
+                app:layout_constraintWidth_percent="0.25"/>
+
+            <ImageView
+                android:id="@+id/fruitImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                app:layout_constraintBottom_toBottomOf="@+id/pokeImageView"
+                app:layout_constraintStart_toEndOf="@+id/pokeImageView"
+                app:layout_constraintTop_toTopOf="@+id/pokeImageView"
+                app:layout_constraintVertical_bias="0.0"
+                app:srcCompat="@drawable/food_category1"
+                app:layout_constraintHeight_percent="0.25"
+                app:layout_constraintWidth_percent="0.25"/>
+
+            <ImageView
+                android:id="@+id/vegetablesImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                app:layout_constraintBottom_toBottomOf="@+id/fruitImageView"
+                app:layout_constraintHeight_percent="0.25"
+                app:layout_constraintStart_toEndOf="@+id/fruitImageView"
+                app:layout_constraintTop_toTopOf="@+id/fruitImageView"
+                app:layout_constraintVertical_bias="0.0"
+                app:layout_constraintWidth_percent="0.25"
+                app:srcCompat="@drawable/food_category2" />
+
+            <ImageView
+                android:id="@+id/saladImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                app:layout_constraintBottom_toBottomOf="@+id/vegetablesImageView"
+                app:layout_constraintHeight_percent="0.25"
+                app:layout_constraintStart_toEndOf="@+id/vegetablesImageView"
+                app:layout_constraintTop_toTopOf="@+id/vegetablesImageView"
+                app:layout_constraintVertical_bias="0.0"
+                app:layout_constraintWidth_percent="0.25"
+                app:srcCompat="@drawable/food_category3" />
+
+            <TextView
+                android:id="@+id/your_recommended"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:text="I tuoi raccomandati"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/pokeImageView" />
+
+            <!-- TODO: android:layout_width: 0; prima era 410dp. -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recommended_foods_recyclerView"
+                android:layout_width="410dp"
+                android:layout_height="200dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/your_recommended" />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="12dp"
+                android:text="Poké"
+                app:layout_constraintBottom_toTopOf="@+id/your_recommended"
+                app:layout_constraintEnd_toStartOf="@+id/fruitImageView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/pokeImageView" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="10dp"
+                android:text="Fruit"
+                app:layout_constraintBottom_toTopOf="@+id/your_recommended"
+                app:layout_constraintEnd_toStartOf="@+id/vegetablesImageView"
+                app:layout_constraintStart_toEndOf="@+id/textView7"
+                app:layout_constraintTop_toBottomOf="@+id/fruitImageView" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="10dp"
+                android:text="Vegetables"
+                app:layout_constraintBottom_toTopOf="@+id/your_recommended"
+                app:layout_constraintEnd_toStartOf="@+id/saladImageView"
+                app:layout_constraintStart_toEndOf="@+id/textView8"
+                app:layout_constraintTop_toBottomOf="@+id/vegetablesImageView" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="10dp"
+                android:text="Salad"
+                app:layout_constraintBottom_toTopOf="@+id/your_recommended"
+                app:layout_constraintStart_toEndOf="@+id/vegetablesImageView"
+                app:layout_constraintTop_toBottomOf="@+id/saladImageView" />
+
+            <TextView
+                android:id="@+id/your_favorites"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="I tuoi preferiti"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/recommended_foods_recyclerView" />
+
+            <!-- TODO: android:layout_width: 0 ; prima era 408dp. -->
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/favorite_foods_recyclerView"
+                android:layout_width="424dp"
+                android:layout_height="260dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.538"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/your_favorites" />
+
+            <TextView
+                android:id="@+id/username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="56dp"
+                android:text="{Nome utente}"
+                app:layout_constraintStart_toEndOf="@+id/textView4"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- TODO: spostare bottom navigation fuori dalla scroll view?-->
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottom_navigation_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="bottom"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:menu="@menu/bottom_navigation_bar" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
 

@@ -34,7 +34,9 @@ public class LoginActivity extends AppCompatActivity {
 
         initView();
 
-        login();
+        //login();
+
+        login2();
 
         onSignUpLinkClickListener();
     }
@@ -98,6 +100,57 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    //TODO: usare questa
+    private void login2() {
+        this.loginButton.setOnClickListener(view -> {
+            final String enteredUsername = this.usernameEditText.getText().toString();
+            final String enteredPassword = this.passwordEditText.getText().toString();
+
+            if (enteredUsername.isEmpty() || enteredPassword.isEmpty()) {
+                showAlertDialog("Failure", "Empty Fields!");
+            } else {
+                UserDatabase db = UserDatabase.getDatabaseInstance(getApplicationContext());
+                List<User> dbUserList = db.userDAO().getUsers();
+
+                for (User user : dbUserList) {
+                    final String dbUsername = user.getUsername();
+                    final String dbEmail = user.getEmail();
+                    final String dbPassword = user.getPassword();
+
+                    if (enteredUsername.equals(dbUsername) || enteredUsername.equals(dbEmail)) {
+                        if (enteredPassword.equals(dbPassword)) {
+                            Log.d("[USERS]", "username | email: " + enteredUsername + " password: " + enteredPassword); //TODO: remove?
+
+                            final Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                            intent.putExtra("username", dbUsername);
+                            intent.putExtra("balance", String.valueOf(user.getBalance()));
+                            startActivity(intent);
+                            return; // Prevent showing the alert if the user is found.
+                        }
+                    }
+                }
+
+                showAlertDialog("Failure", "Username or password incorrect!");
+            }
+        });
+    }
+
+    private void showAlertDialog(final String title, final String message) {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+        builder.setTitle(title);
+        builder.setMessage(message);
+        builder.setCancelable(true);
+
+        builder.setPositiveButton(
+                "Ok",
+                (dialog, id) -> dialog.dismiss());
+
+        final AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+
+
+    //TODO: remove
     private void checkEmptyFields() {
         if(this.usernameEditText.getText().toString().contentEquals("") || this.passwordEditText.getText().toString().contentEquals("")) {
             Log.d("[USERS]", "Empty fields!");
@@ -115,6 +168,7 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+    //TODO: remove
     private void checkUserInDB() {
         UserDatabase db = UserDatabase.getDatabaseInstance(getApplicationContext());
         List<User> dbUserList = db.userDAO().getUsers();

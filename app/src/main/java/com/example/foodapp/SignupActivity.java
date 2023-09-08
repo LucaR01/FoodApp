@@ -1,5 +1,6 @@
 package com.example.foodapp;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -81,8 +82,39 @@ public class SignupActivity extends AppCompatActivity {
         this.confirmPasswordEditText = findViewById(R.id.signup_confirm_password_editText2);
     }
 
-    private void signup() {
+    //TODO: remove
+    private void signup2() {
         this.signupButton.setOnClickListener(view -> {
+
+            if(!this.passwordEditText.getText().toString().equals(this.confirmPasswordEditText.getText().toString())) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(SignupActivity.this);
+                builder.setTitle("Failure");
+                builder.setMessage("Passwords don't match!");
+                builder.setCancelable(true);
+
+                builder.setPositiveButton(
+                        "Ok",
+                        (dialog, id) -> dialog.dismiss());
+
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+            }
+
+            if(this.usernameEditText.getText().toString().equals("") || this.emailEditText.getText().toString().equals("") ||
+            this.passwordEditText.getText().toString().equals("") || this.confirmPasswordEditText.getText().toString().equals("")) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(SignupActivity.this);
+                builder.setTitle("Failure");
+                builder.setMessage("Empty fields!");
+                builder.setCancelable(true);
+
+                builder.setPositiveButton(
+                        "Ok",
+                        (dialog, id) -> dialog.dismiss());
+
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+            }
+
             if(!(this.usernameEditText.getText().toString().equals("") && this.emailEditText.getText().toString().equals("")
                     && this.passwordEditText.getText().toString().equals("") && this.confirmPasswordEditText.getText().toString().equals(""))) {
                 if(this.confirmPasswordEditText.getText().equals(this.passwordEditText.getText())) {
@@ -93,6 +125,20 @@ public class SignupActivity extends AppCompatActivity {
 
                     //int selectedId = radioGroup.getCheckedRadioButtonId();
                     //this.selectedRadioButton = findViewById(selectedId);
+
+                    if(!this.emailEditText.getText().toString().contains("@")) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(SignupActivity.this);
+                        builder.setTitle("Failure");
+                        builder.setMessage("Email must contain a @ character!");
+                        builder.setCancelable(true);
+
+                        builder.setPositiveButton(
+                                "Ok",
+                                (dialog, id) -> dialog.dismiss());
+
+                        AlertDialog alertDialog = builder.create();
+                        alertDialog.show();
+                    }
 
                     final UserDatabase db = UserDatabase.getDatabaseInstance(getApplicationContext());
                     Client client = new Client(this.usernameEditText.getText().toString(), this.emailEditText.getText().toString(), this.passwordEditText.getText().toString(), 0.0);
@@ -120,6 +166,47 @@ public class SignupActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void signup() {
+        this.signupButton.setOnClickListener(view -> {
+            final String username = this.usernameEditText.getText().toString();
+            final String email = this.emailEditText.getText().toString();
+            final String password = this.passwordEditText.getText().toString();
+            final String confirmPassword = this.confirmPasswordEditText.getText().toString();
+
+            if (username.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
+                showAlertDialog("Failure", "Empty fields!");
+            } else if (!email.contains("@")) {
+                showAlertDialog("Failure", "Email must contain '@' character!");
+            } else if (!password.equals(confirmPassword)) {
+                showAlertDialog("Failure", "Passwords don't match!");
+            } else {
+                // Passwords match, fields are not empty, and email contains '@'.
+                // Proceed with user insertion and activity transition.
+                final UserDatabase db = UserDatabase.getDatabaseInstance(getApplicationContext());
+                final Client client = new Client(username, email, password, 0.0);
+                db.userDAO().insertUser(client);
+
+                final Intent intent = new Intent(SignupActivity.this, MainActivity.class);
+                intent.putExtra("username", client.getUsername());
+                intent.putExtra("balance", String.valueOf(client.getBalance()));
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void showAlertDialog(String title, String message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(SignupActivity.this);
+        builder.setTitle(title);
+        builder.setMessage(message);
+        builder.setCancelable(true);
+
+        builder.setPositiveButton("Ok", (dialog, id) -> dialog.dismiss());
+
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+
 
     private void onLoginLinkClickListener() {
         this.loginLinkTextView.setOnClickListener(view -> {

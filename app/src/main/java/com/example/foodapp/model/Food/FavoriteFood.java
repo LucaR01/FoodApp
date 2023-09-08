@@ -6,8 +6,9 @@ import com.example.foodapp.model.Category.Category;
 
 public class FavoriteFood extends Food{
 
-    public FavoriteFood(final String name, final Category category, final int quantity, final String currency, final String price, final boolean isFavorite, final int imageResourceId) {
-        super(name, category, quantity, currency,  price, isFavorite, imageResourceId);
+    public FavoriteFood(final String name, final Category category, final int quantity, final String currency,
+                        final String price, final boolean isFavorite, final int imageResourceId, final String ingredients) {
+        super(name, category, quantity, currency,  price, isFavorite, imageResourceId, ingredients);
     }
 
     FavoriteFood getFavoriteFood() { //TODO: remove?

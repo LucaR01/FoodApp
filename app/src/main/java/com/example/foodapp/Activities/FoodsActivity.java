@@ -50,9 +50,11 @@ public class FoodsActivity extends AppCompatActivity {
     private void initList() {
 
         List<Food> foodList = new ArrayList<>(Arrays.asList(
-                new Food("Chicken Poké", Category.POKE, 1, "$", "5.60", false, R.drawable.southfin_bowls_chicken),
-                new Food("Chicken Poké 2", Category.POKE, 1, "$", "7.50", false, R.drawable.southfin_bowls_chicken),
-                new Food("Strawberries", Category.FRUIT, 1, "$", "3.50", false, R.drawable.fruit_background)
+                new Food("Chicken Poké", Category.POKE, 1, "$", "5.60", false, R.drawable.southfin_bowls_chicken, "{ingredients}"),
+                new Food("Grilled Fruit Kabos", Category.FRUIT, 1, "$", "5.50", false, R.drawable.grilled_fruit_kabobs_no_background, "{ingredients}"),
+                new Food("Nicoise Salad", Category.SALAD, 1, "$", "6.50", false, R.drawable.nicoise_salad_no_background, "{ingredients}"),
+                new Food("Grilled Vegetable Yogurt Mint Sauce", Category.VEGETABLES, 1, "$", "5.50", false, R.drawable.grilled_vegetable_platter_with_yogurt_mint_sauce_no_background, "{ingredients}"),
+                new Food("Juice Fruit Salad", Category.FRUIT, 1, "$", "4.50", false, R.drawable.juice_fruit_salad, "{ingredients}")
         ));
 
 

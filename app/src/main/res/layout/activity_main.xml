@@ -5,10 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="start"
     android:background="?attr/mainBackground"
     android:fitsSystemWindows="true"
     tools:openDrawer="end"
     tools:context=".MainActivity">
+
+    <!-- android:theme="@style/Theme.FoodApp" -->
 
     <!-- prima era android:fitsSystemWindows="true" -->
 

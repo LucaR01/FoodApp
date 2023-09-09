@@ -64,15 +64,12 @@ import java.util.Optional;
 //TODO: fragment for bottom navigation bar e forse anche per il navigation view.
 
 //TODO: extends Fragment?
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-
-    //private Binding activityMainBinding;
+//TODO: implements NavigationView.OnNavigationItemSelectedListener
+public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
-    private ActionBarDrawerToggle drawerToggle;
-    private ImageView navDrawerMenuImageView;
-    private ConstraintLayout constraintLayout;
+    private ImageView navMenuImageView;
 
     private RecyclerView recommendedFoodsRecyclerView;
     private RecommendedFoodAdapter recommendedFoodAdapter;
@@ -93,14 +90,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private ImageView vegetablesImageView;
     private ImageView saladImageView;
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(drawerToggle.onOptionsItemSelected(item)) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
     //@RequiresApi(api = Build.VERSION_CODES.N) //TODO: remove
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,9 +98,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         initView();
 
+        navigationDrawerListener();
+
         onCategoryClickedListener();
 
-        setupNavigationDrawer();
+        //setupNavigationDrawer(); //TODO: uncomment/remove?
 
         onCartClickedListener();
 
@@ -124,12 +115,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private void initView() {
         //DRAWER LAYOUT
-        this.drawerLayout = findViewById(R.id.main_activity_drawer_layout);
+        /*this.drawerLayout = findViewById(R.id.main_activity_drawer_layout);
         this.constraintLayout = findViewById(R.id.main_activity_constraint_layout);
 
         //NAVIGATION DRAWER
         this.navigationView = findViewById(R.id.navigation_drawer);
-        this.navDrawerMenuImageView = findViewById(R.id.nav_menu_imageView);
+        this.navDrawerMenuImageView = findViewById(R.id.nav_menu_imageView);*/
+
+        this.drawerLayout = findViewById(R.id.main_activity_drawer_layout);
+        this.navigationView = findViewById(R.id.navigation_drawer);
+        this.navigationView.bringToFront(); // Per evitare che si chiudi ad ogni click.
+        this.navMenuImageView = findViewById(R.id.nav_menu_imageView);
 
         final String usernameText =  getIntent().getStringExtra("username");
 
@@ -184,21 +180,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void onCartClickedListener() {
-        this.shoppingCart.setOnClickListener(view -> {
-            startActivity(new Intent(MainActivity.this, CartActivity.class));
-        });
+        this.shoppingCart.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, CartActivity.class)));
     }
 
     //TODO: rename in initNavigationDrawer()
-    private void setupNavigationDrawer() {
+    /*private void setupNavigationDrawer() {
 
-        this.navigationView.setNavigationItemSelectedListener(this);
+        //this.navigationView.setNavigationItemSelectedListener(this);
 
         //TODO: uncomment
         this.drawerToggle = new ActionBarDrawerToggle(this, this.drawerLayout, R.string.open, R.string.close);
         this.drawerLayout.addDrawerListener(this.drawerToggle);
         this.drawerToggle.syncState();
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true); //TODO: uncomment maybe.
+
+        this.navigationView.setNavigationItemSelectedListener(this);*/
 
         //TODO: fix
         /*navDrawerMenuImageView.setOnClickListener(listener -> {
@@ -212,7 +208,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });*/
 
-        this.navDrawerMenuImageView.setOnClickListener(view -> {
+        //TODO: uncomment? prima era uncommentato.
+        /*this.navDrawerMenuImageView.setOnClickListener(view -> {
             if (!this.drawerLayout.isDrawerOpen(GravityCompat.START)) {
                 this.drawerLayout.openDrawer(GravityCompat.START);
             }
@@ -224,7 +221,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             if (this.drawerLayout.isDrawerOpen(GravityCompat.START)) {
                 this.drawerLayout.closeDrawer(GravityCompat.START);
             }
-        });
+        });*/
 
 
 
@@ -276,16 +273,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
             //drawerLayout.closeDrawer(GravityCompat.START);
         });*/
-    }
+    //}
 
-    @Override
+    /*@Override
     public void onBackPressed() {
         if(this.drawerLayout.isDrawerOpen(GravityCompat.START)) {
             this.drawerLayout.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
         }
-    }
+    }*/
 
     /*private <T> void setRecyclerView(final List<T> list, final RecyclerView recyclerView) { //TODO: remove/uncomment
         LinearLayoutManager layoutManager(this, )
@@ -307,10 +304,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         this.favoriteFoodsRecyclerView.setAdapter(favoriteFoodAdapter);
     }
 
+    //TODO: remove
     private void setCategoryFoodsRecyclerView(final List<Food> categoryFoodsList) {
 
     }
 
+    //TODO: remove?
     private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -334,7 +333,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }*/
 
         //TODO: remove
-        User bob = new Client("bob", "email@example.com", "1234", 0.0); //Optional.empty(); new User
+        User bob = new Client("bob", "bob@example.com", "1234", 0.0); //Optional.empty(); new User
         User veganRestaurant = new Restaurant("restaurant", "vegan@example.com", "a56789b", 0.0); // new Restaurant
 
         db.userDAO().insertList(bob, veganRestaurant);
@@ -383,7 +382,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     startActivity(new Intent(MainActivity.this, SettingsActivity.class));
                     break;
                 case R.id.bottom_foods:
-                    startActivity(new Intent(MainActivity.this, FoodsActivity.class)); //TODO: deve essere FoodsActivity.class!
+                    startActivity(new Intent(MainActivity.this, FoodsActivity.class));
                     break;
             }
             return true;
@@ -391,12 +390,65 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @SuppressLint("NonConstantResourceId")
+    private void navigationDrawerListener() {
+        this.navMenuImageView.setOnClickListener(v -> {
+            if (this.drawerLayout.isDrawerOpen(this.navigationView)) {
+                this.drawerLayout.closeDrawer(this.navigationView);
+            } else {
+                this.drawerLayout.openDrawer(this.navigationView);
+            }
+        });
+
+        this.navigationView.setNavigationItemSelectedListener(
+                menuItem -> {
+                    switch (menuItem.getItemId()) {
+                        case R.id.nav_drawer_home:
+                            Log.d("Navigation", "Home");
+                            return true;
+                        case R.id.nav_drawer_favorite_foods:
+                            Log.d("Navigation", "FavoriteFoods");
+                            startActivity(new Intent(MainActivity.this, FoodsActivity.class));
+                            break;
+                        case R.id.nav_drawer_about:
+                            Log.d("Navigation", "About");
+                            startActivity(new Intent(MainActivity.this, AboutActivity.class));
+                            break;
+                        case R.id.nav_drawer_settings:
+                            Log.d("Navigation", "Settings");
+                            startActivity(new Intent(MainActivity.this, SettingsActivity.class));
+                            break;
+                        case R.id.nav_drawer_privacy:
+                            Log.d("Navigation", "Privacy Policy");
+                            startActivity(new Intent(MainActivity.this, PrivacyPolicyActivity.class));
+                            break;
+                        case R.id.nav_drawer_terms_and_conditions:
+                            Log.d("Navigation", "Terms & Conditions");
+                            startActivity(new Intent(MainActivity.this, TermsAndConditionsActivity.class));
+                            break;
+                    }
+
+                    // Close the drawer when an item is clicked
+                    this.drawerLayout.closeDrawer(GravityCompat.START);
+                    //drawerLayout.closeDrawer(navigationView); //TODO: remove?
+                    /*if(menuItem.getItemId() != R.id.nav_menu_imageView) {
+                        drawerLayout.closeDrawer(navigationView);
+                    }*/
+                    return true;
+                });
+    }
+
+    /*@Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        return false;
+    }*/
+
+    /*@SuppressLint("NonConstantResourceId")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()) {
             case R.id.nav_drawer_home:
                 Log.d("Navigation", "Home clicked");
-                getSupportFragmentManager().beginTransaction().replace(R.id.homeFragment, new HomeFragment()).commit();
+                //getSupportFragmentManager().beginTransaction().replace(R.id.homeFragment, new HomeFragment()).commit();
                 //TODO: startActivity(new Intent(MainActivity.this, MainActivity.class)); ?
                 //TODO: return true?
                 break;
@@ -429,13 +481,34 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
         }
 
-        this.drawerLayout.closeDrawer(GravityCompat.START);
+        //this.drawerLayout.closeDrawer(GravityCompat.START);
         return true;
+    }*/
+
+    /*@Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {*/
+        //TODO: remove?
+        /*if(drawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);*/
+
+        /*if(this.drawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        } else if(item.getItemId() == R.id.nav_menu_imageView) {
+            if(!this.drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                this.drawerLayout.closeDrawer(GravityCompat.START);
+            } else {
+                this.drawerLayout.openDrawer(GravityCompat.START);
+            }
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
     public void onPostCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
         super.onPostCreate(savedInstanceState, persistentState);
         this.drawerToggle.syncState();
-    }
+    }*/
 }

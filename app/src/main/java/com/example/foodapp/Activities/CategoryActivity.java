@@ -1,19 +1,17 @@
 package com.example.foodapp.Activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.foodapp.R;
 import com.example.foodapp.model.Category.Category;
 import com.example.foodapp.model.Food.Food;
-import com.example.foodapp.model.Food.RecommendedFood;
 import com.example.foodapp.model.RecycleView.CategoryAdapter;
-import com.example.foodapp.model.RecycleView.RecommendedFoodAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,9 +45,7 @@ public class CategoryActivity extends AppCompatActivity {
     }
 
     private void setOnBackPressedArrow() {
-        this.backArrowImageView.setOnClickListener(view -> {
-            onBackPressed();
-        });
+        this.backArrowImageView.setOnClickListener(view -> onBackPressed());
     }
 
     private void initList() {

@@ -21,8 +21,8 @@ import java.util.List;
 
 public class RecommendedFoodAdapter extends RecyclerView.Adapter<RecommendedFoodViewHolder> {
 
-    private Context context;
-    private List<RecommendedFood> recommendedFoodList;
+    private final Context context;
+    private final List<RecommendedFood> recommendedFoodList;
 
     public RecommendedFoodAdapter(Context context, List<RecommendedFood> recommendedFoodList) {
         this.context = context;

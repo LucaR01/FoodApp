@@ -42,9 +42,7 @@ public class FoodsActivity extends AppCompatActivity {
     }
 
     private void setOnBackPressedArrow() {
-        this.backArrow.setOnClickListener(view -> {
-            onBackPressed();
-        });
+        this.backArrow.setOnClickListener(view -> onBackPressed());
     }
 
     private void initList() {

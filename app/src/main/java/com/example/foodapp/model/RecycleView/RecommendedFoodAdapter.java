@@ -3,7 +3,6 @@ package com.example.foodapp.model.RecycleView;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -14,7 +13,6 @@ import com.example.foodapp.R;
 import com.example.foodapp.model.Category.Category;
 import com.example.foodapp.model.Databases.FavoriteFoodDatabase.FavoriteFoodDatabase;
 import com.example.foodapp.model.Food.FavoriteFood;
-import com.example.foodapp.model.Food.Food;
 import com.example.foodapp.model.Food.RecommendedFood;
 
 import java.util.List;
@@ -42,8 +40,10 @@ public class RecommendedFoodAdapter extends RecyclerView.Adapter<RecommendedFood
         holder.getItemCurrency().setText(this.recommendedFoodList.get(position).getRecommendedFood().getCurrency());
         holder.getItemPrice().setText(this.recommendedFoodList.get(position).getRecommendedFood().getPrice());
 
+        holder.getItemImage().setTag(this.recommendedFoodList.get(position).getRecommendedFood().getImageResourceId());
+
         final FavoriteFood favoriteFood = new FavoriteFood(holder.getItemName().getText().toString(), Category.NONE, 1, holder.getItemCurrency().getText().toString(),
-                holder.getItemPrice().getText().toString(), false, holder.getItemImage().getId(), "{ingredients}"); //TODO: category e quantity.
+                holder.getItemPrice().getText().toString(), false, (int)holder.getItemImage().getTag(), "{ingredients}"); //TODO: category e quantity; prima era holder.getItemImage().getId()
 
         // Questo casomai fosse stato già favorito in precedenza.
         if (this.recommendedFoodList.get(position).getRecommendedFood().isFavorite()) {

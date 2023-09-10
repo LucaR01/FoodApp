@@ -22,7 +22,8 @@
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_baseline_arrow_back_ios_new_24" />
+        app:srcCompat="@drawable/ic_baseline_arrow_back_ios_new_24"
+        android:contentDescription="@string/back_arrow" />
 
     <ImageView
         android:id="@+id/foodDetailImageView"
@@ -34,7 +35,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/foodDetailBackImageView"
-        app:srcCompat="@drawable/southfin_bowls_chicken" />
+        app:srcCompat="@drawable/southfin_bowls_chicken"
+        android:contentDescription="@string/food_details_image" />
 
     <ImageView
         android:id="@+id/foodDetailFavoriteImageView"
@@ -46,7 +48,8 @@
         app:layout_constraintBottom_toTopOf="@+id/foodDetailImageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/heart" />
+        app:srcCompat="@drawable/heart"
+        android:contentDescription="@string/favorite_image" />
 
     <TextView
         android:id="@+id/foodDetailNameTextView"
@@ -55,7 +58,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/jaldi"
-        android:text="{Nome cibo}"
+        android:text="@string/food_name"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -67,7 +70,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:text="{Currency}"
+        android:text="@string/currency_value"
         android:textColor="#1FA414"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -79,7 +82,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="{Price}"
+        android:text="@string/price_value"
         android:textColor="#1FA414"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -92,7 +95,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
-        android:text="Ingredienti"
+        android:text="@string/ingredients"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -107,7 +110,7 @@
         android:layout_marginEnd="32dp"
         android:background="@drawable/green_button_background2"
         android:backgroundTint="@color/custom_green"
-        android:text="Aggiungi al carrello"
+        android:text="@string/add_to_cart"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textSize="16sp"
@@ -126,7 +129,7 @@
         android:layout_marginEnd="16dp"
         android:fontFamily="@font/jaldi"
         android:maxLines="5"
-        android:text="{Descrizione Ingredienti}"
+        android:text="@string/ingredients_description"
         android:textSize="18sp"
         android:gravity="start"
         app:layout_constraintEnd_toEndOf="parent"
@@ -139,7 +142,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="59dp"
         android:fontFamily="@font/jaldi"
-        android:text="{Porzione}"
+        android:text="@string/quantity_value"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/foodDetailRemoveFAB"
@@ -151,7 +154,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="51dp"
         android:clickable="true"
-        android:contentDescription="add item"
+        android:contentDescription="@string/add_item"
         app:backgroundTint="@color/custom_green"
         app:fabSize="mini"
         app:layout_constraintStart_toEndOf="@+id/foodDetailCounterTextView"
@@ -166,7 +169,7 @@
         android:layout_marginStart="80dp"
         android:layout_marginTop="51dp"
         android:clickable="true"
-        android:contentDescription="remove item"
+        android:contentDescription="@string/remove_item"
         app:backgroundTint="#F42626"
         app:fabSize="mini"
         app:layout_constraintStart_toEndOf="@+id/foodDetailPriceTextView"

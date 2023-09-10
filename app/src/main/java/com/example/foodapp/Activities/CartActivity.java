@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.foodapp.R;
+import com.example.foodapp.model.Currency.Currency;
 import com.example.foodapp.model.Databases.FoodDatabase.FoodDatabase;
 import com.example.foodapp.model.Food.Food;
 import com.example.foodapp.model.RecycleView.CartFoodAdapter;
@@ -47,15 +48,10 @@ public class CartActivity extends AppCompatActivity {
         setTotalPrice();
 
         completeOrder();
-
-        //cartFoodAdapter.notifyDataSetChanged(); //TODO: remove
-
     }
 
     private void setOnBackPressedArrow() {
-        this.onBackPressedArrow.setOnClickListener(view -> {
-            onBackPressed();
-        });
+        this.onBackPressedArrow.setOnClickListener(view -> onBackPressed());
     }
 
     private void initView() {
@@ -68,7 +64,7 @@ public class CartActivity extends AppCompatActivity {
 
     private void setCartRecyclerView(final List<Food> cartFoodList) {
         this.cartRecyclerView = findViewById(R.id.cartRecyclerView);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
+        final LinearLayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
         this.cartRecyclerView.setLayoutManager(layoutManager);
         this.cartFoodAdapter = new CartFoodAdapter(cartFoodList);
         this.cartRecyclerView.setAdapter(cartFoodAdapter);
@@ -77,9 +73,6 @@ public class CartActivity extends AppCompatActivity {
     //TODO: rendere pubblica e far passare un CartFood o una lista di CartFood.
     private void initCartList() {
         this.cartFoodList = new ArrayList<>();
-        /*this.cartFoodList.add(new CartFood("Chicken Bowl", Category.SALAD, 3, "$", "8.5", false, R.drawable.southfin_bowls_chicken)); //TODO: remove; only for test.
-        this.cartFoodList.add(new CartFood("Chicken Bowl", Category.SALAD, 7, "$", "5.99", false, R.drawable.southfin_bowls_chicken)); //TODO: remove*/
-
         this.cartFoodList = getFoodDatabase().foodDAO().getFoods();
 
         //TODO: remove; only for test.
@@ -100,25 +93,19 @@ public class CartActivity extends AppCompatActivity {
     }
 
     private void setTotalPrice() {
-        //final String totalPriceString = getTotalPrice(); //TODO: add possibility to have multiple currencies.; remove
-        //currency.setText(this.currency.toString()); //TODO: remove
-        currency.setText("$"); //TODO: update
-        //totalPrice.setText(totalPriceString); //TODO: remove
-        totalPrice.setText(getTotalPrice());
+        this.currency.setText(Currency.DEFAULT_CURRENCY.toString()); //TODO: update; retrieve currency; possibility to use multiple currencies.
+        this.totalPrice.setText(getTotalPrice());
     }
 
     //TODO: rename in buyOrder?
     private void completeOrder() {
         //TODO: o alla schermata del pagamento oppure semplicemente azzero il carrello.
-
         this.checkoutButton.setOnClickListener(view -> {
             this.cartFoodList.clear();
             this.cartRecyclerView.setAdapter(cartFoodAdapter);
             getFoodDatabase().foodDAO().deleteAllFoods();
 
-            //final String totalPriceString = this.currency.toString() + " " + "0.00";
-            //this.currency.setText(this.currency.toString()); //TODO: remove
-            this.currency.setText("$"); //TODO: update
+            this.currency.setText(Currency.DEFAULT_CURRENCY.toString()); //TODO: update; possibility to have multiple currencies
             this.totalPrice.setText("0.00"); //TODO:
         });
     }

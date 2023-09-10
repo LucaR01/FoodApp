@@ -26,7 +26,8 @@
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:scaleType="fitCenter"
-                app:srcCompat="@drawable/foods" />
+                app:srcCompat="@drawable/foods"
+                android:contentDescription="@string/foods_image" />
 
         </LinearLayout>
 
@@ -45,14 +46,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="3dp"
                 android:layout_marginTop="5dp"
-                app:srcCompat="@drawable/ic_baseline_arrow_back_ios_new_24" />
+                app:srcCompat="@drawable/ic_baseline_arrow_back_ios_new_24"
+                android:contentDescription="@string/back_arrow" />
 
             <TextView
                 android:id="@+id/foodsTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/istok_web"
-                android:text="Foods"
+                android:text="@string/foods"
                 android:textAlignment="center"
                 android:textSize="24sp"
                 android:textStyle="bold" />

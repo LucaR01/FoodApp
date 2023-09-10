@@ -11,9 +11,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.foodapp.Activities.FoodDetailsActivity;
 import com.example.foodapp.R;
 import com.example.foodapp.model.Databases.FavoriteFoodDatabase.FavoriteFoodDatabase;
-import com.example.foodapp.model.Databases.FoodDatabase.FoodDatabase;
 import com.example.foodapp.model.Food.FavoriteFood;
 
+import java.util.Collections;
 import java.util.List;
 
 public class FavoriteFoodsListAdapter extends RecyclerView.Adapter<FavoriteFoodsListViewHolder>{
@@ -23,7 +23,7 @@ public class FavoriteFoodsListAdapter extends RecyclerView.Adapter<FavoriteFoods
 
     public FavoriteFoodsListAdapter(final Context context, final List<FavoriteFood> favoriteFoodsList) {
         this.context = context;
-        this.favoriteFoodsList = favoriteFoodsList;
+        this.favoriteFoodsList = Collections.unmodifiableList(favoriteFoodsList);
     }
 
     @NonNull
@@ -34,7 +34,7 @@ public class FavoriteFoodsListAdapter extends RecyclerView.Adapter<FavoriteFoods
 
     @Override
     public void onBindViewHolder(@NonNull FavoriteFoodsListViewHolder holder, int position) {
-        holder.getItemImage().setImageResource(this.favoriteFoodsList.get(position).getImageResourceId()); //FIXME
+        holder.getItemImage().setImageResource(this.favoriteFoodsList.get(position).getImageResourceId());
         holder.getItemName().setText(this.favoriteFoodsList.get(position).getName());
         holder.getItemCategory().setText(this.favoriteFoodsList.get(position).getCategory().toString());
         holder.getItemQuantity().setText(String.valueOf(this.favoriteFoodsList.get(position).getQuantity()));
@@ -52,11 +52,22 @@ public class FavoriteFoodsListAdapter extends RecyclerView.Adapter<FavoriteFoods
             this.context.startActivity(intent);
         });
 
-        holder.itemView.findViewById(R.id.favoriteFoodsDeleteImageView).setOnClickListener(view -> {
+        //TODO: remove, old code, it doesn't work.
+        /*holder.itemView.findViewById(R.id.favoriteFoodsDeleteImageView).setOnClickListener(view -> {
             this.favoriteFoodsList.remove(position);
             FavoriteFoodDatabase.getDatabaseInstance(this.context).favoriteFoodDAO().deleteFavoriteFood(this.favoriteFoodsList.get(position).foodId);
             notifyItemRemoved(position);
+        });*/
+
+        holder.itemView.findViewById(R.id.favoriteFoodsDeleteImageView).setOnClickListener(view -> {
+            int adapterPosition = holder.getAdapterPosition();
+            if (adapterPosition != RecyclerView.NO_POSITION) {
+                FavoriteFoodDatabase.getDatabaseInstance(this.context).favoriteFoodDAO().deleteFavoriteFood(this.favoriteFoodsList.get(adapterPosition).foodId);
+                this.favoriteFoodsList.remove(adapterPosition);
+                notifyItemRemoved(adapterPosition);
+            }
         });
+
     }
 
     @Override

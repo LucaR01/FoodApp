@@ -1,16 +1,15 @@
 package com.example.foodapp.Activities;
 
+import android.os.Bundle;
+import android.widget.ImageView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Bundle;
-import android.widget.ImageView;
-
 import com.example.foodapp.R;
 import com.example.foodapp.model.Category.Category;
 import com.example.foodapp.model.Food.Food;
-import com.example.foodapp.model.RecycleView.CategoryAdapter;
 import com.example.foodapp.model.RecycleView.FoodsAdapter;
 
 import java.util.ArrayList;
@@ -47,7 +46,7 @@ public class FoodsActivity extends AppCompatActivity {
 
     private void initList() {
 
-        List<Food> foodList = new ArrayList<>(Arrays.asList(
+        final List<Food> foodList = new ArrayList<>(Arrays.asList(
                 new Food("Chicken Poké", Category.POKE, 1, "$", "5.60", false, R.drawable.southfin_bowls_chicken, "{ingredients}"),
                 new Food("Grilled Fruit Kabos", Category.FRUIT, 1, "$", "5.50", false, R.drawable.grilled_fruit_kabobs_no_background, "{ingredients}"),
                 new Food("Nicoise Salad", Category.SALAD, 1, "$", "6.50", false, R.drawable.nicoise_salad_no_background, "{ingredients}"),

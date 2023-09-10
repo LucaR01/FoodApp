@@ -1,5 +1,7 @@
 package com.example.foodapp.model.Currency;
 
+import androidx.annotation.NonNull;
+
 public enum Currency {
 
     EURO("€"),
@@ -17,6 +19,7 @@ public enum Currency {
         return this.currency;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return this.currency;

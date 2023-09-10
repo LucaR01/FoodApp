@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignupActivity">
+    tools:context=".Activities.SignupActivity">
 
     <!-- <ScrollView
         android:layout_width="wrap_content"
@@ -35,7 +35,8 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.0"
+            android:contentDescription="@string/background_image" />
 
     <TextView
         android:id="@+id/textView"
@@ -73,7 +74,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:backgroundTint="@color/white"
-            android:drawableLeft="@drawable/ic_baseline_account_circle_24"
+            android:drawableStart="@drawable/ic_baseline_account_circle_24"
             android:drawablePadding="12dp"
             android:hint="@string/username"
             android:minHeight="48dp"
@@ -90,7 +91,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:backgroundTint="@color/white"
-            android:drawableLeft="@drawable/ic_baseline_alternate_email_24"
+            android:drawableStart="@drawable/ic_baseline_alternate_email_24"
             android:drawablePadding="12dp"
             android:hint="@string/email"
             android:minHeight="48dp"
@@ -107,7 +108,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:backgroundTint="@color/white"
-            android:drawableLeft="@drawable/ic_baseline_vpn_key_24"
+            android:drawableStart="@drawable/ic_baseline_vpn_key_24"
             android:drawablePadding="12dp"
             android:hint="@string/password"
             android:minHeight="48dp"
@@ -124,7 +125,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:backgroundTint="@color/white"
-            android:drawableLeft="@drawable/ic_baseline_check_24"
+            android:drawableStart="@drawable/ic_baseline_check_24"
             android:drawablePadding="12dp"
             android:hint="@string/confirm_password"
             android:minHeight="48dp"

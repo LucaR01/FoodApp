@@ -6,7 +6,7 @@
             android:key="theme_preference"
             android:title="Dark Theme"
             android:defaultValue="false"
-            android:summary="Enable or disable the dark theme"/>
+            android:summary="@string/dark_theme_preference"/>
         <!-- <Preference
             android:key="import_preference"
             android:summary="Import Database"
@@ -21,14 +21,14 @@
         <Preference
             android:key="privacy_preference"
             android:title="Privacy"
-            android:summary="Privacy Policy"/>
+            android:summary="@string/privacy_policy"/>
         <Preference
             android:key="terms_preference"
             android:title="Terms"
-            android:summary="Terms &amp; Conditions"/>
+            android:summary="@string/terms_and_conditions"/>
         <Preference
             android:title="Version"
-            android:summary="1.0.0"
+            android:summary="@string/app_version"
             android:selectable="false"/>
     </PreferenceCategory>
 </androidx.preference.PreferenceScreen>

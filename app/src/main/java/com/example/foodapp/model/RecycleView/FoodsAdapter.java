@@ -12,16 +12,17 @@ import com.example.foodapp.Activities.FoodDetailsActivity;
 import com.example.foodapp.R;
 import com.example.foodapp.model.Food.Food;
 
+import java.util.Collections;
 import java.util.List;
 
 public class FoodsAdapter extends RecyclerView.Adapter<FoodsViewHolder> {
 
-    private Context context;
-    private List<Food> foodsList;
+    private final Context context;
+    private final List<Food> foodsList;
 
     public FoodsAdapter(Context context, final List<Food> foodsList) {
         this.context = context;
-        this.foodsList = foodsList;
+        this.foodsList = Collections.unmodifiableList(foodsList);
     }
 
     @NonNull

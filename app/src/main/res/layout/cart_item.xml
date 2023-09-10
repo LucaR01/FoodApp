@@ -17,13 +17,14 @@
             android:layout_margin="0dp"
             android:layout_marginTop="3dp"
             android:scaleType="centerCrop"
-            app:srcCompat="@drawable/southfin_bowls_chicken" />
+            app:srcCompat="@drawable/southfin_bowls_chicken"
+            android:contentDescription="@string/cart_item_image" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_marginLeft="5dp">
+            android:layout_marginStart="5dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -36,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
                 android:fontFamily="@font/istok_web"
-                android:text="{Nome pietanza}"
+                android:text="@string/food_name"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -54,7 +55,7 @@
                     android:ellipsize="end"
                     android:fontFamily="@font/istok_web"
                     android:maxLines="1"
-                    android:text="Quantità:"
+                    android:text="@string/quantity"
                     android:textSize="14sp" />
 
                 <TextView
@@ -62,11 +63,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="3dp"
-                    android:layout_marginLeft="3dp"
+                    android:layout_marginStart="3dp"
                     android:ellipsize="end"
                     android:fontFamily="@font/istok_web"
                     android:maxLines="1"
-                    android:text="{Quantity}"
+                    android:text="@string/quantity_value"
                     android:textSize="14sp" />
 
             </LinearLayout>
@@ -81,7 +82,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="$"
+                    android:text="@string/dollar_sign"
                     android:textColor="#1FA414"
                     android:textSize="24sp"
                     android:textStyle="bold" />
@@ -90,9 +91,9 @@
                     android:id="@+id/cardItemPriceTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="4dp"
+                    android:layout_marginStart="4dp"
                     android:layout_marginTop="8dp"
-                    android:text="{Prezzo}"
+                    android:text="@string/price_value"
                     android:textColor="#1FA414"
                     android:textSize="24sp"
                     android:textStyle="bold" />
@@ -103,7 +104,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="3dp"
                     android:layout_gravity="center"
-                    app:srcCompat="@drawable/ic_baseline_delete_24" />
+                    app:srcCompat="@drawable/ic_baseline_delete_24"
+                    android:contentDescription="@string/remove_item" />
 
 
             </LinearLayout>

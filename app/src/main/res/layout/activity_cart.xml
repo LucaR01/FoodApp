@@ -26,7 +26,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="10dp"
-                app:srcCompat="@drawable/ic_baseline_arrow_back_ios_new_24" />
+                app:srcCompat="@drawable/ic_baseline_arrow_back_ios_new_24"
+                android:contentDescription="@string/back_arrow" />
 
             <TextView
                 android:id="@+id/cartTextView"
@@ -36,7 +37,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="40dp"
                 android:fontFamily="@font/itim"
-                android:text="Carrello"
+                android:text="@string/cart"
                 android:textAlignment="center"
                 android:textColor="#1FA414"
                 android:textSize="24sp"
@@ -65,7 +66,7 @@
                 android:layout_marginTop="32dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/itim"
-                android:text="Totale:"
+                android:text="@string/total"
                 android:textAlignment="textStart"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -78,7 +79,7 @@
                 android:layout_marginEnd="0dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/itim"
-                android:text="{Currency}"
+                android:text="@string/currency_value"
                 android:textAlignment="textEnd"
                 android:textSize="21sp"
                 android:textStyle="bold" />
@@ -91,7 +92,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/itim"
-                android:text="{Prezzo}"
+                android:text="@string/price_value"
                 android:textAlignment="textStart"
                 android:textSize="21sp"
                 android:textStyle="bold" />
@@ -107,19 +108,11 @@
             android:background="@drawable/rectangle_background"
             android:backgroundTint="#1FA414"
             android:fontFamily="@font/itim"
-            android:text="Vai al pagamento"
+            android:text="@string/go_to_payment"
             android:textSize="18sp"
             android:textStyle="normal|bold" />
 
     </LinearLayout>
-
-    <!-- <View
-        android:layout_width="0dp"
-        android:layout_height="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cartTextView"
-        app:layout_constraintWidth_percent="0.6"/> -->
 
 </ScrollView>
 

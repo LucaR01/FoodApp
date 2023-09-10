@@ -3,13 +3,10 @@ package com.example.foodapp.model.Databases.UserDatabase;
 import android.content.Context;
 import android.os.Build;
 
-import androidx.annotation.RequiresApi;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-import com.example.foodapp.model.Users.Client.Client;
-import com.example.foodapp.model.Users.Restaurant.Restaurant;
 import com.example.foodapp.model.Users.User;
 
 import java.util.Objects;

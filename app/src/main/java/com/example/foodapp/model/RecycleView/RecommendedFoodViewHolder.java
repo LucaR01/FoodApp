@@ -11,11 +11,11 @@ import com.example.foodapp.R;
 
 public class RecommendedFoodViewHolder extends RecyclerView.ViewHolder {
 
-    private ImageView itemImage;
-    private ImageView itemFavorite;
-    private TextView itemCurrency;
-    private TextView itemPrice;
-    private TextView itemName;
+    private final ImageView itemImage;
+    private final ImageView itemFavorite;
+    private final TextView itemCurrency;
+    private final TextView itemPrice;
+    private final TextView itemName;
 
     public RecommendedFoodViewHolder(@NonNull View itemView) {
         super(itemView);

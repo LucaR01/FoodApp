@@ -1,14 +1,6 @@
 package com.example.foodapp.model.Food;
 
-import com.example.foodapp.model.Food.Food;
-
-import java.util.List;
-
-//TODO: remove?
-
 public class RecommendedFood {
-
-    //private final List<Food> recommendedFoods; //TODO: uncomment?
 
     private final Food recommendedFood;
 

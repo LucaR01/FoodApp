@@ -53,7 +53,6 @@ public class CategoryActivity extends AppCompatActivity {
         final String category = getIntent().getStringExtra("category");
         this.categoryName.setText(category);
 
-        //TODO: volendo aggiungere altri cibi
         switch(category) {
             case "Poké":
                 this.categoryImageView.setImageResource(R.drawable.poke_background1);

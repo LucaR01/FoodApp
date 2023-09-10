@@ -1,22 +1,17 @@
 package com.example.foodapp.Activities;
 
+import android.os.Bundle;
+import android.widget.ImageView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Bundle;
-import android.widget.ImageView;
-
 import com.example.foodapp.R;
-import com.example.foodapp.model.Category.Category;
 import com.example.foodapp.model.Databases.FavoriteFoodDatabase.FavoriteFoodDatabase;
 import com.example.foodapp.model.Food.FavoriteFood;
-import com.example.foodapp.model.Food.Food;
 import com.example.foodapp.model.RecycleView.FavoriteFoodsListAdapter;
-import com.example.foodapp.model.RecycleView.FoodsAdapter;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class FavoriteFoodsActivity extends AppCompatActivity {
@@ -45,20 +40,11 @@ public class FavoriteFoodsActivity extends AppCompatActivity {
     }
 
     private void setOnBackPressedArrow() {
-        this.backArrow.setOnClickListener(view -> {
-            onBackPressed();
-        });
+        this.backArrow.setOnClickListener(view -> onBackPressed());
     }
 
-    //TODO: recuperare dal database?
     private void initList() {
-        List<FavoriteFood> favoriteFoodsList = retrieveFavoriteFoodsDatabase().favoriteFoodDAO().getFavoriteFoods();
-
-        /*List<FavoriteFood> favoriteFoodsList = new ArrayList<>(Arrays.asList(
-                new FavoriteFood("Salad", Category.SALAD, 1, "$", "7.00", true, R.drawable.salad_background),
-                new FavoriteFood("Salad 2", Category.SALAD, 2, "$", "6.50", true, R.drawable.salad_background)
-        ));*/ //TODO: remove
-
+        final List<FavoriteFood> favoriteFoodsList = retrieveFavoriteFoodsDatabase().favoriteFoodDAO().getFavoriteFoods();
         setFavoriteFoodsRecyclerView(favoriteFoodsList);
     }
 

@@ -3,15 +3,10 @@ package com.example.foodapp.model.Databases.FavoriteFoodDatabase;
 import android.content.Context;
 import android.os.Build;
 
-import androidx.annotation.NonNull;
 import androidx.room.Database;
-import androidx.room.DatabaseConfiguration;
-import androidx.room.InvalidationTracker;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
-import androidx.sqlite.db.SupportSQLiteOpenHelper;
 
-import com.example.foodapp.model.Databases.FoodDatabase.FoodDatabase;
 import com.example.foodapp.model.Food.Food;
 
 import java.util.Objects;
@@ -29,7 +24,7 @@ public abstract class FavoriteFoodDatabase extends RoomDatabase {
             if(Objects.isNull(FavoriteFoodDatabase.INSTANCE)) {
                 FavoriteFoodDatabase.INSTANCE = Room.databaseBuilder(context.getApplicationContext(), FavoriteFoodDatabase.class, FavoriteFoodDatabase.DATABASE_NAME)
                         .allowMainThreadQueries() //TODO: remove .allowMainThreadQueries()?
-                        .fallbackToDestructiveMigration()
+                        .fallbackToDestructiveMigration() //TODO: remove when the app will be released.
                         .build();
             }
         }

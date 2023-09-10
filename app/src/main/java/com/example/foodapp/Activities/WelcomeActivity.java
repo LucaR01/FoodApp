@@ -1,21 +1,14 @@
-package com.example.foodapp;
+package com.example.foodapp.Activities;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.AttributeSet;
 import android.util.Log;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.foodapp.R;
 import com.example.foodapp.model.Databases.FavoriteFoodDatabase.FavoriteFoodDatabase;
 import com.example.foodapp.model.Databases.FoodDatabase.FoodDatabase;
 import com.example.foodapp.model.Databases.UserDatabase.UserDatabase;
@@ -25,22 +18,16 @@ import com.example.foodapp.model.Users.User;
 
 import java.util.List;
 
-//TODO: extends Fragment
 public class WelcomeActivity extends AppCompatActivity {
 
-    //TODO: final
-    private Button joinUsButton;
+    //private Button joinUsButton; //TODO: uncomment only if i use layout.activity_welcome2
     private Button loginButton;
-    private ImageView welcomeScreenImageView;
     private TextView signupTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
-
-        /*requestWindowFeature(Window.FEATURE_NO_TITLE); //TODO:
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);*/
 
         initView();
 
@@ -58,7 +45,6 @@ public class WelcomeActivity extends AppCompatActivity {
     private void initView() {
         //this.joinUsButton = findViewById(R.id.joinUsButton); //TODO: uncomment only if i use layout.activity_welcome2
         this.loginButton = findViewById(R.id.welcome_login_button);
-        this.welcomeScreenImageView = findViewById(R.id.welcome_screen_imageView);
         this.signupTextView = findViewById(R.id.signup_textview);
     }
 
@@ -70,9 +56,10 @@ public class WelcomeActivity extends AppCompatActivity {
         this.signupTextView.setOnClickListener(view -> startActivity(new Intent(WelcomeActivity.this, SignupActivity.class)));
     }
 
-    private void onJoinUs() {
+    //TODO: uncomment only if i use layout.activity_welcome2
+    /*private void onJoinUs() {
         this.joinUsButton.setOnClickListener(view -> startActivity(new Intent(WelcomeActivity.this, LoginActivity.class)));
-    }
+    }*/
 
     //TODO: remove; solo per testing.
     private void initDatabase() {

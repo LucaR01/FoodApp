@@ -20,7 +20,8 @@
             android:layout_height="20dp"
             android:layout_marginStart="120dp"
             android:layout_marginTop="6dp"
-            app:srcCompat="@drawable/heart" />
+            app:srcCompat="@drawable/heart"
+            android:contentDescription="@string/favorite_image" />
 
         <ImageView
             android:id="@+id/item_image"
@@ -28,7 +29,8 @@
             android:layout_height="90dp"
             android:layout_marginStart="25dp"
             android:layout_marginTop="10dp"
-            app:srcCompat="@drawable/southfin_bowls_chicken" />
+            app:srcCompat="@drawable/southfin_bowls_chicken"
+            android:contentDescription="@string/food_item_image" />
 
         <TextView
             android:id="@+id/item_name"
@@ -36,7 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="9dp"
             android:layout_marginTop="9dp"
-            android:text="{Nome cibo}" />
+            android:text="@string/food_name" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -49,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="9dp"
                 android:layout_marginTop="3dp"
-                android:text="{Currency}" />
+                android:text="@string/currency_value" />
 
             <TextView
                 android:id="@+id/item_price"
@@ -57,7 +59,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="0dp"
                 android:layout_marginTop="3dp"
-                android:text="{Prezzo}" />
+                android:text="@string/price_value" />
 
 
         </LinearLayout>

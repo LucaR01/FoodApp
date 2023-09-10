@@ -13,13 +13,12 @@ import com.example.foodapp.R;
 import com.example.foodapp.model.Category.Category;
 import com.example.foodapp.model.Databases.FavoriteFoodDatabase.FavoriteFoodDatabase;
 import com.example.foodapp.model.Food.FavoriteFood;
-import com.example.foodapp.model.Food.Food;
 
 import java.util.List;
 
 public class FavoriteFoodAdapter extends RecyclerView.Adapter<FavoriteFoodViewHolder> {
-    private Context context;
-    private List<FavoriteFood> favoriteFoodList;
+    private final Context context;
+    private final List<FavoriteFood> favoriteFoodList;
 
     public FavoriteFoodAdapter(Context context, List<FavoriteFood> favoriteFoodList) {
         this.context = context;
@@ -39,8 +38,10 @@ public class FavoriteFoodAdapter extends RecyclerView.Adapter<FavoriteFoodViewHo
         holder.getItemName().setText(this.favoriteFoodList.get(position).getName());
         holder.getItemPrice().setText(this.favoriteFoodList.get(position).getPrice());
 
+        holder.getItemImage().setTag(this.favoriteFoodList.get(position).getImageResourceId());
+
         final FavoriteFood favoriteFood = new FavoriteFood(holder.getItemName().getText().toString(), Category.NONE, 1, holder.getItemCurrency().getText().toString(),
-                holder.getItemPrice().getText().toString(), false, holder.getItemImage().getId(), "{ingredients}"); //TODO: category e quantity.
+                holder.getItemPrice().getText().toString(), false, (int)holder.getItemImage().getTag(), "{ingredients}"); //TODO: category e quantity; prima era getItemimage().getId()
 
         // Questo casomai fosse stato già favorito in precedenza.
         if (this.favoriteFoodList.get(position).isFavorite()) {

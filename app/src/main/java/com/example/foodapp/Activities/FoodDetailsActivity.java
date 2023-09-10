@@ -1,20 +1,16 @@
 package com.example.foodapp.Activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.foodapp.R;
 import com.example.foodapp.model.Category.Category;
-import com.example.foodapp.model.Currency.Currency;
 import com.example.foodapp.model.Databases.FoodDatabase.FoodDatabase;
 import com.example.foodapp.model.Food.Food;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -37,16 +33,14 @@ public class FoodDetailsActivity extends AppCompatActivity {
     private ImageView backArrowImageView;
     private ImageView foodImageView;
 
+    private int imageResourceId;
+
     private Food food;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_food_details);
-
-        //FoodDatabase foodDatabase = FoodDatabase.getDatabaseInstance(getApplicationContext());
-        //retrieveDatabase();
 
         initView();
 
@@ -58,6 +52,7 @@ public class FoodDetailsActivity extends AppCompatActivity {
         this.foodIngredients.setText(getIntent().getStringExtra("foodDetailIngredients")); //TODO: Update
         //this.foodImageView.setImageResource(getIntent().getIntExtra("foodDetailImageView", R.drawable.southfin_bowls_chicken)); //TODO: update R.drawable?; //TODO: item_image?
         int imageResource = getIntent().getIntExtra("foodDetailImageView", R.drawable.southfin_bowls_chicken);
+        this.imageResourceId = imageResource; //TODO: remove?
         Log.d("Debug", "Image Resource: " + imageResource); // Log the image resource //TODO: remove
 
         //TODO: remove, just for testing;
@@ -113,17 +108,15 @@ public class FoodDetailsActivity extends AppCompatActivity {
     }
 
     private void setOnBackPressedArrow() {
-        this.backArrowImageView.setOnClickListener(view -> {
-            onBackPressed();
-        });
+        this.backArrowImageView.setOnClickListener(view -> onBackPressed());
     }
 
     private void addToCart() {
-        addToCartButton.setOnClickListener(view -> {
-            System.out.println("Counter: " + counter); //TODO: remove; use logger
+        this.addToCartButton.setOnClickListener(view -> {
+            Log.d("Counter", ": " + counter); //TODO: just for testing.
             getFoodDatabase().foodDAO().insertFood(retrieveFood()); //TODO: prima era retrieveFood(); this.food
 
-            AlertDialog.Builder builder = new AlertDialog.Builder(FoodDetailsActivity.this);
+            final AlertDialog.Builder builder = new AlertDialog.Builder(FoodDetailsActivity.this);
             builder.setTitle("Success");
             builder.setMessage("Item added to cart successfully!");
             builder.setCancelable(true);
@@ -132,7 +125,7 @@ public class FoodDetailsActivity extends AppCompatActivity {
                     "Ok",
                     (dialog, id) -> dialog.dismiss());
 
-            AlertDialog alertDialog = builder.create();
+            final AlertDialog alertDialog = builder.create();
             alertDialog.show();
         });
     }
@@ -163,7 +156,7 @@ public class FoodDetailsActivity extends AppCompatActivity {
         //TODO: recuperare la categoria.
         this.food = new Food(this.foodName.getText().toString(), Category.UNSPECIFIED, Integer.parseInt(this.counterTextView.getText().toString()),
                 this.foodCurrency.getText().toString(), this.foodPrice.getText().toString(),
-                !this.foodFavorite.getTag().equals("new_image"), this.foodImageView.getId(), "{ingredients}");
+                !this.foodFavorite.getTag().equals("new_image"), this.imageResourceId, "{ingredients}"); //TODO: prima era this.foodImageView.getId() al posto di this.imageResourceId
         return food;
     }
 

@@ -1,16 +1,17 @@
 package com.example.foodapp.Activities;
 
-import androidx.appcompat.app.ActionBar;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.widget.ImageView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
 
-import android.content.SharedPreferences;
-import android.os.Bundle;
-import android.preference.PreferenceActivity;
-import android.widget.ImageView;
-
 import com.example.foodapp.Fragments.SettingsFragment;
 import com.example.foodapp.R;
+
+//TODO: opzione per poter cambiare lo username o la password dell'utente.
+//TODO: cambiare lingua.
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -75,7 +76,7 @@ public class SettingsActivity extends AppCompatActivity {
 
         // Apply the selected theme
         if (isDarkThemeEnabled) {
-            setTheme(R.style.Theme_FoodApp_Dark);
+            setTheme(R.style.Theme_FoodApp);
         } else {
             setTheme(R.style.Theme_FoodApp);
         }

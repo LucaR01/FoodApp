@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".WelcomeActivity">
+    tools:context=".Activities.WelcomeActivity">
 
     <!-- TODO: LinearLayout -->
     <!-- TODO: layout_gravity -->
@@ -21,8 +21,11 @@
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
         android:src="@drawable/ic_healthy_food_welcome_screen_background1"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="-33dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/background_image" />
 
     <TextView
         android:id="@+id/textView"

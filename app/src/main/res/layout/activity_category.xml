@@ -19,14 +19,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <!-- TODO: add back arrow -->
-
             <ImageView
                 android:id="@+id/categoryImageView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
+                android:contentDescription="@string/category_image"
                 android:scaleType="fitCenter"
                 app:srcCompat="@drawable/vegetables_background1" />
 
@@ -49,14 +48,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="3dp"
                 android:layout_marginTop="5dp"
-                app:srcCompat="@drawable/ic_baseline_arrow_back_ios_new_24" />
+                app:srcCompat="@drawable/ic_baseline_arrow_back_ios_new_24"
+                android:contentDescription="@string/back_arrow" />
 
             <TextView
                 android:id="@+id/categoryTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/istok_web"
-                android:text="{Category's Name}"
+                android:text="@string/category_name"
                 android:textAlignment="center"
                 android:textSize="24sp"
                 android:textStyle="bold" />

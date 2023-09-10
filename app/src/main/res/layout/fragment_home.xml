@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E7EBE7"
-    tools:context=".MainActivity">
+    tools:context=".Activities.MainActivity">
 
     <!-- TODO: utilizzare dei fixed size come android:layout_marginTop="16dp" e android:layout_height="dp" -->
     <!-- TODO: rendono il layout meno responsive. -->

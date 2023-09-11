@@ -18,9 +18,9 @@ This app presents the following features:
   - Theme
     - Light
     - Dark
-  - Language
-    - English
-    - Italian
+- Available Languages:
+	- English
+	- Italian
   
 <hr>
 

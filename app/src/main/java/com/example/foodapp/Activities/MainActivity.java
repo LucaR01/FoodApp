@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
 
         initRecommendedAndFavoriteFoods();
 
-        initUserDatabase(); //TODO: remove
+        //initUserDatabase(); //TODO: remove/comment; just for testing
 
         initBottomNavigationBar();
     }

@@ -24,7 +24,7 @@ public abstract class UserDatabase extends RoomDatabase {
             if(Objects.isNull(UserDatabase.INSTANCE)) {
                 UserDatabase.INSTANCE = Room.databaseBuilder(context.getApplicationContext(), UserDatabase.class, UserDatabase.databaseName)
                         .allowMainThreadQueries() //TODO: remove .allowMainThreadQueries()?
-                        .fallbackToDestructiveMigration() //TODO: remove when the app will be launched.
+                        //.fallbackToDestructiveMigration() //TODO: remove when the app will be launched.
                         .build();
             }
         }

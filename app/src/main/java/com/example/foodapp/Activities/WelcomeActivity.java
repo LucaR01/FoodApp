@@ -31,7 +31,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
         initView();
 
-        initDatabase(); //TODO: remove
+        //initDatabase(); //TODO: remove/comment
 
         //onJoinUs(); //TODO: uncomment only if i use layout.activity_welcome2
 

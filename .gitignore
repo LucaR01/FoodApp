@@ -1,5 +1,6 @@
 # Built application files
 *.apk
+!app-release.apk
 *.aar
 *.ap_
 *.aab
@@ -86,3 +87,5 @@ lint/tmp/
 
 font_certs.xml
 misc.xml
+
+key/

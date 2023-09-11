@@ -2,9 +2,15 @@ plugins {
     id 'com.android.application'
 }
 
+//apply plugin: 'kotlin-android' // era per risolvere un errore legato a un kotlin model
+
 android {
     compileSdk 32
     buildToolsVersion "32.1.0-rc1" // questa l'ho aggiunta io; oppure 32.0.0
+
+    /*aaptOptions { // questo per il problema dei png, ma ho usato quello sotto.
+        cruncherEnabled = false
+    }*/
 
     defaultConfig {
         applicationId "com.example.foodapp"
@@ -14,10 +20,17 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
+            }
+        }
     }
 
     buildTypes {
         release {
+            crunchPngs false // or true (questo per il problema dei png)
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -52,4 +65,6 @@ dependencies {
 
     implementation 'androidx.navigation:navigation-fragment:2.5.3' // questi due navigation-fragment e navigation-ui servono per la navigation.
     implementation 'androidx.navigation:navigation-ui:2.5.3'
+
+    //implementation "org.jetbrains.kotlin:kotlin-stdlib:1.7.0" // era per risolvere un errore legato a un kotlin model
 }

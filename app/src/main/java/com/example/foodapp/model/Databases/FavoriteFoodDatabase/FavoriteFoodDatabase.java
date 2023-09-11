@@ -24,7 +24,7 @@ public abstract class FavoriteFoodDatabase extends RoomDatabase {
             if(Objects.isNull(FavoriteFoodDatabase.INSTANCE)) {
                 FavoriteFoodDatabase.INSTANCE = Room.databaseBuilder(context.getApplicationContext(), FavoriteFoodDatabase.class, FavoriteFoodDatabase.DATABASE_NAME)
                         .allowMainThreadQueries() //TODO: remove .allowMainThreadQueries()?
-                        .fallbackToDestructiveMigration() //TODO: remove when the app will be released.
+                        //.fallbackToDestructiveMigration() //TODO: remove when the app will be released.
                         .build();
             }
         }

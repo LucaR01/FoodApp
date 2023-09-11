@@ -4,7 +4,7 @@
     android:layout_height="240dp"
     android:padding="18dp"
     android:orientation="vertical"
-    android:background="@drawable/ic_healthy_food_welcome_screen_background1"
+    android:background="@drawable/healthy_food_background1"
     android:gravity="bottom">
 
     <TextView

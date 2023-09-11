@@ -1,6 +1,5 @@
 # Built application files
 *.apk
-!app-release.apk
 *.aar
 *.ap_
 *.aab
@@ -89,3 +88,4 @@ font_certs.xml
 misc.xml
 
 key/
+!app-release.apk

@@ -41,7 +41,33 @@ This are the screens of the app:
 
 ### Home Screen
 <img src="https://github.com/LucaR01/FoodApp/blob/main/screens/HomeScreen/home_screen.PNG" width="20%" heigth="20%" /> <img src="https://github.com/LucaR01/FoodApp/blob/main/screens/HomeScreen/home_screen1.PNG" width="20%" heigth="20%" />
-<img src="https://github.com/LucaR01/FoodApp/blob/main/screens/HomeScreen/home_screen2_navigation_drawer.PNG" width="20%" heigth="20%" />
+<img src="https://github.com/LucaR01/FoodApp/blob/main/screens/HomeScreen/home_screen2_navigation_drawer.PNG" width="20%" heigth="20%" /> <img src="https://github.com/LucaR01/FoodApp/blob/main/screens/FavoriteFood/favorite_food2.PNG" width="20%" heigth="20%" />
+
+<hr>
+
+### Food & Cart
+<img src="https://github.com/LucaR01/FoodApp/blob/main/screens/RecommendedFood/recommended_item.PNG" width="20%" heigth="20%" /> <img src="https://github.com/LucaR01/FoodApp/blob/main/screens/RecommendedFood/recommended_item1.PNG" width="20%" heigth="20%" />
+<img src="https://github.com/LucaR01/FoodApp/blob/main/screens/RecommendedFood/recommended_item2.PNG" width="20%" heigth="20%" /> <img src="https://github.com/LucaR01/FoodApp/blob/main/screens/CartScreen/carrello.PNG" width="20%" heigth="20%" />
+<img src="https://github.com/LucaR01/FoodApp/blob/main/screens/CartScreen/carrello1.PNG" width="20%" heigth="20%" />
+
+<hr>
+
+### Categories
+<img src="https://github.com/LucaR01/FoodApp/blob/main/screens/CategoryPokéScreen/categoria_poké.PNG" width="20%" heigth="20%" /> <img src="https://github.com/LucaR01/FoodApp/blob/main/screens/CategoryPokéScreen/categoria_poké1.PNG" width="20%" heigth="20%" />
+<img src="https://github.com/LucaR01/FoodApp/blob/main/screens/CategoryFruitScreen/categoria_frutta.PNG" width="20%" heigth="20%" /> <img src="https://github.com/LucaR01/FoodApp/blob/main/screens/CategoryFruitScreen/categoria_frutta1.PNG" width="20%" heigth="20%" />
+<img src="https://github.com/LucaR01/FoodApp/blob/main/screens/CategoryVegetablesScreen/categoria_verdura.PNG" width="20%" heigth="20%" /> <img src="https://github.com/LucaR01/FoodApp/blob/main/screens/CategoryVegetablesScreen/categoria_verdura1.PNG" width="20%" heigth="20%" /> <img src="https://github.com/LucaR01/FoodApp/blob/main/screens/CategorySaladScreen/categoria_insalata.PNG" width="20%" heigth="20%" /> <img src="https://github.com/LucaR01/FoodApp/blob/main/screens/CategorySaladScreen/categoria_insalata1.PNG" width="20%" heigth="20%" /> 
+
+<hr>
+
+### Foods & Favorite Foods
+<img src="https://github.com/LucaR01/FoodApp/blob/main/screens/FoodsScreen/foods_screen.PNG" width="20%" heigth="20%" /> <img src="https://github.com/LucaR01/FoodApp/blob/main/screens/FoodsScreen/foods_screen1.PNG" width="20%" heigth="20%" /> 
+<img src="https://github.com/LucaR01/FoodApp/blob/main/screens/FavoriteFoodsScreen/favorite_foods_screen.PNG" width="20%" heigth="20%" /> <img src="https://github.com/LucaR01/FoodApp/blob/main/screens/FavoriteFood/favorite_food.PNG" width="20%" heigth="20%" /> 
+
+<hr>
+
+### Settings & About & Privacy Policy & Terms and Conditions
+<img src="https://github.com/LucaR01/FoodApp/blob/main/screens/SettingsScreen/settings_screen.PNG" width="20%" heigth="20%" /> <img src="https://github.com/LucaR01/FoodApp/blob/main/screens/PrivacyPolicyScreen/privacy_policy_screen.PNG" width="20%" heigth="20%" /> 
+<img src="https://github.com/LucaR01/FoodApp/blob/main/screens/AboutScreen/about_screen.PNG" width="20%" heigth="20%" /> <img src="https://github.com/LucaR01/FoodApp/blob/main/screens/Terms&ConditionsScreen/terms_and_conditions_screen.PNG" width="20%" heigth="20%" /> 
 
 <hr>
 
